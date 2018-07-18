@@ -1,0 +1,21 @@
+{
+    "user1": {
+        "password": "1111", 
+        "results": [ 
+            20, 
+            10
+        ], 
+        "total_points": 30, 
+        "username": "user1"
+    }, 
+    "user2": {
+        "password": "1111", 
+        "results": [
+            10, 
+            25, 
+            35
+        ], 
+        "total_points": 80, 
+        "username": "user2"
+    }
+}
