@@ -7,14 +7,15 @@ This project will form part of my submission for the Fullstack Web Developer cou
 
 This will be my milestone project for Practical Python module of the new LMS.
 
-This the the [github repository](https://github.com/abonello/project-1),  UPDATE
+This the the [github repository](https://github.com/abonello/project-3),
 and this project is deployed as a github page [here](https://abonello.github.io/project-1/). UPDATE
 
-I am basing this project on an earlier exploratory exercise that I did. This previous exercise was meant to be a draft to practice the techniques and skills I need for this project. It can be found [here] UPDATE(https://github.com/abonello/JumbotronExperiment).
+I am basing this project on an earlier exploratory exercise that I did. This previous exercise was meant to be a draft to practice the techniques and skills I need for this project. It can be found [here](https://github.com/abonello/riddle-game-app).
+Another project that I built to learn the techniques I need is an addition game. The code can be found [here](https://github.com/abonello/addition_game).
 
-Add INFO ABOUT ADDITION GAME.
+The main change I did from my earlier riddle game project is to base the current one on OOP. In this way I can have multiple users logged in without interfering with each other. This is what I learnt from the addition game.
 
-The main change I did from my earlier project is to base the current one on OOP. In this way I can have multiple users logged in without interfering with each other.
+
 
 
 
