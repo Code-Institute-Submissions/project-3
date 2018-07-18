@@ -51,3 +51,5 @@ The main change I did from my earlier riddle game project is to base the current
 ## Code from other sources
 
 
+## Riddle Images
+These are modified versions of pictures from the web.
