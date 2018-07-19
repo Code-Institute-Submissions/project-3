@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+    <a href="/testing">Testing</a><br>
+    <div class="row">
+        <!--<p>User: {{ app_info["username"] }}</p>-->
+        <!--<p>All users: {{ app_info["allusers"] }}</p>-->
+        <!--<p>Logged: {{ app_info["logged"] }}</p>-->
+        <!--<p>Game on: {{ app_info["game"] }}</p>-->
+        <!--<p>Attempt: {{ attempt }}</p>-->
+        {% for message in get_flashed_messages() %}
+            {{ message }}
+        {% endfor %}
+        <div class="col-md-12 main min-height-main">
+            <h3>Description</h3>
+            <p>This is the milestone project that I am building for the “Practical Python” stream, 
+            part of the New LMS in the “Full Stack Web Development Course” offered by Code Institute.</p>
+            
+            <p>The purpose of the game is to guess a word or phrase from a given picture. Three attempts 
+            are allowed. With each subsequent attempt further clues will be shown at the expense of reduced
+            points.</p>
+
+            <p>More information can be found in the <a href="/about"><strong>About</strong></a> section of this
+            game.</p>
+
+            <h3>Instructions</h3>
+            <p>First you need to register if you have not already done so.</p>
+            <p>If you have already registered, use your username to login. Your username is unique and its 
+            sole purpose is to keep track of the games you played and the points you gained. The user name 
+            can be any set of letters.<br>
+            Once you log in you will be taken to your user page. There you can see a list of games played
+            and the points gained. You can start a new game from this page.</p>
+            <p>More information can be found in the <a href="/about"><strong>About</strong></a> section of this
+            game.</p>
+        </div>
+    </div>
+{% endblock %}
