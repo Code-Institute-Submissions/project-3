@@ -14,11 +14,11 @@ class TestFlaskRoutes(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls): #Create a file at the start of this group of tests
-        print("\nsetUpClass - TestFlaskRoutes")
+        print("\n===============================\nsetUpClass - TestFlaskRoutes\n===============================\n")
 
     @classmethod
     def tearDownClass(cls):
-        print("tearDownClass - TestFlaskRoutes")
+        print("\n===============================\ntearDownClass - TestFlaskRoutes\n===============================\n")
 
     def test_index(self):
         """ Test routing for HOME page """
@@ -26,6 +26,16 @@ class TestFlaskRoutes(unittest.TestCase):
         response = tester.get('/', content_type='html/text')
         self.assertEqual(response.status_code, 200)
         print("test_index route -- PASS")
+
+
+
+     # Test Page Contents
+    def test_index_page_loads(self):
+        """ Test HOME page loads correctly"""
+        tester = app.test_client(self)        # Mocks functionality of an app
+        response = tester.get('/', content_type='html/text')
+        self.assertTrue(b"Description" in response.data)
+        print("test_index_page_loads route -- PASS")
 
 
 

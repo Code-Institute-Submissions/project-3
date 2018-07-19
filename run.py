@@ -22,10 +22,13 @@ def add(x,y):           #This is a testing function -- Will be removed at that e
 
 @app.route('/', methods=['GET','POST'])
 def index():
-    num1 = 100
-    num2 = 56
-    ans = add(num1, num2)
-    return "It is working. Answer is {}".format(ans)
+    # num1 = 100
+    # num2 = 56
+    # ans = add(num1, num2)
+    # return "Description: It is working. Answer is {}".format(ans)
+
+    # return render_template("index.html", app_info=app_info, attempt=attempt)
+    return render_template("index.html", app_info="")
 
 if __name__ == '__main__':
     app.run(host=os.getenv('IP'), port=int(os.getenv('PORT', 8080)), debug=True)
