@@ -1,4 +1,4 @@
-# import os
+import os
 # import json
 # import datetime
 import unittest
@@ -45,6 +45,16 @@ class TestOtherFunctions(unittest.TestCase):
     Test suite for run.py
     Testing other Functions
     '''
+
+    @classmethod
+    def setUpClass(cls): #Create a file at the start of this group of tests
+        print("\n===============================\nsetUpClass - TestOtherFunctions\n===============================\n")
+
+    @classmethod
+    def tearDownClass(cls):
+        print("\n===============================\ntearDownClass - TestOtherFunctions\n===============================\n")
+
+
     def test_add(self):
         '''
         test a testing add method to check that set up is ok
@@ -62,28 +72,17 @@ class TestOtherFunctions(unittest.TestCase):
 
 
     def test_read_from_file(self):
-            # Try to create a file
+        ''' Test the read_from_file function.'''
+        info = "Writing a test file."
+        with open("data/test.txt", "w") as outfile:
+            outfile.write(info)
+        self.assertTrue(os.path.exists("data/test.txt"))
+        text = run.read_from_file("test.txt")
+        os.remove("data/test.txt")
+        self.assertFalse(os.path.exists("data/test.txt"))
+        self.assertEqual(text, info)
+        print("test_read_from_file -- PASS")
 
-            # Try to Read from file
-
-            # Try to delete File
-
-            # Assert
-
-
-
-
-            empty = {
-                "user":"test_user",
-                # "user":"user1",
-                "number_of_games":5,
-                "date_best_game":"",    # Currently has fixed date 1/4/2018
-                "points_best_game":29,
-                "total_user_points":50,
-                "games_played":[]}      # Currently has fixed date 1/4/2018
-            run.gained_points = 30
-            run.user_data = empty
-            run.store_game_info()
 
 if __name__ == "__main__":
     unittest.main()
