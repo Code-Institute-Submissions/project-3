@@ -28,5 +28,4 @@ def index():
     return "It is working. Answer is {}".format(ans)
 
 if __name__ == '__main__':
-    # app.run(host=os.getenv('IP'), port=int(os.getenv('PORT', 8080)), debug=True) # Use for Heroku
     app.run(host=os.getenv('IP'), port=int(os.getenv('PORT', 8080)), debug=True)
