@@ -20,16 +20,21 @@ class TestFlaskRoutes(unittest.TestCase):
     def tearDownClass(cls):
         print("\n===============================\ntearDownClass - TestFlaskRoutes\n===============================\n")
 
-    def test_index(self):
+    def test_index_route(self):
         """ Test routing for HOME page """
         tester = app.test_client(self)        # Mocks functionality of an app
         response = tester.get('/', content_type='html/text')
         self.assertEqual(response.status_code, 200)
         print("test_index route -- PASS")
 
+    def test_login_route(self):
+        """ Test routing for LOGIN page """
+        tester = app.test_client(self)        # Mocks functionality of an app
+        response = tester.get('/login', content_type='html/text')
+        self.assertEqual(response.status_code, 200)
+        print("test_login route -- PASS")
 
-
-     # Test Page Contents
+    # Test Page Contents
     def test_index_page_loads(self):
         """ Test HOME page loads correctly"""
         tester = app.test_client(self)        # Mocks functionality of an app
@@ -54,7 +59,6 @@ class TestOtherFunctions(unittest.TestCase):
     def tearDownClass(cls):
         print("\n===============================\ntearDownClass - TestOtherFunctions\n===============================\n")
 
-
     def test_add(self):
         '''
         test a testing add method to check that set up is ok
@@ -69,7 +73,6 @@ class TestOtherFunctions(unittest.TestCase):
         self.assertEqual(run.add(7, -9), -2, "Failed: add positive to negative, negative answer")
         self.assertEqual(run.add(0, 0), 0, "Failed: add 0 to 0")
         print("test_add -- PASS")
-
 
     def test_read_from_file(self):
         ''' Test the read_from_file function.'''

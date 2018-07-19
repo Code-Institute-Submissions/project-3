@@ -34,7 +34,7 @@ class User(object):
         self.session = 1
         self.current_route = ""
 
-        User.logged_user += 1  # Keep track of how many users are logged in
+        User.logged_users += 1  # Keep track of how many users are logged in
 
         def addLoggedUser(self):
             ''' Add a logged in user to the dictionary of logged in users. '''
@@ -45,7 +45,7 @@ class User(object):
 
     #  Might add a method to remove the logged in user during log out
 
-
+defaultUser = User("default", False, 0, [])
 
 def read_from_file(file_name):
     store=""
@@ -68,8 +68,58 @@ def index():
     # ans = add(num1, num2)
     # return "Description: It is working. Answer is {}".format(ans)
 
+    allusers = json.loads(read_from_file("users.json"))
+
+    '''
+    global app_info
+    global attempt      #Needed only for debugging
+    try:
+        if request.method == 'POST':
+            app_info["allusers"] = read_from_file("users.txt")
+            if 'register' in request.form:
+                app_info["logged"] = False
+                app_info["username"] = ""
+                app_info["allusers"] = ""
+                app_info["register"] = ""
+                app_info["check_active"] = ""
+                app_info["register_active"] = "btn-deactivated"
+                app_info["route"] = "register"
+                return redirect(url_for('register'))
+                    
+    except Exception as e:
+        return "<h1> Error: " + str(e) + "</h1>"
+       
+    app_info["route"] = "index"
+
+    '''
+
+    thisUser = defaultUser
+
     # return render_template("index.html", app_info=app_info, attempt=attempt)
-    return render_template("index.html", app_info="")
+    return render_template("index.html", app_info="", thisUser=thisUser)
+
+
+@app.route('/login', methods=['GET','POST'])
+def login():
+    # if request.method == 'POST':
+    #     app_info["username"] = request.form['username']
+    #     app_info["allusers"] = read_from_file("users.txt")
+        
+    #     if app_info["username"] == "":
+    #         app_info["allusers"] = ""
+    #         app_info["logged"] = False
+    #         app_info["username"] = "Enter a username to log in"
+    #         return redirect(url_for('index'))
+    #     elif app_info["username"] in app_info["allusers"]:
+    #         app_info["logged"] = True
+    #         session['logged_in'] = True
+    #         return redirect(url_for('user'))
+    #     else:
+    #         app_info["username"] = "That username does not exist. Please register first."
+    #         app_info["logged"] = False
+    #         return redirect(url_for('index'))
+    
+    return "What has happened? login route is present."
 
 if __name__ == '__main__':
     app.run(host=os.getenv('IP'), port=int(os.getenv('PORT', 8080)), debug=True)
