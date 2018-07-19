@@ -15,6 +15,42 @@ I do not consider security to be an issue for this particular project considerin
 """
 
 app.secret_key = "Not a secure key"  # Needed for sessions to work properly
+loggedUsers = {}
+allRiddles = []
+
+class User(object):
+    ''' This is the prototype of a logged user. There will be an instance
+        for each logged user. '''
+
+    logged_users = 0
+
+    def __init__(self, username, is_logged, total_points, games_played):
+        self.username = username
+        self.is_logged = is_logged
+        self.total_points = total_points
+        self.games_played = games_played
+        self.game = ""
+        self.points_this_game = 0   # Should this belong to User or Game
+        self.session = 1
+        self.current_route = ""
+
+        User.logged_user += 1  # Keep track of how many users are logged in
+
+        def addLoggedUser(self):
+            ''' Add a logged in user to the dictionary of logged in users. '''
+            global loggedUsers
+            loggedUsers[self.username] = self
+
+        addLoggedUser(self)
+
+    #  Might add a method to remove the logged in user during log out
+
+
+    
+
+
+
+
 
 def add(x,y):           #This is a testing function -- Will be removed at that end.
     """Add Function"""
