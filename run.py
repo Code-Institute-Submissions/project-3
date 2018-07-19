@@ -46,14 +46,19 @@ class User(object):
     #  Might add a method to remove the logged in user during log out
 
 
-    
 
+def read_from_file(file_name):
+    store=""
+    file = "data/" + file_name
+    with open(file, "r") as readdata:
+        store = readdata.read()
+    return store
 
 
 
 
 def add(x,y):           #This is a testing function -- Will be removed at that end.
-    """Add Function"""
+    """Add Function - Testing purposes"""
     return x + y
 
 @app.route('/', methods=['GET','POST'])
