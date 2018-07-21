@@ -77,7 +77,9 @@
                 <div class="col-md-8 col-lg-9 title min-height-header">
                     <h1>Riddle Me This</h1>
                     <h2>A Guessing Game</h2>
-                    <h2>{{ app_info["username"] }}</h2>
+                    <!-- <h2>{{ app_info["username"] }}</h2> -->
+                    <h2>{{ thisUser["username"] }}</h2>
+                    <p>Session: {{ thisUser["session"] }}</p>
                 </div>
             </div>
         </header>
