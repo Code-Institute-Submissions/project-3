@@ -102,6 +102,17 @@ class User(object):
 
 defaultUser = User("", False, 0, [], "index")
 
+# login required decorator -- from a tutorial and adapted
+def login_required(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            return f(*args, **kwargs)
+        else:
+            flash('You need to log in first')
+            return redirect(url_for("index"))
+    return wrap
+
 def read_from_file(file_name):
     store=""
     file = "data/" + file_name
@@ -360,6 +371,15 @@ def register():
     username_feedback="Enter a valid username."
     return render_template("register.html", app_info=app_info)
     '''
+
+@app.route('/logout', methods=['GET', 'POST'])
+@login_required
+def logout():
+    return "Reached the logout routing."
+    # if request.method == 'POST':    #RESET
+    #     logout_reset_app_info()
+    #     session.pop('logged_in', None)
+    #     return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(host=os.getenv('IP'), port=int(os.getenv('PORT', 8080)), debug=True)
