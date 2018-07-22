@@ -127,6 +127,39 @@ def createUser(name):
     loggedUsers[name] = copy.deepcopy(tempUser)
     return vars()[name]
 
+''' I WILL DEAL WITH THIS WHEN I CREATE THE GAME CLASS
+def global_game_reset():
+    global current_game
+    global current_riddle
+    global all_riddles
+    global riddle_counter
+    global attempt
+    global points
+    global gained_points
+    global wrong_answers
+    global answer
+
+    current_game = []
+    current_riddle = 0
+    all_riddles = []
+    riddle_counter = 0
+    attempt = 1
+    points = 10
+    gained_points = 0
+    wrong_answers =[]
+    answer = ""
+'''
+
+''' DO I NEED THIS?
+def logout_reset_app_info():
+    # global app_info
+    # app_info["logged"] = False
+    # app_info["username"] = "You are now logged out"
+    # app_info["allusers"] = ""
+    # app_info["game"] = False
+    # global_game_reset()
+    pass
+'''
 
 def add(x,y):           #This is a testing function -- Will be removed at that end.
     """Add Function - Testing purposes"""
@@ -216,7 +249,7 @@ def login():
                 message = username + " is already logged in. Do you want to proceed? If you proceed the previous session will be destroyed."
                 # return render_template("proceed_login.html", app_info=app_info, thisUser="", username=username, message=message)
                 return render_template("proceed_login.html", thisUser=defaultUser, username=username, message=message)
-            else: # User is not logge in yet
+            else: # User is not logged in yet
                 print("User {} is now loggedin.".format(username)) #Debug
                 x = createUser(username)
                 loggedUsers[username].total_user_points = allusers[username]['total_user_points']
@@ -224,6 +257,7 @@ def login():
                 loggedUsers[username].points_best_game = allusers[username]['points_best_game']
                 loggedUsers[username].number_of_games = allusers[username]['number_of_games']
                 loggedUsers[username].date_best_game = allusers[username]['date_best_game']
+                session['logged_in'] = True
                 # return render_template("index.html", app_info=app_info, thisUser=loggedUsers[username], username="", message="")
                 return render_template("index.html", thisUser=loggedUsers[username], username="", message="")
         else:
@@ -372,14 +406,52 @@ def register():
     return render_template("register.html", app_info=app_info)
     '''
 
-@app.route('/logout', methods=['GET', 'POST'])
+@app.route('/logout/<currentUser>/<sessionNo>', methods=['GET', 'POST'])
+# @app.route('/logout/<currentUser>', methods=['GET', 'POST'])
 @login_required
-def logout():
-    return "Reached the logout routing."
-    # if request.method == 'POST':    #RESET
-    #     logout_reset_app_info()
-    #     session.pop('logged_in', None)
-    #     return redirect(url_for('index'))
+def logout(currentUser, sessionNo):
+# def logout(currentUser):
+    print("LOGOUT")
+    print("currentUser: {}".format(currentUser))
+    print("session: {}".format(sessionNo))
+    # return "Reached the logout routing. {}".format(currentUser)
+    if request.method == 'POST':    #RESET
+    # #     logout_reset_app_info()
+
+        try:
+            thisUser = loggedUsers[currentUser]
+        except Exception as e:
+            return "This session has expired. {} has been logged out from somewhere else.".format(e)
+        
+        try:
+            if int(sessionNo) == thisUser.session:
+                # Store info in JSON
+                # allusers = json.loads(read_from_file("users.json"))
+                # playing_user = allusers[thisUser.username]
+                ''' I do not think I need to save anything here as data is being saved at the end of each game. '''
+                
+                # Prepare to delete instances
+                # IF GAME OBJECT EXIST DELETE, OTHERWISE DO NOTHING
+                if game == "":
+                    pass
+                else:
+                    del thisUser.game
+
+                del thisUser
+                del loggedUsers[currentUser]
+                session.pop('logged_in', None)
+
+                return redirect(url_for("index"))
+            else:
+                message = "This session has been disabled. You were logged out from somewhere else."
+                # return redirect(url_for('index', thisUser=defaultUser, message=message))
+                return render_template("index.html", thisUser=defaultUser, message=message)
+
+        except Exception as e:
+            message="Something wrong happened. Please login again."
+            # return redirect(url_for('index', thisUser=defaultUser, message=message))
+            return render_template("index.html", thisUser=defaultUser, message=message)
+
 
 if __name__ == '__main__':
     app.run(host=os.getenv('IP'), port=int(os.getenv('PORT', 8080)), debug=True)

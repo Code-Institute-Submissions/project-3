@@ -50,7 +50,9 @@
                             <p>{{ thisUser.app_info["route"] }}</p>
                             <!-- Registration Login Form-->
                             {%if thisUser.app_info["logged"] %}
-                                <form class="align-right" method="POST" action="/logout">
+                                <!-- <form class="align-right" method="POST" action="/logout"> -->
+                                <!-- <form class="align-right" method="POST" action="{#{ url_for('logout', currentUser=thisUser['username']), sessionNo=thisUser['session'] }#}"> -->
+                                <form class="align-right" method="POST" action="{{ url_for('logout', currentUser=thisUser['username'], sessionNo=thisUser['session'] ) }}">
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-default form-align" name="logout" type="submit" value="logout">Logout</button>
                                     </div>
