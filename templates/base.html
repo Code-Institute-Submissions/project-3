@@ -26,7 +26,8 @@
                                     <div class="collapse navbar-collapse navHeaderCollapse">
                                         <ul class="nav navbar-nav navbar-left navbar-main">
                                             {% if not(thisUser.app_info["route"] == "index") %}
-                                                <li class="nav-item active"><a class="nav-link scroll" href="/" id="home">Home</a></li>
+                                                <!-- <li class="nav-item active"><a class="nav-link scroll" href="/" id="home">Home</a></li> -->
+                                                <li class="nav-item active"><a class="nav-link scroll" href="{{ url_for('index', currentUser=thisUser['username']) }}" id="home">Home</a></li>
                                             {% endif %}
                                             {% if thisUser.app_info["logged"] and not(thisUser.app_info["route"] == "user") %}
                                                 <li class="nav-item"><a class="nav-link scroll" href="/user" id="userNav">USER</a></li>
@@ -38,7 +39,8 @@
                                                 <li class="nav-item"><a class="nav-link scroll" href="/halloffame" id="hofNav">Hall of Fame</a></li>
                                             {% endif %}
                                             {% if not(thisUser.app_info["route"] == "about") %}
-                                                <li class="nav-item"><a class="nav-link scroll" href="/about" id="aboutNav">About</a></li>
+                                                <!-- <li class="nav-item"><a class="nav-link scroll" href="/about" id="aboutNav">About</a></li> -->
+                                                <li class="nav-item"><a class="nav-link scroll" href="{{ url_for('about', currentUser=thisUser['username']) }}" id="aboutNav">About</a></li>
                                             {% endif %}
                                             {% if not(thisUser.app_info["route"] == "contact") %}
                                                 <li class="nav-item"><a class="nav-link scroll" href="/contact" id="contactNav">Contact</a></li>

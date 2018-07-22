@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="row">
-        <p>User: {{ app_info["username"] }}</p>
-        <p>All users: {{ app_info["allusers"] }}</p>
-        <p>Logged: {{ app_info["logged"] }}</p>
+        <!-- <p>User: {#{ app_info["username"] }#}</p>
+        <p>All users: {#{ app_info["allusers"] }#}</p>
+        <p>Logged: {#{ app_info["logged"] }#}</p> -->
+
+        <p>User: {{ thisUser["username"] }}</p>
+        <p>Logged: {{ thisUser["is_logged"] }}</p>
         <div class="col-md-12 main min-height-main">
             <h3>About</h3>
             <p>This is a guessing game, which will be part of my protfolio.</p>

@@ -100,7 +100,7 @@ class User(object):
 
     #  Might add a method to remove the logged in user during log out
 
-defaultUser = User("", False, 0, [], "index")
+defaultUser = User("default", False, 0, [], "index")
 
 # login required decorator -- from a tutorial and adapted
 def login_required(f):
@@ -165,8 +165,13 @@ def add(x,y):           #This is a testing function -- Will be removed at that e
     """Add Function - Testing purposes"""
     return x + y
 
+
+
+    
+# @app.route('/', defaults={'thisUser': defaultUser}, methods=['GET','POST'])
+@app.route('/<currentUser>', methods=['GET','POST'])
 @app.route('/', methods=['GET','POST'])
-def index():
+def index(currentUser=defaultUser.username):
     # num1 = 100
     # num2 = 56
     # ans = add(num1, num2)
@@ -217,7 +222,9 @@ def index():
 
     message = ""
 
-    thisUser = defaultUser
+    # thisUser = defaultUser
+    thisUser=loggedUsers[currentUser]
+    thisUser.app_info['route'] = "index"
 
     # return render_template("index.html", app_info=app_info, attempt=attempt)
     # return render_template("index.html", app_info=app_info, thisUser=thisUser)
@@ -410,7 +417,6 @@ def register():
 # @app.route('/logout/<currentUser>', methods=['GET', 'POST'])
 @login_required
 def logout(currentUser, sessionNo):
-# def logout(currentUser):
     print("LOGOUT")
     print("currentUser: {}".format(currentUser))
     print("session: {}".format(sessionNo))
@@ -452,6 +458,18 @@ def logout(currentUser, sessionNo):
             # return redirect(url_for('index', thisUser=defaultUser, message=message))
             return render_template("index.html", thisUser=defaultUser, message=message)
 
+
+
+@app.route('/about/<currentUser>')
+@app.route('/about')
+# @app.route('/about', defaults={'thisUser': defaultUser})
+def about(currentUser=defaultUser.username):
+    
+    thisUser=loggedUsers[currentUser]
+
+    thisUser.app_info['route'] = "about"
+
+    return render_template("about.html", thisUser=thisUser)
 
 if __name__ == '__main__':
     app.run(host=os.getenv('IP'), port=int(os.getenv('PORT', 8080)), debug=True)
