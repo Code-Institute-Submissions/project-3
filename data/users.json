@@ -1,21 +1,69 @@
 {
+    "test_user": {
+        "date_best_game": "08/04/2018",
+        "games_played": [
+            [
+                "08/04/2018",
+                30
+            ]
+        ],
+        "number_of_games": 6,
+        "points_best_game": 30,
+        "total_user_points": 80,
+        "user": "test_user"
+    },
     "user1": {
-        "password": "1111", 
-        "results": [ 
-            20, 
-            10
-        ], 
-        "total_points": 30, 
+        "date_best_game": "01/04/2018",
+        "games_played": [
+            [
+                "01/04/2018",
+                20
+            ],
+            [
+                "16/04/2018",
+                10
+            ]
+        ],
+        "number_of_games": 2,
+        "points_best_game": 20,
+        "total_user_points": 30,
         "username": "user1"
-    }, 
+    },
     "user2": {
-        "password": "1111", 
-        "results": [
-            10, 
-            25, 
-            35
-        ], 
-        "total_points": 80, 
+        "date_best_game": "01/04/2018",
+        "games_played": [
+            [
+                "02/04/2018",
+                10
+            ],
+            [
+                "15/04/2018",
+                25
+            ],
+            [
+                "01/04/2018",
+                35
+            ]
+        ],
+        "number_of_games": 3,
+        "points_best_game": 35,
+        "total_user_points": 70,
         "username": "user2"
+    },
+    "user3": {
+        "date_best_game": "",
+        "games_played": [],
+        "number_of_games": 0,
+        "points_best_game": 0,
+        "total_user_points": 0,
+        "username": "user3"
+    },
+    "user4": {
+        "date_best_game": "",
+        "games_played": [],
+        "number_of_games": 0,
+        "points_best_game": 0,
+        "total_user_points": 0,
+        "username": "user4"
     }
 }

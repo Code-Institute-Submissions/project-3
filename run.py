@@ -19,17 +19,16 @@ app.secret_key = "Not a secure key"  # Needed for sessions to work properly
 loggedUsers = {}
 allRiddles = []
 
-app_info = {
-            "logged": False,
-            # "username": "",
-            # "allusers": "",
-            # "register": "",         # ???
-            "check_active": "",     # Pass class for check button
-            "register_active": "",  # Pass class for register button
-            "route": "index",            # Which is the current page
-            "game": False           # Is there a current game active True/False
-
-            }
+# app_info = {
+#             "logged": False,
+#             # "username": "",
+#             # "allusers": "",
+#             # "register": "",         # ???
+#             "check_active": "",     # Pass class for check button
+#             "register_active": "",  # Pass class for register button
+#             "route": "index",            # Which is the current page
+#             "game": False           # Is there a current game active True/False
+#             }
 
 """
 class Visitor(object):
@@ -66,11 +65,14 @@ class User(object):
 
     logged_users = 0
 
-    def __init__(self, username, is_logged, total_points, games_played):
+    def __init__(self, username, is_logged, total_points, games_played, route="index"):
         self.username = username
         self.is_logged = is_logged
         self.total_points = total_points
         self.games_played = games_played
+        self.number_of_games = 0
+        self.points_best_game = 0
+        self.date_best_game = "01/01/2000"
         self.game = ""
         self.points_this_game = 0   # Should this belong to User or Game
         self.session = 1
@@ -80,9 +82,9 @@ class User(object):
                     # "username": "",
                     # "allusers": "",
                     # "register": "",         # ???
-                    "check_active": "",     # Pass class for check button
-                    "register_active": "",  # Pass class for register button
-                    "route": "index",            # Which is the current page
+                    # "check_active": "",     # Pass class for check button
+                    # "register_active": "",  # Pass class for register button
+                    "route": route,            # Which is the current page
                     "game": False           # Is there a current game active True/False
                     }
 
@@ -93,11 +95,12 @@ class User(object):
             global loggedUsers
             loggedUsers[self.username] = self
 
-        addLoggedUser(self)
+        if self.username:
+            addLoggedUser(self)
 
     #  Might add a method to remove the logged in user during log out
 
-defaultUser = User("default", False, 0, [])
+defaultUser = User("", False, 0, [], "index")
 
 def read_from_file(file_name):
     store=""
@@ -127,16 +130,33 @@ def index():
 
     allusers = json.loads(read_from_file("users.json"))
 
+    # print("request.method is: {}".format((request.method)))
+    # global app_info
     
-    global app_info
-    
-    global attempt      #Needed only for debugging
+    # global attempt      #Needed only for debugging
     try:
         if request.method == 'POST':
-            pass
-            '''
-            app_info["allusers"] = read_from_file("users.txt")
+            # return "You have Cancelled the login process."
+            
+            # app_info["allusers"] = read_from_file("users.txt")
             if 'register' in request.form:
+                # thisUser = copy.deepcopy(defaultUser)
+                # thisUser.app_info["route"] = "register"
+                # app_info ={}
+                # app_info["check_active"] = ""
+                # app_info["register_active"] = "btn-deactivated"
+                # print(app_info)
+
+                # tempUser = User(name, True, 0, [])
+                # vars()[name] = copy.deepcopy(tempUser)
+                # loggedUsers[name] = copy.deepcopy(tempUser)
+                # return vars()[name]
+
+
+
+                # return "I am trying to register a new user."
+                return redirect(url_for('register'))
+                '''
                 app_info["logged"] = False
                 app_info["username"] = ""
                 app_info["allusers"] = ""
@@ -149,22 +169,23 @@ def index():
     except Exception as e:
         return "<h1> Error: " + str(e) + "</h1>"
     
-    app_info["route"] = "index"
+    # app_info["route"] = "index"
 
     message = ""
 
-    # thisUser = defaultUser
+    thisUser = defaultUser
 
     # return render_template("index.html", app_info=app_info, attempt=attempt)
     # return render_template("index.html", app_info=app_info, thisUser=thisUser)
-    return render_template("index.html", app_info=app_info, thisUser="", message=message)
+    # return render_template("index.html", app_info=app_info, thisUser=thisUser, message=message)
+    return render_template("index.html", thisUser=thisUser, message=message)
 
 
 @app.route('/login', methods=['GET','POST'])
 def login():
-    global app_info
+    # global app_info
     # global loggedUsers
-    # thisUser=""
+    thisUser=""
 
     if request.method == 'POST':
         username = request.form['username']
@@ -175,19 +196,25 @@ def login():
             allusers = ""
             message = "Please enter your username to log in."
             # return redirect(url_for('index', app_info=app_info, thisUser=defaultUser, message=message))
-            return render_template('index.html', app_info=app_info, thisUser="", username="", message=message)
+            # return render_template('index.html', app_info=app_info, thisUser="", username="", message=message)
+            return render_template('index.html', thisUser=defaultUser, username="", message=message)
         elif username in allusers.keys():  #User already registered
             print("User {} is registered".format(username)) #Debug
             # Is user already logged in?
             if username in loggedUsers.keys():
                 message = username + " is already logged in. Do you want to proceed? If you proceed the previous session will be destroyed."
-                return render_template("proceed_login.html", app_info=app_info, thisUser="", username=username, message=message)
+                # return render_template("proceed_login.html", app_info=app_info, thisUser="", username=username, message=message)
+                return render_template("proceed_login.html", thisUser=defaultUser, username=username, message=message)
             else: # User is not logge in yet
                 print("User {} is now loggedin.".format(username)) #Debug
                 x = createUser(username)
-                loggedUsers[username].total_points = allusers[username]['total_points']
-                loggedUsers[username].games_played = allusers[username]['results']
-                return render_template("index.html", app_info=app_info, thisUser=loggedUsers[username], username="", message="")
+                loggedUsers[username].total_user_points = allusers[username]['total_user_points']
+                loggedUsers[username].games_played = allusers[username]['games_played']
+                loggedUsers[username].points_best_game = allusers[username]['points_best_game']
+                loggedUsers[username].number_of_games = allusers[username]['number_of_games']
+                loggedUsers[username].date_best_game = allusers[username]['date_best_game']
+                # return render_template("index.html", app_info=app_info, thisUser=loggedUsers[username], username="", message="")
+                return render_template("index.html", thisUser=loggedUsers[username], username="", message="")
         else:
             return "User has never registered."
 
@@ -206,7 +233,133 @@ def login():
 @app.route('/proceed_login/<username>', methods=['GET', 'POST'])
 def proceed_login(username):
     loggedUsers[username].session+=1
-    return render_template("index.html", app_info=app_info, thisUser=loggedUsers[username], message="")
+    # return render_template("index.html", app_info=app_info, thisUser=loggedUsers[username], message="")
+    return render_template("index.html", thisUser=loggedUsers[username], message="")
+
+@app.route('/register', methods=['GET','POST'])
+def register():
+    # global app_info
+    thisUser = copy.deepcopy(defaultUser)
+    # thisUser.app_info["route"] = "register"
+    app_info = {}
+    app_info["check_active"] = ""
+    app_info["register_active"] = "btn-deactivated btn-hide"
+    attr=""
+   
+    if request.method == 'POST':
+        
+        username = request.form['username']
+        allusers = json.loads(read_from_file("users.json"))
+        
+        # username = request.form['username']
+        
+        if 'check' in request.form:
+            # app_info["username"] = request.form['username']
+            # username = request.form['username']
+            # allusers = read_from_file("users.txt")
+            # allusers = json.loads(read_from_file("users.json"))
+
+            # Check that username is not empty
+            if username == "":
+                app_info["register"] = ""
+                # app_info["register_active"] = "btn-deactivated btn-hide"
+                # app_info["check_active"] = ""
+                username_feedback = "Please type in a username and check its availability."
+            elif username in allusers:
+                app_info["register"] = ""
+                # app_info["register_active"] = "btn-deactivated btn-hide"
+                # app_info["check_active"] = ""
+                username_feedback = "Username already exist. Please try another one."
+            else:
+                app_info["register"] = "register"
+                app_info["register_active"] = ""
+                app_info["check_active"] = "btn-deactivated btn-hide"
+                username_feedback = "Username available. Please click the register button."
+                attr="required"
+            return render_template("register.html",app_info=app_info, username_feedback=username_feedback, thisUser=thisUser, attr=attr)
+
+        if 'register' in request.form:
+            username = request.form['username']
+            if username == "":
+                app_info["register"] = ""
+                # app_info["register_active"] = "btn-deactivated btn-hide"
+                # app_info["check_active"] = ""
+                username_feedback = "Please type in a username and check its availability."
+                return render_template("register.html",app_info=app_info, username_feedback=username_feedback, thisUser=thisUser)
+            elif username in allusers:
+                app_info["register"] = ""
+                # app_info["register_active"] = "btn-deactivated btn-hide"
+                # app_info["check_active"] = ""
+                username_feedback = "Username already exist. Please try another one."
+                return render_template("register.html",app_info=app_info, username_feedback=username_feedback, thisUser=thisUser)
+            else:
+                allusers[username] = {"username": username, "games_played": [], "date_best_game": "", "number_of_games": 0, "points_best_game": 0, "total_user_points": 0}
+
+                with open("data/users.json", "w") as outfile:
+                    json.dump(allusers, outfile, sort_keys=True, indent=4)
+
+                return "Will redirect to users template."
+
+
+                #     addusernames.write(username + "\n")
+                #     app_info["allusers"] += (app_info["username"])
+                #     app_info["logged"] = True
+                #     session['logged_in'] = True
+                # return redirect(url_for('user'))
+
+        
+    # app_info["register"] = "register"
+    # app_info["allusers"]=""
+    username_feedback="Enter a valid username."
+    return render_template("register.html", app_info=app_info, thisUser=thisUser)
+
+    # return "I have reached the register route."
+
+
+    '''
+    app_info["register_active"] = "btn-deactivated btn-hide"
+    if request.method == 'POST':
+        app_info["username"] = request.form['username']
+        app_info["allusers"] = read_from_file("users.txt")
+        if 'check' in request.form:
+            # Check that username is not empty
+            if app_info["username"] == "":
+                app_info["register"] = ""
+                app_info["register_active"] = "btn-deactivated btn-hide"
+                app_info["check_active"] = ""
+                username_feedback = "Please type in a username."
+            elif app_info["username"] in app_info["allusers"]:
+                app_info["register"] = ""
+                app_info["register_active"] = "btn-deactivated btn-hide"
+                app_info["check_active"] = ""
+                username_feedback = "username already exist try another one"
+            else:
+                app_info["register"] = "register"
+                app_info["register_active"] = ""
+                app_info["check_active"] = "btn-deactivated btn-hide"
+                username_feedback = "Username available. Please click the register button."
+            return render_template("register.html",app_info=app_info, username_feedback=username_feedback)
+            
+        if 'register' in request.form:
+            if app_info["username"] == "":
+                app_info["register"] = ""
+                app_info["register_active"] = "btn-deactivated btn-hide"
+                app_info["check_active"] = ""
+                username_feedback = "Please type in a username and check its availability."
+                return render_template("register.html",app_info=app_info, username_feedback=username_feedback)
+            else:
+                with open("data/users.txt", "a") as addusernames:
+                    addusernames.write(app_info["username"] + "\n")
+                    app_info["allusers"] += (app_info["username"])
+                    app_info["logged"] = True
+                    session['logged_in'] = True
+                return redirect(url_for('user'))
+
+    app_info["register"] = "register"
+    app_info["allusers"]=""
+    username_feedback="Enter a valid username."
+    return render_template("register.html", app_info=app_info)
+    '''
 
 if __name__ == '__main__':
     app.run(host=os.getenv('IP'), port=int(os.getenv('PORT', 8080)), debug=True)
