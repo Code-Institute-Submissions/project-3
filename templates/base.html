@@ -43,7 +43,8 @@
                                                 <li class="nav-item"><a class="nav-link scroll" href="{{ url_for('about', currentUser=thisUser['username']) }}" id="aboutNav">About</a></li>
                                             {% endif %}
                                             {% if not(thisUser.app_info["route"] == "contact") %}
-                                                <li class="nav-item"><a class="nav-link scroll" href="/contact" id="contactNav">Contact</a></li>
+                                                <!-- <li class="nav-item"><a class="nav-link scroll" href="/contact" id="contactNav">Contact</a></li> -->
+                                                <li class="nav-item"><a class="nav-link scroll" href="{{ url_for('contact', currentUser=thisUser['username']) }}" id="contactNav">Contact</a></li>
                                             {% endif %}
                                         </ul>
                                     </div>

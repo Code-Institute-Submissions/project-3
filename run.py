@@ -466,10 +466,19 @@ def logout(currentUser, sessionNo):
 def about(currentUser=defaultUser.username):
     
     thisUser=loggedUsers[currentUser]
-
     thisUser.app_info['route'] = "about"
 
     return render_template("about.html", thisUser=thisUser)
+
+@app.route('/contact/<currentUser>')
+@app.route('/contact')
+def contact(currentUser=defaultUser.username):
+    # global app_info
+    # app_info["route"] = "contact"
+    thisUser=loggedUsers[currentUser]
+    thisUser.app_info['route'] = "contact"
+    return render_template("contact.html", thisUser=thisUser)
+
 
 if __name__ == '__main__':
     app.run(host=os.getenv('IP'), port=int(os.getenv('PORT', 8080)), debug=True)
