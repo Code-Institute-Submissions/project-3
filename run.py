@@ -161,6 +161,30 @@ def logout_reset_app_info():
     pass
 '''
 
+def fill_best_individual_games():
+    # global best_individual_games
+    store = json.loads(read_from_file("hof_individual.json"))["best_individual_games"]
+    # return ast.literal_eval(store) # Turn string to dictionary
+    return store
+
+    # store=""
+    # with open("data/hof_individual.json", "r") as readdata:
+    #     store = readdata.read()  # Read as a string
+    # store = ast.literal_eval(store) # Turn string to dictionary
+    # best_individual_games = store["best_individual_games"]
+
+def fill_best_all_games():
+    store = json.loads(read_from_file("hof_all_games.json"))["best_all_games"]
+    return store
+
+
+    # global best_all_games
+    # store=""
+    # with open("data/hof_all_games.json", "r") as readdata:
+    #     store = readdata.read()  # Read as a string
+    # store = ast.literal_eval(store) # Turn string to dictionary
+    # best_all_games = store["best_all_games"]
+
 def add(x,y):           #This is a testing function -- Will be removed at that end.
     """Add Function - Testing purposes"""
     return x + y
@@ -502,11 +526,15 @@ def halloffame(currentUser=defaultUser.username):
     # global app_info
     # global best_individual_games
     # global best_all_games
-    fill_best_individual_games()
-    fill_best_all_games()
+    thisUser=loggedUsers[currentUser]
+    thisUser.app_info['route'] = "halloffame"
+    #I will return the following here
+    best_individual_games = fill_best_individual_games()
+    best_all_games = fill_best_all_games()
+    # best_all_games = ""
     
     # app_info["route"] = "halloffame"
-    return render_template("halloffame.html", app_info=app_info, best_individual_games=best_individual_games, best_all_games=best_all_games)
+    return render_template("halloffame.html", thisUser=thisUser, best_individual_games=best_individual_games, best_all_games=best_all_games)
 
 @app.route('/about/<currentUser>')
 @app.route('/about')

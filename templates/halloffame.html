@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="row main">
-        <!--<p>User: {{ app_info["username"] }}</p>-->
-        <!--<p>All users: {{ app_info["allusers"] }}</p>-->
-        <!--<p>Logged: {{ app_info["logged"] }}</p>-->
+        <!--<p>User: {#{ app_info["username"] }#}</p>-->
+        <!--<p>All users: {#{ app_info["allusers"] }#}</p>-->
+        <!--<p>Logged: {#{ app_info["logged"] }#}</p>-->
         <div class="row">
             <div class="col-md-6">
                 <h3>Hall of Fame</h3>
@@ -12,12 +12,12 @@
                 halls of fame.</p>
             </div>
             
-            {% if app_info["logged"] %}
+            {% if thisUser["is_logged"] %}
                 <div class="col-md-6">
-                    <h3>Welcome {{ app_info["username"] }}</h3>
+                    <h3>Welcome {{ thisUser["username"] }}</h3>
                 </div>
             {% endif %}
-            {% if not app_info["logged"] %}
+            {% if not thisUser["logged"] %}
                 <div class="col-md-6">
                     <p><br></p>
                     <p>Log in if you would like to play</p>
