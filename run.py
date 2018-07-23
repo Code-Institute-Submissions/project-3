@@ -165,9 +165,6 @@ def add(x,y):           #This is a testing function -- Will be removed at that e
     """Add Function - Testing purposes"""
     return x + y
 
-
-
-    
 # @app.route('/', defaults={'thisUser': defaultUser}, methods=['GET','POST'])
 @app.route('/<currentUser>', methods=['GET','POST'])
 @app.route('/', methods=['GET','POST'])
@@ -230,7 +227,6 @@ def index(currentUser=defaultUser.username):
     # return render_template("index.html", app_info=app_info, thisUser=thisUser)
     # return render_template("index.html", app_info=app_info, thisUser=thisUser, message=message)
     return render_template("index.html", thisUser=thisUser, message=message)
-
 
 @app.route('/login', methods=['GET','POST'])
 def login():
@@ -466,7 +462,6 @@ def logout(currentUser, sessionNo):
             # return redirect(url_for('index', thisUser=defaultUser, message=message))
             return render_template("index.html", thisUser=defaultUser, message=message)
 
-
 @app.route('/user/<currentUser>', methods=['GET', 'POST'])
 @app.route('/user', methods=['GET', 'POST'])
 @login_required
@@ -499,6 +494,19 @@ def user(currentUser=defaultUser.username):
     # return render_template("user.html", app_info=app_info, user_data=user_data, attempt=attempt, gained_points=gained_points)
     return render_template("user.html", thisUser=thisUser)
     return "Reached User page."
+
+
+@app.route('/halloffame/<currentUser>')
+@app.route('/halloffame')
+def halloffame(currentUser=defaultUser.username):
+    # global app_info
+    # global best_individual_games
+    # global best_all_games
+    fill_best_individual_games()
+    fill_best_all_games()
+    
+    # app_info["route"] = "halloffame"
+    return render_template("halloffame.html", app_info=app_info, best_individual_games=best_individual_games, best_all_games=best_all_games)
 
 @app.route('/about/<currentUser>')
 @app.route('/about')
