@@ -68,7 +68,7 @@ class User(object):
     def __init__(self, username, is_logged, total_points, games_played, route="index"):
         self.username = username
         self.is_logged = is_logged
-        self.total_points = total_points
+        self.total_user_points = total_points
         self.games_played = games_played
         self.number_of_games = 0
         self.points_best_game = 0
@@ -423,14 +423,17 @@ def logout(currentUser, sessionNo):
     # return "Reached the logout routing. {}".format(currentUser)
     if request.method == 'POST':    #RESET
     # #     logout_reset_app_info()
+        print("Reached POST of logout.")
 
         try:
             thisUser = loggedUsers[currentUser]
+            print("Load thisUser.")
         except Exception as e:
             return "This session has expired. {} has been logged out from somewhere else.".format(e)
         
         try:
             if int(sessionNo) == thisUser.session:
+                print("Session is OK")
                 # Store info in JSON
                 # allusers = json.loads(read_from_file("users.json"))
                 # playing_user = allusers[thisUser.username]
@@ -438,13 +441,18 @@ def logout(currentUser, sessionNo):
                 
                 # Prepare to delete instances
                 # IF GAME OBJECT EXIST DELETE, OTHERWISE DO NOTHING
-                if game == "":
+                if thisUser.game == "":
                     pass
                 else:
-                    del thisUser.game
+                    # del thisUser.game
+                    thisUser.game = ""
+                    print("delete game.")
 
                 del thisUser
+                print("delete thisUser")
                 del loggedUsers[currentUser]
+                print("delete loggedUsers[currentUser]")
+                print(loggedUsers)
                 session.pop('logged_in', None)
 
                 return redirect(url_for("index"))
@@ -459,6 +467,38 @@ def logout(currentUser, sessionNo):
             return render_template("index.html", thisUser=defaultUser, message=message)
 
 
+@app.route('/user/<currentUser>', methods=['GET', 'POST'])
+@app.route('/user', methods=['GET', 'POST'])
+@login_required
+def user(currentUser=defaultUser.username):
+    thisUser=loggedUsers[currentUser]
+    thisUser.app_info['route'] = "user"
+    # global app_info
+    # global user_data
+    # global current_game
+    # global current_riddle
+    # global all_riddles
+    # global riddle_counter
+    # global gained_points
+    # global attempt      #Needed only for debugging
+    
+    # user_data_json = json.loads(read_from_file("user_game_data_json.json"), object_hook=json_tuple_helper_function)
+    
+    # user_data = find_loggedin_user(user_data_json)
+    
+    # if app_info["game"] == False:  # RESET
+    #     current_game = []
+    #     current_riddle = 0
+    #     all_riddles = []
+    #     riddle_counter = 0
+        
+    # fill_best_individual_games()
+    # fill_best_all_games()
+        
+    # app_info["route"] = "user"
+    # return render_template("user.html", app_info=app_info, user_data=user_data, attempt=attempt, gained_points=gained_points)
+    return render_template("user.html", thisUser=thisUser)
+    return "Reached User page."
 
 @app.route('/about/<currentUser>')
 @app.route('/about')

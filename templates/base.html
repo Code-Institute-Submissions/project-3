@@ -30,7 +30,8 @@
                                                 <li class="nav-item active"><a class="nav-link scroll" href="{{ url_for('index', currentUser=thisUser['username']) }}" id="home">Home</a></li>
                                             {% endif %}
                                             {% if thisUser.app_info["logged"] and not(thisUser.app_info["route"] == "user") %}
-                                                <li class="nav-item"><a class="nav-link scroll" href="/user" id="userNav">USER</a></li>
+                                                <!-- <li class="nav-item"><a class="nav-link scroll" href="/user" id="userNav">USER</a></li> -->
+                                                <li class="nav-item"><a class="nav-link scroll" href="{{ url_for('user', currentUser=thisUser['username']) }}" id="userNav">USER</a></li>
                                             {% endif %}
                                             {% if thisUser.app_info["logged"] and thisUser.app_info["game"] and not(thisUser.app_info["route"] == "game") %}
                                                 <li class="nav-item"><a class="nav-link scroll" href="/game" id="gameNav">CURRENT GAME</a></li>
@@ -92,6 +93,29 @@
     
         <!-- Main Content -->
         <section class="container">
+                <p>User: {{ thisUser["username"] }}</p>
+                <p>Logged: {{ thisUser["is_logged"] }}</p>
+                <p>Total Points: {{ thisUser["total_user_points"] }}</p>
+                <p>Points Best Game: {{ thisUser["points_best_game"] }}</p>
+                <p>Date Best Game: {{ thisUser["date_best_game"] }}</p>
+                <p>Number of Game Played: {{ thisUser["number_of_games"] }}</p>
+        
+                <table class="table table-condensed table-striped table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Date</td>
+                            <th scope="col">Points</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in thisUser["games_played"] %}
+                            <tr>
+                                <th scope="row">{{ item[0] }}</td>
+                                <td>{{ item[1] }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             {% block content %} 
             {% endblock %}
         </section>

@@ -17,16 +17,16 @@
         "games_played": [
             [
                 "01/04/2018",
-                20
+                30
             ],
             [
                 "16/04/2018",
-                10
+                15
             ]
         ],
         "number_of_games": 2,
-        "points_best_game": 20,
-        "total_user_points": 30,
+        "points_best_game": 30,
+        "total_user_points": 45,
         "username": "user1"
     },
     "user2": {

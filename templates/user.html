@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="row main">
-        <!--<p>User: {{ app_info["username"] }}</p>-->
-        <!--<p>All users: {{ app_info["allusers"] }}</p>-->
-        <!--<p>Logged: {{ app_info["logged"] }}</p>-->
-        <!--<p>Game on: {{ app_info["game"] }}</p>-->
-        <!--<p>Attempt: {{ attempt }}</p>-->
-        <!--<p>User_data: {{ user_data }}</p>-->
-        <!--<p>Gainded points: {{ gained_points }}</p>-->
-        <h3>Welcome {{ app_info["username"] }}</h3>
+        <!--<p>User: {#{ app_info["username"] }#}</p>-->
+        <!--<p>All users: {#{ app_info["allusers"] }#}</p>-->
+        <!--<p>Logged: {#{ app_info["logged"] }#}</p>-->
+        <!--<p>Game on: {#{ app_info["game"] }#}</p>-->
+        <!--<p>Attempt: {#{ attempt }#}</p>-->
+        <!--<p>User_data: {#{ user_data }#}</p>-->
+        <!--<p>Gainded points: {#{ gained_points }#}</p>-->
+        <h3>Welcome {{ thisUser["username"] }}</h3>
             <p>This is a guessing game, which will be part of my protfolio.</p>
             <p>This will be the hall of fame page. It will contain two tables with two 
             halls of fame.</p>
             <hr>
-            <p>This is the page for a {{ app_info["username"] }}. It will hold information about
+            <p>This is the page for a {{ thisUser["username"] }}. It will hold information about
             the latest games and a button to start a new game.</p>
             
             <!-- Flash the points gained for game just played -->
@@ -25,13 +25,13 @@
                 {% endif %}
             {% endwith %}
             
-            <p>You have played {{ user_data["number_of_games"] }} games up to now.
-            {% if user_data["number_of_games"] > 0 %}
-            <br>Your best game was on {{ user_data["date_best_game"] }} and you gained
-            {{ user_data["points_best_game"] }} Points.
+            <p>You have played {{ thisUser["number_of_games"] }} games up to now.
+            {% if thisUser["number_of_games"] > 0 %}
+            <br>Your best game was on {{ thisUser["date_best_game"] }} and you gained
+            {{ thisUser["points_best_game"] }} Points.
             {% endif %}
             <br>Your total number of points over all the games played is 
-            {{ user_data["total_user_points"] }} Points.</p>
+            {{ thisUser["total_user_points"] }} Points.</p>
         <div class="col-md-6  min-height-main">
             <div class="list_games table-responsive">
                 <table class="table table-condensed table-striped table-bordered">
@@ -42,7 +42,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for item in user_data["games_played"] %}
+                        {% for item in thisUser["games_played"] %}
                             <tr>
                                 <th scope="row">{{ item[0] }}</td>
                                 <td>{{ item[1] }}</td>
