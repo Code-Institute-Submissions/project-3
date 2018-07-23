@@ -556,5 +556,188 @@ def contact(currentUser=defaultUser.username):
     return render_template("contact.html", thisUser=thisUser)
 
 
+@app.route('/game/<currentUser>', methods=['GET', 'POST'])
+@app.route('/game', methods=['GET', 'POST'])
+@login_required
+def game(currentUser=defaultUser.username):
+    # global app_info
+    # global all_riddles
+    # global current_game
+    # global current_riddle
+    # global riddle_counter
+    # global attempt
+    # global points
+    # global gained_points
+    # global wrong_answers
+    # global answer
+    
+    thisUser=loggedUsers[currentUser]
+    thisUser.app_info['route'] = "game"  # I will need this to control the menu
+    # app_info["route"] = "game"  # I will need this to control the menu
+    
+    # if app_info["game"] == False:
+    #     app_info["game"] = True  # Game On
+    #     all_riddles = json.loads(read_from_file("riddles.json"))
+        
+        # for x in range(0, 10):  # Select 10 images at random
+        #     repeat = True
+        #     while repeat:
+        #         choose_game=random.choice(all_riddles)
+        #         if choose_game.items() not in current_game:
+        #             repeat = False
+        #     current_game.append(choose_game.items())
+        
+        # current_riddle = sort_current_riddle(current_game[riddle_counter])
+            
+    # if request.method == 'POST':
+    #     if 'play' in request.form:
+    #         points = 10
+    #         attempt = 1
+
+        # elif 'answer_btn' in request.form:
+                                # Check Answer
+            # if attempt == 1:
+            #     answer = request.form['answer_text']
+                
+                                    # Clean the answer
+                                    # If there are multiple spaces or other white characters in between the words
+                # temp =[]                    # Clean answer
+                # temp = answer.split()
+                # answer=""
+                # for item in temp:
+                #     answer += item + " "
+                    
+                # answer = answer.strip()         # Strip trailing spaces
+                
+                # if answer.lower() == current_riddle[2].lower(): # answer correct
+                #     gained_points += 10
+                #     wrong_answers = []
+                #     attemp = 1                  # First attempt of
+                #     riddle_counter += 1         # Next Riddle
+                #     if riddle_counter > len(current_game)-1:    # If that was last riddle then
+                                            # store_game_info()
+                        # return redirect(url_for('game_over'))   # GAME OVER
+                                        # Trigger next riddle
+                    # current_riddle = sort_current_riddle(current_game[riddle_counter]) 
+            
+                # else:                           # Otherwise answer is wrong
+                #     if len(answer) == 0:        #if no answer is given
+                #         wrong_answers.append("-")
+                #     else:
+                #         wrong_answers.append(answer)
+                #     attempt = 2                 # This is your next attempt
+                #     points = 6                  # Set correct number of points
+
+            # elif attempt == 2:
+                
+                                    # Get all words and concatenate them
+                # answer = ""
+                # index = ""
+                # local_answer = current_riddle[2].split()
+                # for ndx, each_word in enumerate(local_answer):
+                #     index = 'answer_text' + str(ndx+1)
+                #     answer += (request.form[index].strip() + " ") #Strip any typed white spaces
+                    
+                # temp =[]                        # Clean answer
+                # temp = answer.split()
+                # answer=""
+                # for item in temp:
+                #     answer += item + " "
+                # answer = answer.strip()         # Strip trailing spaces
+                
+                # if answer.lower() == current_riddle[2].lower(): # Answer correct
+                #     gained_points += 6          # Gain points
+                #     attempt = 1                 # Reset attempt
+                #     points = 10
+                #     wrong_answers = []
+
+                    # riddle_counter += 1
+                    # if riddle_counter > len(current_game)-1:
+                                                # store_game_info()
+                        # return redirect(url_for('game_over'))
+
+                    # current_riddle = sort_current_riddle(current_game[riddle_counter])
+                
+                # else:                           # Otherwise answer is wrong
+                                        # wrong_answers.append(answer)
+                    # if len(answer) == 0:                #if no answer is given
+                    #     wrong_answers.append("-")
+                    # else:
+                    #     wrong_answers.append(answer)
+                    # attempt = 3                 # This is your next attempt
+                    # points = 2                  # Set correct number of points
+                
+            # elif attempt == 3:
+            #     answer = ""
+            #     index = ""
+            #     local_answer = current_riddle[2].split()
+                
+                # for ndx, each_word in enumerate(local_answer):
+                #     index = 'answer_text' + str(ndx+1)
+                #     answer += (request.form[index].strip() + " ") #Strip any typed white spaces
+                    
+                                    # answer = answer[0:-1]      # Strip final space
+                # temp =[]                    # Clean answer
+                # temp = answer.split()
+                # answer=""
+                # for item in temp:
+                #     answer += item + " "
+                # answer = answer.strip()         # Strip trailing spaces
+                
+                # if answer.lower() == current_riddle[2].lower():  # Answer correct
+                #     gained_points += 2           # Gain points
+                #     attempt = 1                  # Reset attempt
+                #     points = 10
+                #     wrong_answers = []           # Reset wrong answers
+
+                    # riddle_counter += 1
+                    # if riddle_counter > len(current_game)-1:
+                                                # store_game_info()
+                        # return redirect(url_for('game_over'))
+
+                    # current_riddle = sort_current_riddle(current_game[riddle_counter])
+                
+                                    # Otherwise answer is wrong
+                # else:
+                #     attempt = 1                 # This is your next attempt
+                #     points = 10                 # Set correct number of points
+                #     wrong_answers = []           # Reset wrong answers
+                #     riddle_counter += 1
+                #     if riddle_counter > len(current_game)-1:
+                                            # store_game_info()
+                    #     return redirect(url_for('game_over'))
+                    # current_riddle = sort_current_riddle(current_game[riddle_counter])
+
+                                #This will happen if pass
+                                # increase attempt
+        # elif 'pass_btn' in request.form:
+        #     if attempt == 1:
+        #         wrong_answers = []
+        #         wrong_answers = ["-"]
+        #         attempt = 2
+        #         points = 6
+        #     elif attempt == 2:
+        #         points = 2
+        #         wrong_answers.append("-")
+        #         attempt = 3
+        #     elif attempt == 3:
+        #         if riddle_counter > len(current_game)-1:
+                                    # store_game_info()
+    #                 return redirect(url_for('game_over'))
+    #             current_riddle = sort_current_riddle(current_game[riddle_counter])
+    #             points = 10
+    #             attempt = 1
+    #             riddle_counter += 1
+    #             wrong_answers = []
+                
+    #             if riddle_counter > len(current_game)-1:     # Call next riddle
+    #                 return redirect(url_for('game_over'))
+    #             current_riddle = sort_current_riddle(current_game[riddle_counter])
+                
+    # return render_template("game.html", app_info=app_info, all_riddles=all_riddles, current_game=current_game, current_riddle=current_riddle, riddle_counter=riddle_counter+1, attempt=attempt, points=points, gained_points=gained_points, wrong_answers=wrong_answers)
+    # return "This is the page for the game for user: {}".format(thisUser.username)
+    return render_template("game.html", thisUser=thisUser, all_riddles="", current_game="", current_riddle="", riddle_counter=1, attempt=1, points=0, gained_points=0, wrong_answers="")
+
+
 if __name__ == '__main__':
     app.run(host=os.getenv('IP'), port=int(os.getenv('PORT', 8080)), debug=True)

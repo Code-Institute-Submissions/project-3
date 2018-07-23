@@ -34,7 +34,8 @@
                                                 <li class="nav-item"><a class="nav-link scroll" href="{{ url_for('user', currentUser=thisUser['username']) }}" id="userNav">USER</a></li>
                                             {% endif %}
                                             {% if thisUser.app_info["logged"] and thisUser.app_info["game"] and not(thisUser.app_info["route"] == "game") %}
-                                                <li class="nav-item"><a class="nav-link scroll" href="/game" id="gameNav">CURRENT GAME</a></li>
+                                                <!-- <li class="nav-item"><a class="nav-link scroll" href="/game" id="gameNav">CURRENT GAME</a></li> -->
+                                                <li class="nav-item"><a class="nav-link scroll" href="{{ url_for('game', currentUser=thisUser['username']) }}" id="gameNav">CURRENT GAME</a></li>
                                             {% endif %}
                                             {% if not(thisUser.app_info["route"] == "halloffame") %}
                                                 <!-- <li class="nav-item"><a class="nav-link scroll" href="/halloffame" id="hofNav">Hall of Fame</a></li> -->
