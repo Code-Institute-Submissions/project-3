@@ -11,10 +11,11 @@
         <div class="col-md-6  min-height-main">
             <div class="row">
                 <div class="col-md-6"><h3 class="game_title">{{ thisUser["username"] }}</h3></div>
-                <div class="col-md-6"><p class="game_text">Riddle {{ riddle_counter }} of 10</p></div>
+                <div class="col-md-6"><p class="game_text">Riddle {{ thisUser['game']['riddle_counter'] + 1 }} of 10</p></div>
             </div>
             <div class="list_games game_image">
-                <img class="img-responsive" src="static/img/{{ current_riddle[1] }}" alt="riddle image"></img>
+                <!-- <img class="img-responsive" src="static/img/{{ current_riddle[1] }}" alt="riddle image"></img> -->
+                <img class="img-responsive" src="/static/img/{{ thisUser['game']['current_riddle'][1] }}" alt="riddle image"></img>
             </div>
             <div class="game_instruction">
                 <p>Type your answer and press Submit button. Otherwise Pass.</p>
@@ -174,6 +175,5 @@
         <p><strong>points:</strong> {{ thisUser['game']['points'] }}</p>
         <p><strong>most_recent_answer:</strong> {{ thisUser['game']['most_recent_answer'] }}</p>
         <p><strong>wrong_answers:</strong> {{ thisUser['game']['wrong_answers'] }}</p>
-
     </div>
  {% endblock %}

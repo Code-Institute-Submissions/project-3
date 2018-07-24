@@ -132,11 +132,11 @@ class Game(object):
     
     def __init__(self):
         self.game = False              # Is it game on? Needed for logic in game function.
-        self.riddles_sequence = []
+        self.riddles_sequence = []     # List of images selected
         self.current_riddle_index = 0  # Are these doing the same thing?
         self.riddle_counter = 0        # Are these doing the same thing?
-        self.current_game = []         # List of images selected
-        self.current_riddle = 0
+        self.current_game = []         
+        self.current_riddle = []        # The current image
         self.attempt = 1
         self.points = 10
         self.most_recent_answer = ""
@@ -161,7 +161,12 @@ class Game(object):
             # for item in self.riddles_sequence:
             #     print(item)
 
+        def select_current_riddle(self):
+            self.current_riddle = self.riddles_sequence[self.riddle_counter]
+            
+
         generate_riddle_sequence(self)
+        select_current_riddle(self)
 
 """ NOT NEEDED I CREATE THE GAME SORTED FROM THE START.
     def sort_current_riddle(self, data):
