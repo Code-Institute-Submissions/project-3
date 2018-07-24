@@ -850,7 +850,8 @@ def game(currentUser=defaultUser.username):
                 if thisUser.game.riddle_counter > len(thisUser.game.current_game)-1:
                                     # store_game_info()
                     # return redirect(url_for('game_over'))
-                    return redirect(url_for('game_over', thisUser=loggedUsers[currentUser]))
+                    # return redirect(url_for('game_over', thisUser=loggedUsers[currentUser]))
+                    return redirect(url_for('game_over', thisUser=thisUser))
                     # return "GAME OVER"
                 # current_riddle = sort_current_riddle(current_game[riddle_counter])
                 thisUser.game.points = 10
@@ -860,7 +861,8 @@ def game(currentUser=defaultUser.username):
 
                 if riddle_counter > len(current_game)-1:     # Call next riddle
                     # return redirect(url_for('game_over'))
-                    return redirect(url_for('game_over', thisUser=loggedUsers[currentUser]))
+                    # return redirect(url_for('game_over', thisUser=loggedUsers[currentUser]))
+                    return redirect(url_for('game_over', thisUser=thisUser))
                     # return "GAME OVER"
 
 
