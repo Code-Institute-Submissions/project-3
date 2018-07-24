@@ -40,7 +40,9 @@
                     <form class="play_game 
                     {% if attempt > 1 %} 
                     red 
-                    {% endif %}" method="POST" action="/game">
+                    {% endif %}" method="POST" action="{{ url_for('game', currentUser=thisUser['username']) }}">
+                    {{ url_for('about', currentUser=thisUser['username']) }}
+                    <!-- method="POST" action="/game"> -->
                         <div class="form-group">
                             
                             {% if attempt == 1 %}
