@@ -375,9 +375,12 @@ def login():
                 loggedUsers[username].points_best_game = allusers[username]['points_best_game']
                 loggedUsers[username].number_of_games = allusers[username]['number_of_games']
                 loggedUsers[username].date_best_game = allusers[username]['date_best_game']
+                loggedUsers[username].app_info['route'] = "user"
                 session['logged_in'] = True
                 # return render_template("index.html", app_info=app_info, thisUser=loggedUsers[username], username="", message="")
-                return render_template("index.html", thisUser=loggedUsers[username], username="", message="")
+                # return render_template("index.html", thisUser=loggedUsers[username], username="", message="")
+                # Go straight to User page
+                return render_template("user.html", thisUser=loggedUsers[username], username="", message="")
         else:
             return "User has never registered."
 
@@ -396,8 +399,11 @@ def login():
 @app.route('/proceed_login/<username>', methods=['GET', 'POST'])
 def proceed_login(username):
     loggedUsers[username].session+=1
+    loggedUsers[username].app_info['route'] = "user"
     # return render_template("index.html", app_info=app_info, thisUser=loggedUsers[username], message="")
-    return render_template("index.html", thisUser=loggedUsers[username], message="")
+    # return render_template("index.html", thisUser=loggedUsers[username], message="")
+    # Go straight to User page
+    return render_template("user.html", thisUser=loggedUsers[username], username="", message="")
 
 @app.route('/register', methods=['GET','POST'])
 def register():
