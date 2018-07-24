@@ -17,7 +17,7 @@ I do not consider security to be an issue for this particular project considerin
 
 app.secret_key = "Not a secure key"  # Needed for sessions to work properly
 loggedUsers = {}
-allRiddles = []
+
 
 # app_info = {
 #             "logged": False,
@@ -31,6 +31,7 @@ allRiddles = []
 #             }
 
 """
+# I do not think I need this
 class Visitor(object):
     ''' This is the protoypte of a visitor (not logged in). '''
 
@@ -58,6 +59,29 @@ class Visitor(object):
 
         addLoggedUser(self)
 """
+
+# login required decorator -- from a tutorial and adapted
+def login_required(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            return f(*args, **kwargs)
+        else:
+            flash('You need to log in first')
+            return redirect(url_for("index"))
+    return wrap
+
+def read_from_file(file_name):
+    store=""
+    file = "data/" + file_name
+    with open(file, "r") as readdata:
+        store = readdata.read()
+    return store
+
+allRiddles = json.loads(read_from_file("riddles.json"))
+# print(allRiddles)
+
+# Generate list of all riddles available
 
 class User(object):
     ''' This is the prototype of a logged user. There will be an instance
@@ -100,25 +124,66 @@ class User(object):
 
     #  Might add a method to remove the logged in user during log out
 
+class Game(object):
+    ''' This is the prototype of a game. When an instance is created it will be owned
+        by a logged in user. If the user logs out or the game finishes the game instance
+        will be destroyed. '''
+    
+    def __init__(self):
+        self.game = False              # Is it game on? Needed for logic in game function.
+        self.riddles_sequence = []
+        self.current_riddle_index = 0  # Are these doing the same thing?
+        self.riddle_counter = 0        # Are these doing the same thing?
+        self.current_game = []         # List of images selected
+        self.current_riddle = 0
+        self.attempt = 1
+        self.points = 10
+        self.most_recent_answer = ""
+        self.wrong_answers = []
+
+
+        def generate_riddle_sequence(self):
+            global allRiddles
+            for x in range(0, 10): #To select 10 random riddles
+                repeat = True
+                while repeat:
+                    choose_game = random.choice(allRiddles)
+                    if choose_game not in self.riddles_sequence:
+                        repeat = False
+                self.riddles_sequence.append(choose_game['source'])
+            # for item in self.riddles_sequence:
+            #     print(item)
+
+        generate_riddle_sequence(self)
+
+# Create a game from class to test it
+# x = Game()        
+                
+
 defaultUser = User("default", False, 0, [], "index")
 
-# login required decorator -- from a tutorial and adapted
-def login_required(f):
-    @wraps(f)
-    def wrap(*args, **kwargs):
-        if 'logged_in' in session:
-            return f(*args, **kwargs)
-        else:
-            flash('You need to log in first')
-            return redirect(url_for("index"))
-    return wrap
 
-def read_from_file(file_name):
-    store=""
-    file = "data/" + file_name
-    with open(file, "r") as readdata:
-        store = readdata.read()
-    return store
+
+''' Experiment for code to be used in Game Class
+def generate_riddle_sequence():
+    global allRiddles
+    selected_games = []
+    print("\n==============\nSelection of 10 games\n================\n")
+    for x in range(0, 10): #To select 10 random riddles
+        repeat = True
+        while repeat:
+            choose_game = random.choice(allRiddles)
+            if choose_game not in selected_games:
+                repeat = False
+        print(choose_game['id'])
+        selected_games.append(choose_game['source'])
+    print(selected_games)
+
+generate_riddle_sequence()
+'''
+
+
+
 
 def createUser(name):
     # global loggedUsers
