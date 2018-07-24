@@ -9,26 +9,26 @@ from functools import wraps  #decorators for requires login
 
 app = Flask(__name__)
 """For this project I do not need high security.
-For better security the secret_key should be completely random to make it very difficult to guess.
-Ideally use a random key generator.
-The key should be placed in a separate configuration file which would then be imported. 
-I do not consider security to be an issue for this particular project considering the purpose.
-"""
+    For better security the secret_key should be completely random to make it very difficult to guess.
+    Ideally use a random key generator.
+    The key should be placed in a separate configuration file which would then be imported. 
+    I do not consider security to be an issue for this particular project considering the purpose.
+    """
 
 app.secret_key = "Not a secure key"  # Needed for sessions to work properly
 loggedUsers = {}
 
 
 # app_info = {
-#             "logged": False,
-#             # "username": "",
-#             # "allusers": "",
-#             # "register": "",         # ???
-#             "check_active": "",     # Pass class for check button
-#             "register_active": "",  # Pass class for register button
-#             "route": "index",            # Which is the current page
-#             "game": False           # Is there a current game active True/False
-#             }
+            # "logged": False,
+            # # "username": "",
+            # # "allusers": "",
+            # # "register": "",         # ???
+            # "check_active": "",     # Pass class for check button
+            # "register_active": "",  # Pass class for register button
+            # "route": "index",            # Which is the current page
+            # "game": False           # Is there a current game active True/False
+            # }
 
 """
 # I do not think I need this
@@ -97,6 +97,7 @@ class User(object):
         self.number_of_games = 0
         self.points_best_game = 0
         self.date_best_game = "01/01/2000"
+        self.game_on = False           # Is there a current game active True/False
         self.game = ""
         self.points_this_game = 0   # Should this belong to User or Game
         self.session = 1
@@ -108,8 +109,8 @@ class User(object):
                     # "register": "",         # ???
                     # "check_active": "",     # Pass class for check button
                     # "register_active": "",  # Pass class for register button
-                    "route": route,            # Which is the current page
-                    "game": False           # Is there a current game active True/False
+                    "route": route #,            # Which is the current page
+                    # "game": False           # Is there a current game active True/False NEED TO BE ACCESSED BEFORE.
                     }
 
         User.logged_users += 1  # Keep track of how many users are logged in
@@ -150,11 +151,33 @@ class Game(object):
                     choose_game = random.choice(allRiddles)
                     if choose_game not in self.riddles_sequence:
                         repeat = False
-                self.riddles_sequence.append(choose_game['source'])
+                # Build a list of lists already sorted the way I want it
+                item = []
+                item.append(choose_game['id'])
+                item.append(choose_game['source'])
+                item.append(choose_game['answer'])
+                # self.riddles_sequence.append(choose_game['source'])
+                self.riddles_sequence.append(item)
             # for item in self.riddles_sequence:
             #     print(item)
 
         generate_riddle_sequence(self)
+
+""" NOT NEEDED I CREATE THE GAME SORTED FROM THE START.
+    def sort_current_riddle(self, data):
+        ''' Sort the data so that it is always in the order:
+            id, source, answer. '''
+        self.current_game = [0, 0, 0]
+        for currentRiddle in data: # Select a riddle
+            if currentRiddle[0] == "id":
+                self.current_game[0] = currentRiddle[1]
+            elif currentRiddle[0] == "source":
+                self.current_game[1] = currentRiddle[1]
+            elif currentRiddle[0] == "answer":
+                self.current_game[2] = ''.join(list(currentRiddle[1]))  
+        """
+
+
 
 # Create a game from class to test it
 # x = Game()        
@@ -193,6 +216,9 @@ def createUser(name):
     return vars()[name]
 
 ''' I WILL DEAL WITH THIS WHEN I CREATE THE GAME CLASS
+    I do not need this as when an instance is created it will
+    be created with default values and a new selection of 
+    10 random riddles.
 def global_game_reset():
     global current_game
     global current_riddle
@@ -643,6 +669,12 @@ def game(currentUser=defaultUser.username):
     # if app_info["game"] == False:
     #     app_info["game"] = True  # Game On
     #     all_riddles = json.loads(read_from_file("riddles.json"))
+    if thisUser.game_on == False:
+        print("Is game active? {}.".format(thisUser.game_on))
+        thisUser.game_on = True  # Game On
+        print("Game turned on.")
+        print("Is game active? {}.".format(thisUser.game_on))
+        # all_riddles = json.loads(read_from_file("riddles.json"))
         
         # for x in range(0, 10):  # Select 10 images at random
         #     repeat = True
@@ -652,6 +684,10 @@ def game(currentUser=defaultUser.username):
         #             repeat = False
         #     current_game.append(choose_game.items())
         
+
+        # CREATE A GAME
+        thisUser.game = Game()
+
         # current_riddle = sort_current_riddle(current_game[riddle_counter])
             
     # if request.method == 'POST':
