@@ -143,6 +143,7 @@ class Game(object):
         self.wrong_answers = []
 
 
+        '''
         def generate_riddle_sequence(self):
             global allRiddles
             for x in range(0, 10): #To select 10 random riddles
@@ -160,6 +161,37 @@ class Game(object):
                 self.riddles_sequence.append(item)
             # for item in self.riddles_sequence:
             #     print(item)
+            '''
+
+        def generate_riddle_sequence(self):
+            global allRiddles
+            id_list = []
+            for x in range(0, 10): #To select 10 random riddles
+                repeat = True
+                while repeat:
+                    choose_game = random.choice(allRiddles)
+                    # print(choose_game)
+                    if choose_game['id'] not in id_list:
+                        repeat = False
+#                         print("::Any Matches?")
+#                         print(choose_game['id'])
+#                         print(self.riddles_sequence)
+                        # print("Comparing: {} with : {}".format(choose_game['id'], id_list))
+                        id_list.append(choose_game['id'])
+                        
+#                     if choose_game[0] not in self.riddles_sequence:
+#                         repeat = False
+                # Build a list of lists already sorted the way I want it
+                item = []
+                item.append(choose_game['id'])
+                item.append(choose_game['source'])
+                item.append(choose_game['answer'])
+                
+                # self.riddles_sequence.append(choose_game['source'])
+                self.riddles_sequence.append(item)
+            # for item in self.riddles_sequence:
+            #     print(item)
+            # print("Comparing: {} with : {}".format(choose_game['id'], id_list))
 
         def select_current_riddle(self):
             self.riddle_counter += 1
