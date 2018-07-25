@@ -173,31 +173,18 @@ class Game(object):
                     # print(choose_game)
                     if choose_game['id'] not in id_list:
                         repeat = False
-#                         print("::Any Matches?")
-#                         print(choose_game['id'])
-#                         print(self.riddles_sequence)
-                        # print("Comparing: {} with : {}".format(choose_game['id'], id_list))
                         id_list.append(choose_game['id'])
-                        
-#                     if choose_game[0] not in self.riddles_sequence:
-#                         repeat = False
-                # Build a list of lists already sorted the way I want it
+
                 item = []
                 item.append(choose_game['id'])
                 item.append(choose_game['source'])
                 item.append(choose_game['answer'])
-                
-                # self.riddles_sequence.append(choose_game['source'])
                 self.riddles_sequence.append(item)
-            # for item in self.riddles_sequence:
-            #     print(item)
-            # print("Comparing: {} with : {}".format(choose_game['id'], id_list))
 
         def select_current_riddle(self):
             self.riddle_counter += 1
             self.current_riddle = self.riddles_sequence[self.riddle_counter]
             
-
         generate_riddle_sequence(self)
         select_current_riddle(self)
 
@@ -313,6 +300,85 @@ def fill_best_all_games():
     #     store = readdata.read()  # Read as a string
     # store = ast.literal_eval(store) # Turn string to dictionary
     # best_all_games = store["best_all_games"]
+
+def store_game_info(username):
+    # global app_info   # get username
+    # global gained_points
+    # global user_data
+
+    thisUser = loggedUsers[username]
+    
+    thisUser.number_of_games += 1
+    # user_data["number_of_games"] += 1
+    thisUser.total_user_points += thisUser.points_this_game
+    # user_data["total_user_points"] += gained_points
+    
+    today = datetime.datetime.now().strftime("%d/%m/%Y")
+    info = (today, thisUser.points_this_game)
+    
+    extract_games_played = thisUser.games_played
+    # extract_games_played = user_data["games_played"]
+    # Add next game data
+    thisUser.games_played.insert(0, info)
+    # user_data["games_played"].insert(0, info)
+    # Put it back in user_data["games_played"]
+
+    if thisUser.points_this_game > thisUser.points_best_game:
+        thisUser.points_best_game = thisUser.points_this_game
+        thisUser.date_best_game = today  # Today's date
+     
+    # if gained_points > user_data["points_best_game"]:
+    #     user_data["points_best_game"] = gained_points
+    #     user_data["date_best_game"] = today   # Today's date
+    
+    allusers = json.loads(read_from_file("users.json"))
+    # current_json_data = json.loads(read_from_file("users.json"))
+    # current_json_data = json.loads(read_from_file("user_game_data_json.json"), object_hook=json_tuple_helper_function)
+    # username = user_data["user"]
+    
+
+    # I need to collect the data from the current User and then put it in current_json_data
+    # Then write it back.
+    # allusers[username] = {"username": username, 
+    #                 "games_played": [], 
+    #                 "date_best_game": "", 
+    #                 "number_of_games": 0, 
+    #                 "points_best_game": 0, 
+    #                 "total_user_points": 0}
+    # Create Object
+    allusers[username] = {"username": thisUser.username,
+                            "games_played": thisUser.games_played,
+                            "date_best_game": thisUser.date_best_game,
+                            "number_of_games": thisUser.number_of_games,
+                            "points_best_game": thisUser.points_best_game,
+                            "total_user_points": thisUser.total_user_points}
+
+    with open("data/users.json", "w") as outfile:
+        json.dump(allusers, outfile, sort_keys=True, indent=4)
+
+    thisUser.game_on = False
+    thisUser.points_this_game = 0
+
+    # current_json_data[username] = user_data
+
+
+    # with open('data/user_game_data_json.json', 'w') as outfile:
+    #     json.dump(current_json_data, outfile,  sort_keys=True, indent=4)
+    
+                # Update hof_individual.json
+    # insert=[]
+    # insert.append(today)
+    # insert.append(username)
+    # insert.append(gained_points)
+    # insert_in_hof_individual(insert)
+                # Update hof_all_games.json
+    # insert_all_games=[]
+    # insert_all_games.append(username)
+    # insert_all_games.append(user_data["total_user_points"])
+    # insert_all_games.append(user_data["number_of_games"])
+    # insert_in_hof_all_games(insert_all_games)
+
+    return
 
 def add(x,y):           #This is a testing function -- Will be removed at that end.
     """Add Function - Testing purposes"""
@@ -881,7 +947,7 @@ def game_over(currentUser=defaultUser.username):
     flash(thisUser.points_this_game)
 
     # TO DO ---------------------------------------------
-    # store_game_info()  # Updates Hall of fame too
+    store_game_info(currentUser)  # Updates Hall of fame too
     # global_game_reset()
     # ---------------------------------------------------
 
