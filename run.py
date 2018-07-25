@@ -101,7 +101,7 @@ class User(object):
         self.game = ""
         self.points_this_game = 0   # Should this belong to User or Game
         self.session = 1
-        self.current_route = ""
+        self.current_route = route
         self.app_info = {
                     "logged": is_logged,
                     # "username": "",
@@ -109,7 +109,7 @@ class User(object):
                     # "register": "",         # ???
                     # "check_active": "",     # Pass class for check button
                     # "register_active": "",  # Pass class for register button
-                    "route": route #,            # Which is the current page
+                    # "route": route #,            # Which is the current page
                     # "game": False           # Is there a current game active True/False NEED TO BE ACCESSED BEFORE.
                     }
 
@@ -208,7 +208,8 @@ class Game(object):
 # x = Game()        
                 
 
-defaultUser = User("default", False, 0, [], "index")
+# defaultUser = User("default", False, 0, [], "index")
+defaultUser = User(" ", False, 0, [], "index")
 
 
 
@@ -437,7 +438,8 @@ def index(currentUser=defaultUser.username):
 
     # thisUser = defaultUser
     thisUser=loggedUsers[currentUser]
-    thisUser.app_info['route'] = "index"
+    # thisUser.app_info['route'] = "index"
+    thisUser.current_route = "index"
 
     # return render_template("index.html", app_info=app_info, attempt=attempt)
     # return render_template("index.html", app_info=app_info, thisUser=thisUser)
@@ -476,7 +478,9 @@ def login():
                 loggedUsers[username].points_best_game = allusers[username]['points_best_game']
                 loggedUsers[username].number_of_games = allusers[username]['number_of_games']
                 loggedUsers[username].date_best_game = allusers[username]['date_best_game']
-                loggedUsers[username].app_info['route'] = "user"
+                # loggedUsers[username].app_info['route'] = "user"
+                loggedUsers[username].current_route = "user"
+                loggedUsers[username].is_logged = True
                 session['logged_in'] = True
                 # return render_template("index.html", app_info=app_info, thisUser=loggedUsers[username], username="", message="")
                 # return render_template("index.html", thisUser=loggedUsers[username], username="", message="")
@@ -500,7 +504,8 @@ def login():
 @app.route('/proceed_login/<username>', methods=['GET', 'POST'])
 def proceed_login(username):
     loggedUsers[username].session+=1
-    loggedUsers[username].app_info['route'] = "user"
+    # loggedUsers[username].app_info['route'] = "user"
+    loggedUsers[username].current_route = "user"
     # return render_template("index.html", app_info=app_info, thisUser=loggedUsers[username], message="")
     # return render_template("index.html", thisUser=loggedUsers[username], message="")
     # Go straight to User page
@@ -511,6 +516,9 @@ def register():
     # global app_info
     thisUser = copy.deepcopy(defaultUser)
     # thisUser.app_info["route"] = "register"
+    thisUser.current_route = "register"
+    # I need app_info to control which buttons show up.
+    # Change the name to button_control
     app_info = {}
     app_info["check_active"] = ""
     app_info["register_active"] = "btn-deactivated btn-hide"
@@ -689,7 +697,7 @@ def logout(currentUser, sessionNo):
 @login_required
 def user(currentUser=defaultUser.username):
     thisUser=loggedUsers[currentUser]
-    thisUser.app_info['route'] = "user"
+    thisUser.current_route = "user"
     # global app_info
     # global user_data
     # global current_game
@@ -724,7 +732,7 @@ def halloffame(currentUser=defaultUser.username):
     # global best_individual_games
     # global best_all_games
     thisUser=loggedUsers[currentUser]
-    thisUser.app_info['route'] = "halloffame"
+    thisUser.current_route = "halloffame"
     #I will return the following here
     best_individual_games = fill_best_individual_games()
     best_all_games = fill_best_all_games()
@@ -739,7 +747,8 @@ def halloffame(currentUser=defaultUser.username):
 def about(currentUser=defaultUser.username):
     
     thisUser=loggedUsers[currentUser]
-    thisUser.app_info['route'] = "about"
+    # thisUser.app_info['route'] = "about"
+    thisUser.current_route = "about"
 
     return render_template("about.html", thisUser=thisUser)
 
