@@ -716,47 +716,47 @@ def game(currentUser=defaultUser.username):
                         thisUser.game.wrong_answers.append("-")
                     else:
                         thisUser.game.wrong_answers.append(answer)
-                        thisUser.game.attempt = 2 # This is your next attempt
-                        thisUser.game.points = 6  # Set correct number of points
+                    thisUser.game.attempt = 2 # This is your next attempt
+                    thisUser.game.points = 6  # Set correct number of points
 
-            # elif attempt == 2:
+            elif thisUser.game.attempt == 2:
                 
-                                    # Get all words and concatenate them
-                # answer = ""
-                # index = ""
-                # local_answer = current_riddle[2].split()
-                # for ndx, each_word in enumerate(local_answer):
-                #     index = 'answer_text' + str(ndx+1)
-                #     answer += (request.form[index].strip() + " ") #Strip any typed white spaces
+                # Get all words and concatenate them
+                answer = ""
+                index = ""
+                local_answer = thisUser.game.current_riddle[2].split()
+                for ndx, each_word in enumerate(local_answer):
+                    index = 'answer_text' + str(ndx+1)
+                    answer += (request.form[index].strip() + " ") #Strip any typed white spaces
                     
-                # temp =[]                        # Clean answer
-                # temp = answer.split()
-                # answer=""
-                # for item in temp:
-                #     answer += item + " "
-                # answer = answer.strip()         # Strip trailing spaces
+                temp =[]                        # Clean answer
+                temp = answer.split()
+                thisUser.game.most_recent_answer=""
+                for item in temp:
+                    thisUser.game.most_recent_answer += item + " "
+                thisUser.game.most_recent_answer = thisUser.game.most_recent_answer.strip()         # Strip trailing spaces
                 
-                # if answer.lower() == current_riddle[2].lower(): # Answer correct
-                #     gained_points += 6          # Gain points
-                #     attempt = 1                 # Reset attempt
-                #     points = 10
-                #     wrong_answers = []
+                if thisUser.game.most_recent_answer.lower() == thisUser.game.current_riddle[2].lower(): # Answer correct
+                    thisUser.points_this_game += 6          # Gain points
+                    thisUser.game.attempt = 1                 # Reset attempt
+                    thisUser.game.points = 10
+                    thisUser.game.wrong_answers = []
 
-                    # riddle_counter += 1
-                    # if riddle_counter > len(current_game)-1:
-                                                # store_game_info()
-                        # return redirect(url_for('game_over'))
+                    thisUser.game.riddle_counter += 1
 
-                    # current_riddle = sort_current_riddle(current_game[riddle_counter])
+                    if thisUser.game.riddle_counter > len(thisUser.game.riddles_sequence)-1:     # Call next riddle
+                        return redirect(url_for('game_over', thisUser=thisUser))
+                    else:
+                        thisUser.game.current_riddle = thisUser.game.riddles_sequence[thisUser.game.riddle_counter]
                 
-                # else:                           # Otherwise answer is wrong
+                else:                           # Otherwise answer is wrong
                                         # wrong_answers.append(answer)
-                    # if len(answer) == 0:                #if no answer is given
-                    #     wrong_answers.append("-")
-                    # else:
-                    #     wrong_answers.append(answer)
-                    # attempt = 3                 # This is your next attempt
-                    # points = 2                  # Set correct number of points
+                    if len(answer) == 0:                #if no answer is given
+                        thisUser.game.wrong_answers.append("-")
+                    else:
+                        wrong_answers.append(answer)
+                    thisUser.game.attempt = 3                 # This is your next attempt
+                    thisUser.game.points = 2                  # Set correct number of points
                 
             # elif attempt == 3:
             #     answer = ""
