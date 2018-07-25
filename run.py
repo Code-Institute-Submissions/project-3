@@ -777,7 +777,7 @@ def game(currentUser=defaultUser.username):
                     thisUser.game.riddle_counter += 1
 
                     if thisUser.game.riddle_counter > len(thisUser.game.riddles_sequence)-1:     # Call next riddle
-                        return redirect(url_for('game_over', thisUser=thisUser))
+                        return redirect(url_for('game_over', currentUser=thisUser.username))
                     else:
                         thisUser.game.current_riddle = thisUser.game.riddles_sequence[thisUser.game.riddle_counter]
                 
@@ -830,7 +830,7 @@ def game(currentUser=defaultUser.username):
                     thisUser.game.riddle_counter += 1
                     if thisUser.game.riddle_counter > len(thisUser.game.riddles_sequence)-1:
                                             # store_game_info()
-                        return redirect(url_for('game_over', thisUser=thisUser))
+                        return redirect(url_for('game_over', currentUser=thisUser.username))
                     else: # Call next riddle
                         thisUser.game.current_riddle = thisUser.game.riddles_sequence[thisUser.game.riddle_counter]
                         # current_riddle = sort_current_riddle(current_game[riddle_counter])
@@ -851,14 +851,14 @@ def game(currentUser=defaultUser.username):
             elif thisUser.game.attempt == 3:
                 if thisUser.game.riddle_counter > len(thisUser.game.riddles_sequence)-1:
                             # store_game_info()
-                    return redirect(url_for('game_over', thisUser=thisUser))
+                    return redirect(url_for('game_over', currentUser=thisUser.username))
                 thisUser.game.points = 10
                 thisUser.game.attempt = 1
                 thisUser.game.riddle_counter += 1
                 thisUser.game.wrong_answers = []
 
                 if thisUser.game.riddle_counter > len(thisUser.game.riddles_sequence)-1:     # Call next riddle
-                    return redirect(url_for('game_over', thisUser=thisUser))
+                    return redirect(url_for('game_over', currentUser=thisUser.username))
                 else:
                     thisUser.game.current_riddle = thisUser.game.riddles_sequence[thisUser.game.riddle_counter]
                 
@@ -869,7 +869,25 @@ def game(currentUser=defaultUser.username):
 @app.route('/game_over', methods=['GET', 'POST'])
 @login_required
 def game_over(currentUser=defaultUser.username):
-    return "Game Over!"
+    # return "Game Over!"
+
+    # global app_info
+    # global gained_points
+    # global attempt
+    # global user_data
+    thisUser=loggedUsers[currentUser]
+    thisUser.app_info['route'] = "user"  # I will need this to control the menu
+    thisUser.game_on  = False
+    flash(thisUser.points_this_game)
+
+    # TO DO ---------------------------------------------
+    # store_game_info()  # Updates Hall of fame too
+    # global_game_reset()
+    # ---------------------------------------------------
+
+    # app_info["route"] = "user"
+    # return render_template("user.html", app_info=app_info, user_data=user_data, attempt=attempt, gained_points=gained_points)
+    return render_template("user.html", thisUser=thisUser)
 
 if __name__ == '__main__':
     app.run(host=os.getenv('IP'), port=int(os.getenv('PORT', 8080)), debug=True)
