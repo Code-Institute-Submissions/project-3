@@ -791,6 +791,7 @@ def game(currentUser=defaultUser.username):
                     thisUser.game.points = 2                  # Set correct number of points
                 
             elif thisUser.game.attempt == 3:
+                print("This is attempt 3 to check the answer.")
                 answer = ""
                 index = ""
                 local_answer = thisUser.game.current_riddle[2].split()
@@ -808,6 +809,7 @@ def game(currentUser=defaultUser.username):
                 thisUser.game.most_recent_answer = thisUser.game.most_recent_answer.strip()         # Strip trailing spaces
                 
                 if thisUser.game.most_recent_answer.lower() == thisUser.game.current_riddle[2].lower(): # Answer correct
+                    print("Attempt 3 Answer is correct")
                     thisUser.points_this_game += 2           # Gain points
                     thisUser.game.attempt = 1                  # Reset attempt
                     thisUser.game.points = 10
@@ -821,6 +823,7 @@ def game(currentUser=defaultUser.username):
                     # current_riddle = sort_current_riddle(current_game[riddle_counter])
                 
                 else:       # Otherwise answer is wrong
+                    print("Attempt 3 Answer is wrong")
                     thisUser.game.attempt = 1                 # This is your next attempt
                     thisUser.game.points = 10                 # Set correct number of points
                     thisUser.game.wrong_answers = [] = []           # Reset wrong answers
@@ -828,7 +831,9 @@ def game(currentUser=defaultUser.username):
                     if thisUser.game.riddle_counter > len(thisUser.game.riddles_sequence)-1:
                                             # store_game_info()
                         return redirect(url_for('game_over', thisUser=thisUser))
-                    # current_riddle = sort_current_riddle(current_game[riddle_counter])
+                    else: # Call next riddle
+                        thisUser.game.current_riddle = thisUser.game.riddles_sequence[thisUser.game.riddle_counter]
+                        # current_riddle = sort_current_riddle(current_game[riddle_counter])
 
                                 #This will happen if pass
                                 # increase attempt
