@@ -662,25 +662,9 @@ def contact(currentUser=defaultUser.username):
 @app.route('/game/<currentUser>', methods=['GET', 'POST'])
 @app.route('/game', methods=['GET', 'POST'])
 @login_required
-def game(currentUser=defaultUser.username):
-    # global app_info
-    # global all_riddles
-    # global current_game
-    # global current_riddle
-    # global riddle_counter
-    # global attempt
-    # global points
-    # global gained_points
-    # global wrong_answers
-    # global answer
-    
+def game(currentUser=defaultUser.username):  
     thisUser=loggedUsers[currentUser]
     thisUser.app_info['route'] = "game"  # I will need this to control the menu
-    # app_info["route"] = "game"  # I will need this to control the menu
-    
-    # if app_info["game"] == False:
-    #     app_info["game"] = True  # Game On
-    #     all_riddles = json.loads(read_from_file("riddles.json"))
 
     # Do we need to create a new game?
     if thisUser.game_on == False:
@@ -689,25 +673,9 @@ def game(currentUser=defaultUser.username):
         print("Game turned on.")
         print("Is game active? {}.".format(thisUser.game_on))
         # all_riddles = json.loads(read_from_file("riddles.json"))
-        
-        # for x in range(0, 10):  # Select 10 images at random
-        #     repeat = True
-        #     while repeat:
-        #         choose_game=random.choice(all_riddles)
-        #         if choose_game.items() not in current_game:
-        #             repeat = False
-        #     current_game.append(choose_game.items())
-        
 
         # CREATE A GAME
         thisUser.game = Game()
-
-        # current_riddle = sort_current_riddle(current_game[riddle_counter])
-            
-    # if request.method == 'POST':
-    #     if 'play' in request.form:
-    #         points = 10
-    #         attempt = 1
 
     if request.method == 'POST':
         if 'play' in request.form:
@@ -716,8 +684,8 @@ def game(currentUser=defaultUser.username):
             thisUser.game.attempt = 1
 
         elif 'answer_btn' in request.form:
-            print("Answer button pressed.")
-                                # Check Answer
+            # print("Answer button pressed.")
+            # Check Answer
             # if attempt == 1:
             #     answer = request.form['answer_text']
                 
@@ -833,67 +801,30 @@ def game(currentUser=defaultUser.username):
                                 #This will happen if pass
                                 # increase attempt
         elif 'pass_btn' in request.form:
-            print("Pass button pressed.")
-        #     if attempt == 1:
-        #         wrong_answers = []
-        #         wrong_answers = ["-"]
-        #         attempt = 2
-        #         points = 6
+            # print("Pass button pressed.")
             if thisUser.game.attempt == 1:
                 thisUser.game.wrong_answers = []
                 thisUser.game.wrong_answers = ["-"]
                 thisUser.game.attempt = 2
                 thisUser.game.points = 6
-        #     elif attempt == 2:
-        #         points = 2
-        #         wrong_answers.append("-")
-        #         attempt = 3
             elif thisUser.game.attempt == 2:
                 thisUser.game.points = 2
                 thisUser.game.wrong_answers.append("-")
                 thisUser.game.attempt = 3
             elif thisUser.game.attempt == 3:
-                # if thisUser.game.riddle_counter > len(thisUser.game.current_game)-1:
                 if thisUser.game.riddle_counter > len(thisUser.game.riddles_sequence)-1:
-                                    # store_game_info()
-                    # return redirect(url_for('game_over'))
-                    # return redirect(url_for('game_over', thisUser=loggedUsers[currentUser]))
+                            # store_game_info()
                     return redirect(url_for('game_over', thisUser=thisUser))
-                    # return "GAME OVER"
-                # current_riddle = sort_current_riddle(current_game[riddle_counter])
                 thisUser.game.points = 10
                 thisUser.game.attempt = 1
                 thisUser.game.riddle_counter += 1
                 thisUser.game.wrong_answers = []
 
-                # if thisUser.game.riddle_counter > len(thisUser.game.current_game)-1:     # Call next riddle
                 if thisUser.game.riddle_counter > len(thisUser.game.riddles_sequence)-1:     # Call next riddle
-                    # return redirect(url_for('game_over'))
-                    # return redirect(url_for('game_over', thisUser=loggedUsers[currentUser]))
                     return redirect(url_for('game_over', thisUser=thisUser))
-                    # return "GAME OVER"
                 else:
-                    # thisUser.game.select_current_riddle()
-                    # thisUser.game.riddle_counter += 1
                     thisUser.game.current_riddle = thisUser.game.riddles_sequence[thisUser.game.riddle_counter]
-
-
-        #     elif attempt == 3:
-        #         if riddle_counter > len(current_game)-1:
-                                    # store_game_info()
-    #                 return redirect(url_for('game_over'))
-    #             current_riddle = sort_current_riddle(current_game[riddle_counter])
-    #             points = 10
-    #             attempt = 1
-    #             riddle_counter += 1
-    #             wrong_answers = []
                 
-    #             if riddle_counter > len(current_game)-1:     # Call next riddle
-    #                 return redirect(url_for('game_over'))
-    #             current_riddle = sort_current_riddle(current_game[riddle_counter])
-                
-    # return render_template("game.html", app_info=app_info, all_riddles=all_riddles, current_game=current_game, current_riddle=current_riddle, riddle_counter=riddle_counter+1, attempt=attempt, points=points, gained_points=gained_points, wrong_answers=wrong_answers)
-    # return "This is the page for the game for user: {}".format(thisUser.username)
     return render_template("game.html", thisUser=thisUser, all_riddles="", current_game="", current_riddle="", riddle_counter=1, attempt=1, points=0, gained_points=0, wrong_answers="")
     # return render_template("game.html", thisUser=thisUser)
 
