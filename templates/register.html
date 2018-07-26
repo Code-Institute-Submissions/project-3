@@ -1,14 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="row">
-        <!--<p>User: {{ app_info["username"] }}</p>-->
-        <!--<p>All users: {{ app_info["allusers"] }}</p>-->
-        <!--<p>Logged: {{ app_info["logged"] }}</p>-->
         <div class="col-md-12 main min-height-main">
             <h3>Register</h3>
 
-            <p>This is the milestone project that I am building for the “Practical Python” stream, 
-            part of the New LMS in the “Full Stack Web Development Course” offered by Code Institute.</p>
+            <p>Please register to play.</p>
+            <h4>Instructions:</h4>
+            <ol>
+                <li>Type a username</li>
+                <li>Check if the username is available</li>
+                <li>If the username is available then register it.</li>
+                <li>login using the newly registered username and play.</li>
+            </ol>
+            <p>Please note, no personal data is required to register.</p>
             
             <!-- Registration Login Form-->
             <form class="registration" method="POST" action="/register">

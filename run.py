@@ -520,6 +520,8 @@ def register():
     # I need app_info to control which buttons show up.
     # Change the name to button_control
     app_info = {}
+    app_info["username"] = ""
+    app_info["register"] = ""
     app_info["check_active"] = ""
     app_info["register_active"] = "btn-deactivated btn-hide"
     attr=""
@@ -528,6 +530,7 @@ def register():
         
         username = request.form['username']
         allusers = json.loads(read_from_file("users.json"))
+        app_info["username"] = username
         
         # username = request.form['username']
         
@@ -539,12 +542,12 @@ def register():
 
             # Check that username is not empty
             if username == "":
-                app_info["register"] = ""
+                # app_info["register"] = ""
                 # app_info["register_active"] = "btn-deactivated btn-hide"
                 # app_info["check_active"] = ""
                 username_feedback = "Please type in a username and check its availability."
             elif username in allusers:
-                app_info["register"] = ""
+                # app_info["register"] = ""
                 # app_info["register_active"] = "btn-deactivated btn-hide"
                 # app_info["check_active"] = ""
                 username_feedback = "Username already exist. Please try another one."
@@ -553,19 +556,20 @@ def register():
                 app_info["register_active"] = ""
                 app_info["check_active"] = "btn-deactivated btn-hide"
                 username_feedback = "Username available. Please click the register button."
-                attr="required"
-            return render_template("register.html",app_info=app_info, username_feedback=username_feedback, thisUser=thisUser, attr=attr)
+                # attr="required"
+            # return render_template("register.html",app_info=app_info, username_feedback=username_feedback, thisUser=thisUser, attr=attr)
+            return render_template("register.html",app_info=app_info, username_feedback=username_feedback, thisUser=thisUser)
 
         if 'register' in request.form:
             username = request.form['username']
             if username == "":
-                app_info["register"] = ""
+                # app_info["register"] = ""
                 # app_info["register_active"] = "btn-deactivated btn-hide"
                 # app_info["check_active"] = ""
                 username_feedback = "Please type in a username and check its availability."
                 return render_template("register.html",app_info=app_info, username_feedback=username_feedback, thisUser=thisUser)
             elif username in allusers:
-                app_info["register"] = ""
+                # app_info["register"] = ""
                 # app_info["register_active"] = "btn-deactivated btn-hide"
                 # app_info["check_active"] = ""
                 username_feedback = "Username already exist. Please try another one."

@@ -49,5 +49,13 @@
         "points_best_game": 50,
         "total_user_points": 50,
         "username": "user2"
+    },
+    "user22": {
+        "date_best_game": "",
+        "games_played": [],
+        "number_of_games": 0,
+        "points_best_game": 0,
+        "total_user_points": 0,
+        "username": "user22"
     }
 }
