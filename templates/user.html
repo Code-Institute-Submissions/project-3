@@ -1,21 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="row main">
-        <!--<p>User: {#{ app_info["username"] }#}</p>-->
-        <!--<p>All users: {#{ app_info["allusers"] }#}</p>-->
-        <!--<p>Logged: {#{ app_info["logged"] }#}</p>-->
-        <!--<p>Game on: {#{ app_info["game"] }#}</p>-->
-        <!--<p>Attempt: {#{ attempt }#}</p>-->
-        <!--<p>User_data: {#{ user_data }#}</p>-->
-        <!--<p>Gainded points: {#{ gained_points }#}</p>-->
         <h3>Welcome {{ thisUser["username"] }}</h3>
-            <p>This is a guessing game, which will be part of my protfolio.</p>
+            <!-- <p>This is a guessing game, which will be part of my protfolio.</p>
             <p>This will be the hall of fame page. It will contain two tables with two 
-            halls of fame.</p>
-            <hr>
-            <p>This is the page for a {{ thisUser["username"] }}. It will hold information about
-            the latest games and a button to start a new game.</p>
+            halls of fame.</p> -->
+            <!-- <hr> -->
+            <!-- <p>This is the page for a {{ thisUser["username"] }}. It will hold information about
+            the latest games and a button to start a new game.</p> -->
             
+            {% if thisUser["number_of_games"] == 0 %}
+                <p>You have not played any games yet. Once you finish playing at least one game, you will see a list
+                    of your played games below.</p>
+            {% else %}
+                <p>Below is a list of the games you played, most recent first.</p>
+            {% endif %}
+
+
+
+
+
             <!-- Flash the points gained for game just played -->
             {% with messages = get_flashed_messages() %}
                 {% if messages %} <!-- Process if there are any messages  -->
@@ -25,6 +29,8 @@
                 {% endif %}
             {% endwith %}
             
+
+
             <p>You have played {{ thisUser["number_of_games"] }} games up to now.
             {% if thisUser["number_of_games"] > 0 %}
             <br>Your best game was on {{ thisUser["date_best_game"] }} and you gained
@@ -56,7 +62,6 @@
         <div class="col-md-6  min-height-main">
             <div class="row start_game">
                 <div class="col-md-8 col-md-offset-2">
-                    <!-- <form class="play_game" method="POST" action="/game"> -->
                     <form class="play_game" method="POST" action="{{ url_for('game', currentUser=thisUser['username']) }}">
                         <div class="form-group">
                             <button type="submit" class="btn btn-default play_btn" name="play" type="submit" value="play">Play a game</button>
