@@ -2,23 +2,12 @@
 {% block content %}
     <div class="row main">
         <h3>Welcome {{ thisUser["username"] }}</h3>
-            <!-- <p>This is a guessing game, which will be part of my protfolio.</p>
-            <p>This will be the hall of fame page. It will contain two tables with two 
-            halls of fame.</p> -->
-            <!-- <hr> -->
-            <!-- <p>This is the page for a {{ thisUser["username"] }}. It will hold information about
-            the latest games and a button to start a new game.</p> -->
-            
             {% if thisUser["number_of_games"] == 0 %}
                 <p>You have not played any games yet. Once you finish playing at least one game, you will see a list
                     of your played games below.</p>
             {% else %}
                 <p>Below is a list of the games you played, most recent first.</p>
             {% endif %}
-
-
-
-
 
             <!-- Flash the points gained for game just played -->
             {% with messages = get_flashed_messages() %}
@@ -28,8 +17,6 @@
                     {% endfor %}
                 {% endif %}
             {% endwith %}
-            
-
 
             <p>You have played {{ thisUser["number_of_games"] }} games up to now.
             {% if thisUser["number_of_games"] > 0 %}
