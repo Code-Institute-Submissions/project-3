@@ -209,7 +209,7 @@ class Game(object):
                 
 
 # defaultUser = User("default", False, 0, [], "index")
-defaultUser = User(" ", False, 0, [], "index")
+defaultUser = User("default", False, 0, [], "index")
 
 
 
