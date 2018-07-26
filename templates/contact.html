@@ -1,26 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="row">
-        <!--<p>User: {#{ app_info["username"] }#}</p>-->
-        <!--<p>All users: {#{ app_info["allusers"] }#}</p>-->
-        <!--<p>Logged: {#{ app_info["logged"] }#}</p>-->
         <div class="col-md-12 main min-height-main">
             <h3>Contact</h3>
-            <!--<p>This is a guessing game, which will be part of my protfolio.</p>-->
-            <!--<p>This will be the contact page. It will contain a form.</p>-->
-            <!--<h2>{#{ page_title }#}</h2> <!-- Contact -->
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
-                    <!--{#% with messages = get_flashed_messages() %#}-->
-                    <!--{#% if messages %#}-->
-                    <!--<ul class="flashes">-->
-                    <!--    {#% for message in messages %#}-->
-                    <!--    <li>{#{ message }#}</li>-->
-                    <!--    {#% endfor %#}-->
-                    <!--</ul>-->
-                    <!--{#% endif %#}-->
-                    <!--{#% endwith %#}-->
-                    
                     <p>Want to get in touch?<br>
                         Found anything wrong in the game? <br>
                         Have suggestions for improvement?<br>
@@ -42,13 +26,6 @@
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
-                        <!--<div class="control-group">-->
-                        <!--    <div class="form-group col-xs-12 floating-label-form-group controls">-->
-                        <!--        <label>Phone Number</label>-->
-                        <!--        <input type="tel" class="form-control" placeholder="Phone Number" name="phone" id="phone" required data-validation-required-message="Please enter your phone number.">-->
-                        <!--        <p class="help-block text-danger"></p>-->
-                        <!--    </div>-->
-                        <!--</div>-->
                         <div class="control-group">
                             <div class="form-group floating-label-form-group controls">
                                 <label>Message</label>
@@ -64,13 +41,6 @@
                     </form>
                 </div>
             </div>
-            
-            
-            
         </div>
-        
-        
-        
-        
     </div>
 {% endblock %}
