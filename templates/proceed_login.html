@@ -6,13 +6,12 @@
 
             <p class="red">{{ message }}</p>
             
-            <!-- Registration Login Form-->
+            <!-- Proceed-to-Login Form-->
             <form class="registration" method="POST" action='{{ url_for('proceed_login', username=username) }}'>
                 <div class="form-group">
                     <input type="text" class="form-control form-username form-align" name="username" id="username" placeholder="username" value="{{username}}" disabled>
                     <button type="submit" class="btn btn-default form-align" name="Proceed" type="submit" value="login">Proceed to Log In</button>
                 </div>
-                <!--<div class="red">{#{ username_feedback }#}</div>-->
             </form>
             <form class="registration" method="POST" action="/">
                 <button type="submit" class="btn btn-default form-align btn-width" name="cancel" value="cancel">Cancel</button>

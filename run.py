@@ -504,12 +504,9 @@ def login():
 @app.route('/proceed_login/<username>', methods=['GET', 'POST'])
 def proceed_login(username):
     loggedUsers[username].session+=1
-    # loggedUsers[username].app_info['route'] = "user"
     loggedUsers[username].current_route = "user"
-    # return render_template("index.html", app_info=app_info, thisUser=loggedUsers[username], message="")
-    # return render_template("index.html", thisUser=loggedUsers[username], message="")
-    # Go straight to User page
-    return render_template("user.html", thisUser=loggedUsers[username], username="", message="")
+    # return render_template("user.html", thisUser=loggedUsers[username], username="", message="")
+    return render_template("user.html", thisUser=loggedUsers[username])
 
 @app.route('/register', methods=['GET','POST'])
 def register():
