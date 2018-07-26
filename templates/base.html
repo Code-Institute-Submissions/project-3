@@ -113,6 +113,43 @@
                 </table> -->
             {% block content %} 
             {% endblock %}
+            <div class="row">
+                <h2>Testing</h2>
+                <p><strong>username:</strong> {{ thisUser['username'] }}</p>
+                <p><strong>is_logged:</strong> {{ thisUser['is_logged'] }}</p>
+                <p><strong>total_user_points:</strong> {{ thisUser['total_user_points'] }}</p>
+                <p><strong>games_played:</strong> {{ thisUser['games_played'] }}</p>
+                <p><strong>number_of_games:</strong></strong> {{ thisUser['number_of_games'] }}</p>
+                <p><strong>points_best_game:</strong> {{ thisUser['points_best_game'] }}</p>
+                <p><strong>date_best_game:</strong> {{ thisUser['date_best_game'] }}</p>
+                <p><strong>game_on:</strong> {{ thisUser['game_on'] }}</p>
+                <p><strong>points_this_game:</strong> {{ thisUser['points_this_game'] }}</p>
+                <p><strong>session:</strong> {{ thisUser['session'] }}</p>
+                <p><strong>self.current_route:</strong> {{ thisUser['current_route'] }}</p>
+                <p><strong>thisUser.app_info["logged"]:</strong> {{ thisUser.app_info["logged"] }}</p>
+                <p><strong>thisUser.app_info["route"]:</strong> {{ thisUser.app_info["route"] }}</p>
+                <p><strong>thisUser.game:</strong> {{ thisUser['game'] }}</p>
+        
+                <h3>The Game</h3>
+                {% if thisUser['game_on'] %}
+                    <p><strong>Game:</strong> {{ thisUser['game']['game'] }}</p>
+                    <p><strong>riddles_sequence:</strong> {{ thisUser['game']['riddles_sequence'] }}</p>
+                    <p><strong>current_riddle_index:</strong> {{ thisUser['game']['current_riddle_index'] }}</p>
+                    <p><strong>riddle_counter:</strong> {{ thisUser['game']['riddle_counter'] }}</p>
+                    <p><strong>current_game:</strong> {{ thisUser['game']['current_game'] }}</p>
+                    <p><strong>current_riddle:</strong> {{ thisUser['game']['current_riddle'] }}</p>
+                    <p><strong>attempt:</strong> {{ thisUser['game']['attempt'] }}</p>
+                    <p><strong>points:</strong> {{ thisUser['game']['points'] }}</p>
+                    <p><strong>most_recent_answer:</strong> {{ thisUser['game']['most_recent_answer'] }}</p>
+                    <p><strong>wrong_answers:</strong> {{ thisUser['game']['wrong_answers'] }}</p>
+                    <p></p>
+                    {% set words =  thisUser['game']['current_riddle'][2].split() %}
+                    <h4>Individual words</h4>
+                    <p>{{ words }}</p>
+                {% else %}
+                    <p>No game set yet.</p>
+                {% endif %}
+            </div>
         </section>
 
     
