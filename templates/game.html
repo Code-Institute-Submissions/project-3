@@ -1,20 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="row main">
-        <!--<p>User: {#{ app_info["username"] }#}</p>-->
-        <!--<p>All users: {#{ app_info["allusers"] }#}</p>-->
-        <!--<p>Logged: {#{ app_info["logged"] }#}</p>-->
-        <!--<p>Game on: {#{ app_info["game"] }#}</p>-->
-        <!--<p>Attempt: {#{ attempt }#}</p>-->
-        <!--<p>Riddle: {#{ riddle_counter }#}  -- Will be out of 10 in the real game</p>-->
-        <!--<p>Wrong Answers: {#{ wrong_answers }#}</p>-->
         <div class="col-md-6  min-height-main">
             <div class="row">
                 <div class="col-md-6"><h3 class="game_title">{{ thisUser["username"] }}</h3></div>
                 <div class="col-md-6"><p class="game_text">Riddle {{ thisUser['game']['riddle_counter'] + 1 }} of 10</p></div>
             </div>
             <div class="list_games game_image">
-                <!-- <img class="img-responsive" src="static/img/{{ current_riddle[1] }}" alt="riddle image"></img> -->
                 <img class="img-responsive" src="/static/img/{{ thisUser['game']['current_riddle'][1] }}" alt="riddle image"></img>
             </div>
             <div class="game_instruction">
@@ -22,39 +14,32 @@
             </div>
         </div>
         
-        <!-- Will be needed in the pages which split in two columns -->
+        <!-- Needed in the pages which split in two columns -->
         <div class="col-md-6  min-height-main">
             <div class="row">
                 <div class="col col-md-10 col-md-offset-1">
                     <p class="game_text">Points: {{ thisUser['points_this_game'] }}</p>
                     <p class="game_text
-                    {% if thisUser['game']['attempt'] > 1 %}red 
-                    {% endif %}">
+                    {% if thisUser['game']['attempt'] > 1 %} red {% endif %}">
                     {% if thisUser['game']['attempt'] == 1 %}First 
                     {% elif thisUser['game']['attempt'] == 2 %}Second 
                     {% elif thisUser['game']['attempt'] == 3 %}Third 
-                    {% endif %}attempt: {{ thisUser['game']['points'] }} points</p>
+                    {% endif %} attempt: {{ thisUser['game']['points'] }} points</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col col-md-10 col-md-offset-1">
                     <form class="play_game 
-                    {% if thisUser['game']['attempt'] > 1 %} 
-                    red 
-                    {% endif %}" method="POST" action="{{ url_for('game', currentUser=thisUser['username']) }}">
-                    <!-- {{ url_for('about', currentUser=thisUser['username']) }} -->
-                    <!-- method="POST" action="/game"> -->
+                    {% if thisUser['game']['attempt'] > 1 %} red {% endif %}" 
+                    method="POST" action="{{ url_for('game', currentUser=thisUser['username']) }}">
                         <div class="form-group">
-                            
                             {% if thisUser['game']['attempt'] == 1 %}
                             <div class="row text-area">
                                 <textarea class="form-control" name="answer_text" rows="10" id="answer_block" placeholder="type your answer here"></textarea>
                             </div>
-                            
                             {% elif thisUser['game']['attempt'] == 2 %}
                                 <div class="row text-area">
                                     {% set words =  thisUser['game']['current_riddle'][2].split() %}
-                                    <!-- {#% set words = (current_riddle[2]).split() %#} -->
                                     {% set word_count = words|count %}
                                     {% for word in words %}
                                         <div class="row">
@@ -64,20 +49,13 @@
                                             </div>
                                         </div>
                                     {% endfor %}
-                                    
                                     <div class="row 
-                                        {% if word_count == 1 %}
-                                            bottom-1
-                                        {% elif word_count == 2 %}
-                                            bottom-2
-                                        {% elif word_count == 3 %}
-                                            bottom-3
-                                        {% elif word_count == 4 %}
-                                            bottom-4
-                                        {% endif %}">
+                                        {% if word_count == 1 %} bottom-1
+                                        {% elif word_count == 2 %} bottom-2
+                                        {% elif word_count == 3 %} bottom-3
+                                        {% elif word_count == 4 %} bottom-4 {% endif %}">
                                         <div class="red yellow-bg">
-                                            <!--<p>Place for your previous wrong answer.</p>-->
-                                            <p>First WRONG answer: {{ wrong_answers[0] }}</p>
+                                            <p>First WRONG answer: {{ thisUser['game']['wrong_answers'][0] }}</p>
                                         </div>
                                         <p>The answer for this riddle has {{ word_count }} 
                                         {% if (word_count) == 1 %}
@@ -86,45 +64,36 @@
                                             words.
                                         {% endif %}</p>
                                     </div>
-                                    
-                                    
                                 </div>
-
                             {% elif thisUser['game']['attempt'] == 3 %}
                                 <div class="row text-area">
                                     {% set words =  thisUser['game']['current_riddle'][2].split() %}
-                                    <!-- {#% set words = (current_riddle[2]).split() %#} -->
                                     {% set word_count = words|count %}
                                     {% for word in words %}
                                         <div class="row">
                                             <div class="col-xs-2 col-sm-3"><label>Word {{ loop.index }}</label></div>
-                                            <div class="col-xs-9 col-sm-8">
+                                            <div class="col-xs-7 col-sm-6">
                                                 <textarea class="form-control" name="answer_text{{ loop.index }}" rows="1" id="answer_block{{ loop.index }}" placeholder="type word {{ loop.index }} here"></textarea>
                                             </div>
-                                            <div class="col-xs-1 col-sm-1"><label>
+                                            <div class="col-xs-3 col-sm-3"><label>
                                                 {% set length = word|length %}
-                                                {{ length }}
-                                                
-                                                
+                                                {{ length }} 
+                                                {% if length == 1 %}
+                                                    letter.
+                                                {% else %}
+                                                    letters.
+                                                {% endif %}
                                             </label></div>
                                         </div>
                                     {% endfor %}
-                                    
                                     <div class="row 
-                                        {% if word_count == 1 %}
-                                            bottom-1
-                                        {% elif word_count == 2 %}
-                                            bottom-2
-                                        {% elif word_count == 3 %}
-                                            bottom-3
-                                        {% elif word_count == 4 %}
-                                            bottom-4
-                                        {% endif %}">
+                                        {% if word_count == 1 %} bottom-1
+                                        {% elif word_count == 2 %} bottom-2
+                                        {% elif word_count == 3 %} bottom-3
+                                        {% elif word_count == 4 %} bottom-4 {% endif %}">
                                         <div class="red yellow-bg">
-                                            <!--<p>Place for your previous wrong answer.</p>-->
                                             <p>First WRONG answer: {{ thisUser['game']['wrong_answers'][0] }}</p>
                                             <p>Second WRONG answer: {{ thisUser['game']['wrong_answers'][1] }}</p>
-                                            
                                         </div>
                                         <p>The answer for this riddle has {{ word_count }} 
                                         {% if (word_count) == 1 %}
@@ -133,12 +102,8 @@
                                             words.
                                         {% endif %} <br>See the indicated number of letters.</p>
                                     </div>
-                                    
-                                    
                                 </div>
                             {% endif %}
-                            
-                            
                             <div class="row">
                                 <button type="submit" class="btn btn-default form-align btn-answer-width" name="answer_btn" type="submit" value="answer" alt="Submit Answer">Submit Answer</button>
                                 <button type="submit" class="btn btn-default form-align btn-pass-width" name="pass_btn" type="submit" alt="Pass" value="pass">Pass</button>
@@ -148,41 +113,5 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <h2>Testing</h2>
-        <p><strong>username:</strong> {{ thisUser['username'] }}</p>
-        <p><strong>is_logged:</strong> {{ thisUser['is_logged'] }}</p>
-        <p><strong>total_user_points:</strong> {{ thisUser['total_user_points'] }}</p>
-        <p><strong>games_played:</strong> {{ thisUser['games_played'] }}</p>
-        <p><strong>number_of_games:</strong></strong> {{ thisUser['number_of_games'] }}</p>
-        <p><strong>points_best_game:</strong> {{ thisUser['points_best_game'] }}</p>
-        <p><strong>date_best_game:</strong> {{ thisUser['date_best_game'] }}</p>
-        <p><strong>game_on:</strong> {{ thisUser['game_on'] }}</p>
-        <p><strong>points_this_game:</strong> {{ thisUser['points_this_game'] }}</p>
-        <p><strong>session:</strong> {{ thisUser['session'] }}</p>
-        <p><strong>self.current_route:</strong> {{ thisUser['current_route'] }}</p>
-        <p><strong>thisUser.app_info["logged"]:</strong> {{ thisUser.app_info["logged"] }}</p>
-        <p><strong>thisUser.app_info["route"]:</strong> {{ thisUser.app_info["route"] }}</p>
-        <p><strong>thisUser.game:</strong> {{ thisUser['game'] }}</p>
-
-        <h3>The Game</h3>
-        <p><strong>Game:</strong> {{ thisUser['game']['game'] }}</p>
-        <p><strong>riddles_sequence:</strong> {{ thisUser['game']['riddles_sequence'] }}</p>
-        <p><strong>current_riddle_index:</strong> {{ thisUser['game']['current_riddle_index'] }}</p>
-        <p><strong>riddle_counter:</strong> {{ thisUser['game']['riddle_counter'] }}</p>
-        <p><strong>current_game:</strong> {{ thisUser['game']['current_game'] }}</p>
-        <p><strong>current_riddle:</strong> {{ thisUser['game']['current_riddle'] }}</p>
-        <p><strong>attempt:</strong> {{ thisUser['game']['attempt'] }}</p>
-        <p><strong>points:</strong> {{ thisUser['game']['points'] }}</p>
-        <p><strong>most_recent_answer:</strong> {{ thisUser['game']['most_recent_answer'] }}</p>
-        <p><strong>wrong_answers:</strong> {{ thisUser['game']['wrong_answers'] }}</p>
-        <p></p>
-        {#% set words = ({{ thisUser['game']['current_riddle'][2] }}).split() %#}
-        <!-- {#% set words = (current_riddle[2]).split() %#} -->
-        {% set words = "Some Random Text".split() %}
-        <p>{{ words }}</p>
-        {% set words2 =  thisUser['game']['current_riddle'][2].split() %}
-        <p>{{ words2 }}</p>
     </div>
  {% endblock %}
