@@ -1,4 +1,17 @@
 {
+    "200": {
+        "date_best_game": "27/07/2018",
+        "games_played": [
+            [
+                "27/07/2018",
+                14
+            ]
+        ],
+        "number_of_games": 1,
+        "points_best_game": 14,
+        "total_user_points": 14,
+        "username": "200"
+    },
     "test_user": {
         "date_best_game": "08/04/2018",
         "games_played": [
@@ -15,6 +28,14 @@
     "user1": {
         "date_best_game": "25/07/2018",
         "games_played": [
+            [
+                "28/07/2018",
+                28
+            ],
+            [
+                "27/07/2018",
+                0
+            ],
             [
                 "27/07/2018",
                 0
@@ -36,10 +57,18 @@
                 15
             ]
         ],
-        "number_of_games": 5,
+        "number_of_games": 7,
         "points_best_game": 44,
-        "total_user_points": 121,
+        "total_user_points": 149,
         "username": "user1"
+    },
+    "user100": {
+        "date_best_game": "",
+        "games_played": [],
+        "number_of_games": 0,
+        "points_best_game": 0,
+        "total_user_points": 0,
+        "username": "user100"
     },
     "user2": {
         "date_best_game": "25/07/2018",
@@ -61,5 +90,13 @@
         "points_best_game": 0,
         "total_user_points": 0,
         "username": "user22"
+    },
+    "user300": {
+        "date_best_game": "",
+        "games_played": [],
+        "number_of_games": 0,
+        "points_best_game": 0,
+        "total_user_points": 0,
+        "username": "user300"
     }
 }

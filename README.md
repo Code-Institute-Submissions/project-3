@@ -1,5 +1,16 @@
 # Riddle-Me-This Game
 
+## Security
+
+**A note about security**  
+For this project I do not need high security.
+For better security the secret_key should be completely random to make it very difficult to guess.
+Ideally use a random key generator.
+The key should be placed in a separate configuration file which would then be imported. 
+I do not consider security to be an issue for this particular project considering the purpose.
+
+For better security I would also implement a password that would be salted and hashed. Only the hash 
+would then be stored. Again I am not doing this for this project.
 
 ## Overview
 ### What is this website for?
@@ -7,6 +18,7 @@ This project will form part of my submission for the Fullstack Web Developer cou
 
 This will be my milestone project for Practical Python module of the new LMS.
 
+### Version Control and Deployment
 This the the [github repository](https://github.com/abonello/project-3),
 and this project is deployed as a github page [here](https://abonello.github.io/project-1/). UPDATE
 

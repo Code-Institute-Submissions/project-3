@@ -46,7 +46,7 @@
                                     </div>
                                 </div>
                             </div> 
-                            <!-- <p>Nothing should show after colon - Deprecated : {{ thisUser.app_info["route"] }}</p> -->
+                            <!-- <p>Nothing should show after colon - Deprecated : {#{ thisUser.app_info["route"] }#}</p> -->
                             <!-- Registration Login Form-->
                             {%if thisUser["is_logged"] %}
                                 <form class="align-right" method="POST" action="{{ url_for('logout', currentUser=thisUser['username'], sessionNo=thisUser['session'] ) }}">
@@ -125,10 +125,10 @@
                 <p><strong>game_on:</strong> {{ thisUser['game_on'] }}</p>
                 <p><strong>points_this_game:</strong> {{ thisUser['points_this_game'] }}</p>
                 <p><strong>session:</strong> {{ thisUser['session'] }}</p>
-                <p><strong>self.current_route:</strong> {{ thisUser['current_route'] }}</p>
-                <p><strong>thisUser.app_info["logged"]:</strong> {{ thisUser.app_info["logged"] }}</p>
-                <p><strong>thisUser.app_info["route"]:</strong> {{ thisUser.app_info["route"] }}</p>
-                <p><strong>thisUser.game:</strong> {{ thisUser['game'] }}</p>
+                <p><strong>current_route:</strong> {{ thisUser['current_route'] }}</p>
+                <p><strong>app_info["logged"]:</strong> Deprecated{#{ thisUser.app_info["logged"] }#}</p>
+                <p><strong>app_info["route"]:</strong> Deprecated{#{ thisUser.app_info["route"] }#}</p>
+                <p><strong>game:</strong> {{ thisUser['game'] }}</p>
         
                 <h3>The Game</h3>
                 {% if thisUser['game_on'] %}
