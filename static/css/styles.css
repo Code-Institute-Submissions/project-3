@@ -31,6 +31,12 @@ header h2 {
 /*    position:relative;*/
 /*    width:*/
 /*}*/
+.logging {
+    position: relative;
+    bottom: 0;
+    right: 50px;
+}
+
 
 .align-right {
     position: fixed;
@@ -336,8 +342,12 @@ footer {
     }
     
     .align-right {
-        right: 10px;
-        top: 130px;
+        /* right: 10px;
+        top: 130px; */
+        position: absolute;
+        right: -70vw;
+        top: 100px;
+        float: right;
     }
 
     .logo {
