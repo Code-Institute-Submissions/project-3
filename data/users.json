@@ -83,6 +83,10 @@
         "games_played": [
             [
                 "03/10/2018",
+                62
+            ],
+            [
+                "03/10/2018",
                 100
             ],
             [
@@ -94,9 +98,9 @@
                 50
             ]
         ],
-        "number_of_games": 3,
+        "number_of_games": 4,
         "points_best_game": 100,
-        "total_user_points": 170,
+        "total_user_points": 232,
         "username": "user2"
     },
     "user22": {
