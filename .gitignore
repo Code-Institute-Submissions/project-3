@@ -1,5 +1,4 @@
 env/
-old_test.py
-old_run.py
+/old files
 /.vscode
 /__pycache__
