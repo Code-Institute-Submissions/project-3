@@ -147,10 +147,79 @@ def store_game_info(username):
     with open("data/users.json", "w") as outfile:
         json.dump(allusers, outfile, sort_keys=True, indent=4)
 
+    
+
+    # Update hof_individual.json
+    insert_hof_info=[]
+    insert_hof_info.append(today)
+    insert_hof_info.append(username)
+    insert_hof_info.append(thisUser.points_this_game)
+    insert_in_hof_individual(insert_hof_info)
+    print(insert_hof_info)
+
+
+
+
+
     thisUser.game_on = False
     thisUser.points_this_game = 0
 
     return
+
+def insert_in_hof_individual(data):
+    # global best_individual_games
+    best_individual_games = fill_best_individual_games()
+    # Get list of points from json - already sorted
+    sorted_points = [] #Reverse order
+    for item in best_individual_games:
+        sorted_points.insert(0, item[3])
+    
+    # Add new points - only if it is more than at least the smallest number 
+    if data[2] > min(sorted_points):
+        sorted_points.insert(0, data[2])
+        sorted_points.sort()
+        
+        # Reduce length of list to 10 so that I will have the best 10 
+        # when I insert the new data
+        while len(sorted_points) > 10:
+            del sorted_points[0]
+
+        # Build new list of sorted data
+        insert_done = False
+        
+        new_points_list =[]
+        counter = len(best_individual_games)-1
+        pointer = 0
+        
+        for item in sorted_points:
+            if item == data[2] and insert_done == False: # New item
+                new_points_list.insert(0, (counter + 1, data[0], data[1], data[2]))
+                insert_done = True
+            else:
+                if insert_done:
+                    new_points_list.insert(0, best_individual_games[counter-1])
+                else:
+                    new_points_list.insert(0, [best_individual_games[counter-1][0] + 1, best_individual_games[counter-1][1],best_individual_games[counter-1][2], best_individual_games[counter-1][3]])
+                    
+                counter -= 1
+                pointer += 1
+    else:
+        new_points_list = best_individual_games
+    
+    # Prepare dictionary to write as jason
+    to_write = {}
+    to_write['best_individual_games'] = new_points_list
+    
+    # Store to file
+    with open('data/hof_individual.json', 'w') as outfile:
+        json.dump(to_write, outfile,  sort_keys=True, indent=4)
+        
+    return
+
+
+
+
+
 
 def add(x,y):           #This is a testing function -- Will be removed at that end.
     """Add Function - Testing purposes"""
