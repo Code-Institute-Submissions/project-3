@@ -603,9 +603,9 @@ def game_over(currentUser=defaultUser.username):
     thisUser.current_route = "user"  # I will need this to control the menu
     thisUser.game_on  = False
     flash(thisUser.points_this_game)
+    store_game_info(currentUser)  # Updates Hall of fame too
 
     # TO DO ---------------------------------------------
-    store_game_info(currentUser)  # Updates Hall of fame too
     # global_game_reset()
     # ---------------------------------------------------
     return render_template("user.html", thisUser=thisUser)
