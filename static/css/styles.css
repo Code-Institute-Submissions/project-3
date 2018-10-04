@@ -75,6 +75,22 @@ header h2 {
     display: none;
 }
 
+#sketchHolder {
+    position: absolute;
+    top: 32px;
+    left: 35px;
+    z-index: 1;
+}
+
+/* .defaultCanvas0 {
+    margin: 0px auto;
+    display: block;
+    width: 100%; */
+    /* display: none; */
+    /* top: 20px;
+    left: 100px;
+} */
+
 .nav {
     margin-right: 50px;
 }
