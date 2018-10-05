@@ -81,7 +81,7 @@ header h2 {
     left: 35px;
     z-index: 1;
     /* display: none; */
-    /* visibility: hidden; */
+    visibility: hidden;
 }
 
 /* .defaultCanvas0 {
@@ -391,6 +391,7 @@ footer {
         top: 32px;
         left: 35px;
         z-index: 1;
+        visibility: visible;
     }
 
     .title {
