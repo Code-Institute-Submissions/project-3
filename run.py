@@ -460,13 +460,32 @@ def about(currentUser=defaultUser.username):
     thisUser.current_route = "about"
     return render_template("about.html", thisUser=thisUser)
 
-@app.route('/contact/<currentUser>')
-@app.route('/contact')
+@app.route('/contact/<currentUser>', methods=['GET', 'POST'])
+@app.route('/contact', methods=['GET', 'POST'])
 def contact(currentUser=defaultUser.username):
     thisUser=loggedUsers[currentUser]
     thisUser.current_route = "contact"
-    return render_template("contact.html", thisUser=thisUser)
 
+    if request.method == "GET":
+        return render_template("contact.html", thisUser=thisUser)
+
+
+    try:
+        name = request.form['name']
+        email = request.form['email']
+        subject = request.form['subject']
+        message = request.form['message']
+        msg = Message(subject, sender=email, recipients=[app.config['MAIL_DEFAULT_SENDER']])
+        msg.body = "{} sent the following message from the Riddle-Me this game website: \n__________________________________________\n\n{}".format(name, message)
+        mail.send(msg)
+        return render_template("message_sent.html", name=name, email=email, subject=subject, message=message, thisUser=thisUser)
+    except Exception as e:
+        return render_template("message_error.html", email=email, thisUser=thisUser)
+
+
+'''
+ERROR EXAMPLE:
+smtplib.SMTPRecipientsRefused: {'websiteadmin@anthonybonello.co.uk': (550, b'Verification failed for <anthony@hotmail>\nThe mail server could not deliver mail to -----------@---------.  The account or domain may not exist, they may be blacklisted, or missing the proper dns entries.\nSender verify failed')}'''
 
 @app.route('/game/<currentUser>', methods=['GET', 'POST'])
 @app.route('/game', methods=['GET', 'POST'])
