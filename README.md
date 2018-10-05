@@ -65,3 +65,5 @@ The main change I did from my earlier riddle game project is to base the current
 
 ## Riddle Images
 These are modified versions of pictures from the web.
+
+pip installed flask_mail and updated requirements.txt

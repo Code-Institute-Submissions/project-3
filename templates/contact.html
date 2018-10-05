@@ -10,33 +10,47 @@
                         Have suggestions for improvement?<br>
                         Please fill out the form below to send me a message.<br>
                         Thanks.</p>
-                        <hr>
-                    <form method="POST" name="sentMessage" id="contactForm">
+                    <hr>
+                    <!-- NB 
+                        Not sure if I need the  
+
+                        data-validation-required-message
+
+                        in the input fields below.
+                    -->
+                    <form action='/contact' method="POST" name="sentMessage" id="contactForm" data-toggle="validator" role="form">
                         <div class="control-group">
-                            <div class="form-group floating-label-form-group controls">
-                                <label>Name</label>
-                                <input type="text" class="form-control" placeholder="Name" name="name" id="name" required data-validation-required-message="Please enter your name.">
+                            <div class="form-group controls">
+                                <label for="name" id="nameLabel">Name</label>
+                                <input type="text" class="form-control" placeholder="Type your name here please." name="name" id="name" required data-validation-required-message="Please enter your name." />
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="control-group">
-                            <div class="form-group floating-label-form-group controls">
-                                <label>Email Address</label>
-                                <input type="email" class="form-control" placeholder="Email Address" name="email" id="email" required data-validation-required-message="Please enter your email address.">
+                            <div class="form-group controls">
+                                <label for="email" id="emailLabel">Email Address</label>
+                                <input type="email" class="form-control" placeholder="example@example.com" name="email" id="email" required data-validation-required-message="Please enter your email address." />
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="control-group">
-                            <div class="form-group floating-label-form-group controls">
-                                <label>Message</label>
-                                <textarea rows="5" class="form-control" placeholder="Message" name="message" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                            <div class="form-group controls">
+                                <label for="subject" id="subjectLabel">Subject</label>
+                                <input type="text" class="form-control" placeholder="Type a subject for this message." name="subject" id="subject" required data-validation-required-message="Please enter a subject for this message." />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="form-group controls">
+                                <label for="message" id="messageLabel">Message</label>
+                                <textarea rows="5" class="form-control" placeholder="Please write your message here. . ." name="message" id="message" required data-validation-required-message="Please enter a message." minlength="3"></textarea>
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <br>
                         <div id="success"></div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary" id="sendMessageButton">Send</button>
+                            <button type="submit" class="btn btn-primary center-block" id="sendMessageButton">Send Message</button>
                         </div>
                     </form>
                 </div>

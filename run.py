@@ -7,10 +7,23 @@ import random
 import datetime
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from functools import wraps  #decorators for requires login
+from flask_mail import Mail, Message
 
 app = Flask(__name__)
+    # Use the following to run LOCALLY will need the import
+app.config.from_pyfile('config.cfg')
+
+    # Use the following to run from HEROKU - remove the import
+# app.config["MAIL_SERVER"] = os.getenv('MAIL_SERVER')
+# app.config["MAIL_USERNAME"] = os.getenv('MAIL_USERNAME')
+# app.config["MAIL_PASSWORD"] = os.getenv('MAIL_PASSWORD')
+# app.config["MAIL_PORT"] = os.getenv('MAIL_PORT')
+# app.config["MAIL_USE_SSL"] = os.getenv('MAIL_USE_SSL')
+# app.config["MAIL_DEFAULT_SENDER"] = os.getenv('MAIL_DEFAULT_SENDER')
 
 app.secret_key = "Not a secure key"  # Needed for sessions to work properly
+mail = Mail(app)
+
 loggedUsers = {}
 
 # login_required decorator -- from a tutorial and adapted
@@ -449,13 +462,32 @@ def about(currentUser=defaultUser.username):
     thisUser.current_route = "about"
     return render_template("about.html", thisUser=thisUser)
 
-@app.route('/contact/<currentUser>')
-@app.route('/contact')
+@app.route('/contact/<currentUser>', methods=['GET', 'POST'])
+@app.route('/contact', methods=['GET', 'POST'])
 def contact(currentUser=defaultUser.username):
     thisUser=loggedUsers[currentUser]
     thisUser.current_route = "contact"
-    return render_template("contact.html", thisUser=thisUser)
 
+    if request.method == "GET":
+        return render_template("contact.html", thisUser=thisUser)
+    try:
+        name = request.form['name']
+        email = request.form['email']
+        subject = request.form['subject']
+        message = request.form['message']
+        msg = Message(subject, sender=email, recipients=[app.config['MAIL_DEFAULT_SENDER']])
+        msg.body = "{} sent the following message from the Riddle-Me this game website: \n__________________________________________\n\n{}".format(name, message)
+        mail.send(msg)
+        return render_template("message_sent.html", name=name, email=email, subject=subject, message=message, thisUser=thisUser)
+        # return "name: {} <br>email: {} <br>subject: {} <br>message: {}".format(name, email, subject, message)
+    except Exception as e:
+        return render_template("message_error.html", email=email, thisUser=thisUser)
+        # return "ERROR"
+
+
+'''
+ERROR EXAMPLE:
+smtplib.SMTPRecipientsRefused: {'websiteadmin@anthonybonello.co.uk': (550, b'Verification failed for <anthony@hotmail>\nThe mail server could not deliver mail to -----------@---------.  The account or domain may not exist, they may be blacklisted, or missing the proper dns entries.\nSender verify failed')}'''
 
 @app.route('/game/<currentUser>', methods=['GET', 'POST'])
 @app.route('/game', methods=['GET', 'POST'])
