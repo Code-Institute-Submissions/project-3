@@ -11,6 +11,8 @@ from flask_mail import Mail, Message
 
 app = Flask(__name__)
 
+app.config.from_pyfile('config.cfg')
+
 app.secret_key = "Not a secure key"  # Needed for sessions to work properly
 loggedUsers = {}
 
