@@ -22,6 +22,8 @@ app.config.from_pyfile('config.cfg')
 # app.config["MAIL_DEFAULT_SENDER"] = os.getenv('MAIL_DEFAULT_SENDER')
 
 app.secret_key = "Not a secure key"  # Needed for sessions to work properly
+mail = Mail(app)
+
 loggedUsers = {}
 
 # login_required decorator -- from a tutorial and adapted
@@ -468,8 +470,6 @@ def contact(currentUser=defaultUser.username):
 
     if request.method == "GET":
         return render_template("contact.html", thisUser=thisUser)
-
-
     try:
         name = request.form['name']
         email = request.form['email']
@@ -479,8 +479,10 @@ def contact(currentUser=defaultUser.username):
         msg.body = "{} sent the following message from the Riddle-Me this game website: \n__________________________________________\n\n{}".format(name, message)
         mail.send(msg)
         return render_template("message_sent.html", name=name, email=email, subject=subject, message=message, thisUser=thisUser)
+        # return "name: {} <br>email: {} <br>subject: {} <br>message: {}".format(name, email, subject, message)
     except Exception as e:
         return render_template("message_error.html", email=email, thisUser=thisUser)
+        # return "ERROR"
 
 
 '''
