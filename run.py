@@ -1,8 +1,6 @@
 import os
 import copy
 import json
-# import ast # Needed to turn strings to dictionary. Not sure if I am using anymore.
-             # Will decide when I do the hall of fames and best games.
 import random
 import datetime
 from flask import Flask, render_template, request, redirect, url_for, session, flash
@@ -37,6 +35,7 @@ def login_required(f):
             return redirect(url_for("index"))
     return wrap
 
+
 def read_from_file(file_name):
     store=""
     file = "data/" + file_name
@@ -44,8 +43,10 @@ def read_from_file(file_name):
         store = readdata.read()
     return store
 
+
 # Generate list of all riddles available
 allRiddles = json.loads(read_from_file("riddles.json"))
+
 
 class User(object):
     ''' This is the prototype of a logged user. There will be an instance
@@ -76,6 +77,7 @@ class User(object):
 
         if self.username:
             addLoggedUser(self)
+
 
 class Game(object):
     ''' This is the prototype of a game. When an instance is created it will be owned
@@ -115,7 +117,9 @@ class Game(object):
         generate_riddle_sequence(self)
         select_current_riddle(self)
 
+
 defaultUser = User("default", False, 0, [], "index")
+
 
 def createUser(name):
     tempUser = User(name, True, 0, [])
@@ -123,24 +127,23 @@ def createUser(name):
     loggedUsers[name] = copy.deepcopy(tempUser)
     return vars()[name]
 
+
 def fill_best_individual_games():
     store = json.loads(read_from_file("hof_individual.json"))["best_individual_games"]
     return store
+
 
 def fill_best_all_games():
     store = json.loads(read_from_file("hof_all_games.json"))["best_all_games"]
     return store
 
-def store_game_info(username):
 
+def store_game_info(username):
     thisUser = loggedUsers[username]
-    
     thisUser.number_of_games += 1
     thisUser.total_user_points += thisUser.points_this_game
-    
     today = datetime.datetime.now().strftime("%d/%m/%Y")
     info = (today, thisUser.points_this_game)
-    
     extract_games_played = thisUser.games_played
     thisUser.games_played.insert(0, info)
 
@@ -160,8 +163,6 @@ def store_game_info(username):
     with open("data/users.json", "w") as outfile:
         json.dump(allusers, outfile, sort_keys=True, indent=4)
 
-    
-
     # Update hof_individual.json
     insert_hof_info=[]
     insert_hof_info.append(today)
@@ -176,10 +177,9 @@ def store_game_info(username):
     insert_all_games.append(thisUser.number_of_games)
     insert_in_hof_all_games(insert_all_games)
 
-    # thisUser.game_on = False # This has already been done in game_over route
     thisUser.points_this_game = 0
-
     return
+
 
 def insert_in_hof_individual(data):
     # global best_individual_games
@@ -283,11 +283,6 @@ def insert_in_hof_all_games(data):
 
     return
 
-
-
-def add(x,y):           #This is a testing function -- Will be removed at that end.
-    """Add Function - Testing purposes"""
-    return x + y
 
 @app.route('/<currentUser>', methods=['GET','POST'])
 @app.route('/', methods=['GET','POST'])
@@ -406,7 +401,6 @@ def register():
     return render_template("register.html", button_control=button_control, thisUser=thisUser)
 
 @app.route('/logout/<currentUser>/<sessionNo>', methods=['GET', 'POST'])
-# @app.route('/logout/<currentUser>', methods=['GET', 'POST'])
 @login_required
 def logout(currentUser, sessionNo):
     if request.method == 'POST':    #RESET
@@ -479,15 +473,12 @@ def contact(currentUser=defaultUser.username):
         msg.body = "{} sent the following message from the Riddle-Me this game website: \n__________________________________________\n\n{}".format(name, message)
         mail.send(msg)
         return render_template("message_sent.html", name=name, email=email, subject=subject, message=message, thisUser=thisUser)
-        # return "name: {} <br>email: {} <br>subject: {} <br>message: {}".format(name, email, subject, message)
     except Exception as e:
         return render_template("message_error.html", email=email, thisUser=thisUser)
-        # return "ERROR"
-
 
 '''
 ERROR EXAMPLE:
-smtplib.SMTPRecipientsRefused: {'websiteadmin@anthonybonello.co.uk': (550, b'Verification failed for <anthony@hotmail>\nThe mail server could not deliver mail to -----------@---------.  The account or domain may not exist, they may be blacklisted, or missing the proper dns entries.\nSender verify failed')}'''
+smtplib.SMTPRecipientsRefused: {'----------@a---------.--': (550, b'Verification failed for <-----@hotmail>\nThe mail server could not deliver mail to -----------@---------.  The account or domain may not exist, they may be blacklisted, or missing the proper dns entries.\nSender verify failed')}'''
 
 @app.route('/game/<currentUser>', methods=['GET', 'POST'])
 @app.route('/game', methods=['GET', 'POST'])
@@ -496,7 +487,6 @@ def game(currentUser=defaultUser.username):
     thisUser=loggedUsers[currentUser] 
     thisUser.current_route = "game"     # I will need this to control the menu
 
-    # Do we need to create a new game?
     if thisUser.game_on == False:
         thisUser.game_on = True     # Game On
         thisUser.game = Game()      # CREATE A GAME
@@ -637,9 +627,6 @@ def game_over(currentUser=defaultUser.username):
     flash(thisUser.points_this_game)
     store_game_info(currentUser)  # Updates Hall of fame too
 
-    # TO DO ---------------------------------------------
-    # global_game_reset()
-    # ---------------------------------------------------
     return render_template("user.html", thisUser=thisUser)
 
 if __name__ == '__main__':

@@ -47,7 +47,6 @@
                                     </div>
                                 </nav>
                             </div> 
-                            <!-- <p>Nothing should show after colon - Deprecated : {#{ thisUser.app_info["route"] }#}</p> -->
                             <!-- Registration Login Form-->
                             <div class="logging">
                                 {%if thisUser["is_logged"] %}
@@ -70,15 +69,11 @@
                                     </form>
                                 {% endif %}
                             </div>
-                            
-                            <!-- <img class="img-responsive" src="/static/img/guess.png" alt="logo image"></img> -->
                             <img id="logoImage" class="img-responsive" src="../static/img/myLogoimage_clean_id.png" alt="logo image"></img>
                             <div id="sketchHolder"></div>
-                            
                         </div>
                     </div>
                 </div>
-                
                 <div class="col-md-8 col-lg-9 title min-height-header">
                     <h1>Riddle Me This</h1>
                     <h2>A Guessing Game</h2>
@@ -86,94 +81,29 @@
                     {% else %}
                         <h2>{{ thisUser["username"] }}</h2>
                     {% endif %}
-                    <!-- <p>Session: {{ thisUser["session"] }}</p> -->
                 </div>
             </div>
         </header>
     
         <!-- Main Content -->
         <section class="container">
-                <!-- <p>User: {{ thisUser["username"] }}</p>
-                <p>Logged: {{ thisUser["is_logged"] }}</p>
-                <p>Total Points: {{ thisUser["total_user_points"] }}</p>
-                <p>Points Best Game: {{ thisUser["points_best_game"] }}</p>
-                <p>Date Best Game: {{ thisUser["date_best_game"] }}</p>
-                <p>Number of Game Played: {{ thisUser["number_of_games"] }}</p>
-                <p>Current Route: {{ thisUser["current_route"] }}</p> -->
-        
-                <!-- <table class="table table-condensed table-striped table-bordered">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Date</td>
-                            <th scope="col">Points</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for item in thisUser["games_played"] %}
-                            <tr>
-                                <th scope="row">{{ item[0] }}</td>
-                                <td>{{ item[1] }}</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table> -->
             {% block content %} 
             {% endblock %}
-            <div class="row">
-                <h2>Testing</h2>
-                <p><strong>username:</strong> {{ thisUser['username'] }}</p>
-                <p><strong>is_logged:</strong> {{ thisUser['is_logged'] }}</p>
-                <p><strong>total_user_points:</strong> {{ thisUser['total_user_points'] }}</p>
-                <p><strong>games_played:</strong> {{ thisUser['games_played'] }}</p>
-                <p><strong>number_of_games:</strong></strong> {{ thisUser['number_of_games'] }}</p>
-                <p><strong>points_best_game:</strong> {{ thisUser['points_best_game'] }}</p>
-                <p><strong>date_best_game:</strong> {{ thisUser['date_best_game'] }}</p>
-                <p><strong>game_on:</strong> {{ thisUser['game_on'] }}</p>
-                <p><strong>points_this_game:</strong> {{ thisUser['points_this_game'] }}</p>
-                <p><strong>session:</strong> {{ thisUser['session'] }}</p>
-                <p><strong>current_route:</strong> {{ thisUser['current_route'] }}</p>
-                <p><strong>app_info["logged"]:</strong> Deprecated{#{ thisUser.app_info["logged"] }#}</p>
-                <p><strong>app_info["route"]:</strong> Deprecated{#{ thisUser.app_info["route"] }#}</p>
-                <p><strong>game:</strong> {{ thisUser['game'] }}</p>
-        
-                <h3>The Game</h3>
-                {% if thisUser['game_on'] %}
-                    <p><strong>Game:</strong> {{ thisUser['game']['game'] }}</p>
-                    <p><strong>riddles_sequence:</strong> {{ thisUser['game']['riddles_sequence'] }}</p>
-                    <p><strong>current_riddle_index:</strong> {{ thisUser['game']['current_riddle_index'] }}</p>
-                    <p><strong>riddle_counter:</strong> {{ thisUser['game']['riddle_counter'] }}</p>
-                    <p><strong>current_game:</strong> {{ thisUser['game']['current_game'] }}</p>
-                    <p><strong>current_riddle:</strong> {{ thisUser['game']['current_riddle'] }}</p>
-                    <p><strong>attempt:</strong> {{ thisUser['game']['attempt'] }}</p>
-                    <p><strong>points:</strong> {{ thisUser['game']['points'] }}</p>
-                    <p><strong>most_recent_answer:</strong> {{ thisUser['game']['most_recent_answer'] }}</p>
-                    <p><strong>wrong_answers:</strong> {{ thisUser['game']['wrong_answers'] }}</p>
-                    <p></p>
-                    {% set words =  thisUser['game']['current_riddle'][2].split() %}
-                    <h4>Individual words</h4>
-                    <p>{{ words }}</p>
-                {% else %}
-                    <p>No game set yet.</p>
-                {% endif %}
-            </div>
         </section>
 
     
         <!-- Footer -->
         <footer class="container-fluid">
             <div class="row">
-        
                 <div class="col-sm-6 col-md-4 col-md-offset-2 copyright min-height-footer">
                     <p>Copyright &copy; 2018, Anthony Bonello</p>
                 </div>
-        
                 <div class="col-sm-6 col-md-4 links min-height-footer">
                     <ul class="list-inline social-links">
                         <li><a href = "https://github.com/abonello/riddle-game-app" target = "_blank"><i class="fa fa-github"></i> Github Repository</a></li>
                         <li><a href = "https://www.linkedin.com/in/anthonybonello/" target = "_blank"><i class="fa fa-linkedin"></i> My Linkedin</a></li>
                     </ul>
                 </div>
-        
             </div>
         </footer>
     
@@ -185,7 +115,6 @@
         <script src="../static/vendor/p5.min.js"></script>
         
         <!-- Custom scripts -->
-         <!-- <script src="static/js/main.js"></script> -->
          <script src="../static/js/p5-script.js"></script> 
     </body>
 </html>

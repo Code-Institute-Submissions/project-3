@@ -16,7 +16,6 @@ header h2 {
     font-family: 'Bubblegum Sans', cursive;
 }
 
-
 .min-height-main {
     min-height: 460px;
 }
@@ -25,29 +24,23 @@ header h2 {
     min-height: 30px;
 }
 
-
-/*Registration Login*/
-/*.img-container{*/
-/*    position:relative;*/
-/*    width:*/
-/*}*/
 .logging {
     position: relative;
     bottom: 0;
     right: 50px;
 }
 
-
 .align-right {
     position: fixed;
     right: 100px;
-     /*top: 54px; */
     top: 10px;
     z-index: 20;
 }
+
 .form-username {
     width: 200px;
 }
+
 .form-align {
     display: inline;
 }
@@ -80,18 +73,8 @@ header h2 {
     top: 32px;
     left: 35px;
     z-index: 1;
-    /* display: none; */
     visibility: hidden;
 }
-
-/* .defaultCanvas0 {
-    margin: 0px auto;
-    display: block;
-    width: 100%; */
-    /* display: none; */
-    /* top: 20px;
-    left: 100px;
-} */
 
 .nav {
     margin-right: 50px;
@@ -124,6 +107,7 @@ header h2 {
     font-family: 'Bubblegum Sans', cursive;
     text-shadow: 0 0 1px #c1c193;
 }
+
 .main p {
     text-shadow: 0 0 1px #d0d0b6;
 }
@@ -138,20 +122,10 @@ header h2 {
     color: #c16565;
 }
 
-.registration {
-    /*position: relative;*/
-    /*right: 100px;*/
-     /*top: 54px; */
-    /*top: 10px;*/
-    /*z-index: 20;*/
-}
-.red {
-    color: red;
-}
-
 .btn-width {
     width: 400px;
 }
+
 .btn-deactivated {
     color: grey;
 }
@@ -170,28 +144,23 @@ header h2 {
 .start_game {
     margin-top: 20px;
 }
+
 .play_btn {
     width: 100%;
     background: #ff0ed6;
     border-radius: 20px;
 }
+
 .play_btn:hover {
     box-shadow: 0 0 20px yellow;
     background: #d4ffae;
 }
+
 .play_btn:active, .play_btn:focus {
     box-shadow: 0 0 40px blue;
     background: #b093f7;
     color: #d4ffae;
 }
-
-.game_title {
-    
-}
-
-/*.position_inline {*/
-/*    display: inline;*/
-/*}*/
 
 .game_text {
     font-size: 1.2em;
@@ -206,6 +175,7 @@ header h2 {
 .game_instruction {
     font-size: 1.6em;
 }
+
 .text-area {
     height: 400px;
 }
@@ -213,18 +183,23 @@ header h2 {
 .red {
     color: red;
 }
+
 .yellow-bg {
     background: yellow;
 }
+
 .bottom-1 {
     margin-top: 200px;
 }
+
 .bottom-2 {
     margin-top: 150px;
 }
+
 .bottom-3 {
     margin-top: 125px;
 }
+
 .bottom-4 {
     margin-top: 100px;
 }
@@ -232,9 +207,7 @@ header h2 {
 .btn-answer-width, .btn-pass-width {
     width: 49%;
     margin: 0;
-    
 }
-
 
 footer {
     background-color: #eaeaea;
@@ -260,6 +233,7 @@ footer {
 
 .social-links a {
     color: #333;
+    transition: all 0.35s ease-in-out;
     -moz-transition: all 0.35s ease-in-out;
     -webkit-transition: all 0.35s ease-in-out;
     -o-transition: all 0.35s ease-in-out;
@@ -269,6 +243,7 @@ footer {
     color: #c1c1c1;
     text-decoration: none;
     text-shadow: 0 0 1px #bdbd9b;
+    transition: all 0.35s ease-in-out;
     -moz-transition: all 0.35s ease-in-out;
     -webkit-transition: all 0.35s ease-in-out;
     -o-transition: all 0.35s ease-in-out;
@@ -283,6 +258,7 @@ footer {
     line-height: 7px;
     text-align: center;
     color: #fafafa;
+    transition: all 0.35s ease-in-out;
     -moz-transition: all 0.35s ease-in-out;
     -webkit-transition: all 0.35s ease-in-out;
     -o-transition: all 0.35s ease-in-out;
@@ -296,21 +272,10 @@ footer {
     color: #333;
 }
 
-
-
-
-
 @media only screen and (min-width: 520px){
     h1 {
         font-size: 68px;
     }
-
-    .links {
-        /*border-top: 1px solid #d0d0d0;*/
-        /* padding-top: 20px;
-        text-align: center; */
-    }
-    
 }
 
 @media only screen and (min-width: 770px){
@@ -324,13 +289,11 @@ footer {
         top: 0px;
         z-index:10;
     }
+
     .align-right {
         right: 10px;
     }
-    /*.restrict-size {*/
-    /*    width: 80vw;*/
-    /*    overflow: hidden;*/
-    /*}*/
+ 
     .social-links {
         padding-bottom: 0px;
     }
@@ -346,22 +309,13 @@ footer {
         left: 100%;
         top: 220px;
         width: 300%;
-        /* z-index: 0; */
-        
     }
-    
-    /*.restrict-size {*/
-        /*width: 600px;*/
-    /*    overflow: hidden;*/
-    /*}*/
     
     .min-height-header {
         min-height: 250px;
     }
     
     .align-right {
-        /* right: 10px;
-        top: 130px; */
         position: absolute;
         right: -70vw;
         top: 100px;
@@ -370,7 +324,7 @@ footer {
 
     .logo {
         min-height: 200px;
-         transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
         -moz-transition: all 0.5s ease-in-out;
         -webkit-transition: all 0.5s ease-in-out;
         -o-transition: all 0.5s ease-in-out;
@@ -379,7 +333,6 @@ footer {
     
     .logo img {
         margin: -40px auto 60px auto;
-        /* margin: 20px auto; */
         max-height: 200px;
         width: 80%;
         display: block;
@@ -399,6 +352,7 @@ footer {
         padding-left: 50px;
         text-align: left;
     }
+    
     .start_game {
         margin-top: 10%;
     }
