@@ -474,7 +474,7 @@ def contact(currentUser=defaultUser.username):
         mail.send(msg)
         return render_template("message_sent.html", name=name, email=email, subject=subject, message=message, thisUser=thisUser)
     except Exception as e:
-        return render_template("message_error.html", email=email, thisUser=thisUser, error=e)
+        return render_template("message_error.html", email=email, thisUser=thisUser)
 
 '''
 ERROR EXAMPLE:
