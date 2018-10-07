@@ -630,13 +630,17 @@ def game_over(currentUser=defaultUser.username):
     return render_template("user.html", thisUser=thisUser)
 
 @app.errorhandler(404)
-def page_not_found(e):
-    return render_template('eror404.html'), 404
+def page_not_found(error):
+    return render_template('error404.html'), 404
+    # return_url = request.referrer or '/'
+    # return return_url
 
 
 @app.errorhandler(500)
 def server_error(e):
     return render_template('error500.html'), 500
+    # return_url = request.referrer or '/'
+    # return return_url
 
 if __name__ == '__main__':
-    app.run(host=os.getenv('IP'), port=int(os.getenv('PORT', 8080)), debug=True)
+    app.run(host=os.getenv('IP'), port=int(os.getenv('PORT', 8080)), debug=False)
