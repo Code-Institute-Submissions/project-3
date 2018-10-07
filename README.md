@@ -69,3 +69,5 @@ These are modified versions of pictures from the web.
 pip installed flask_mail and updated requirements.txt
 
 Upgrade Flask to v1.0.2, git reported that the previous version 0.12.2 had a known security vulnerability.
+
+Adding handling for 404 and 500 errors.
