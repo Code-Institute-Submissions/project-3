@@ -9,8 +9,33 @@
   <body>
 
         <h1>Internal Server Error</h1>
-        <p>The server is acting up. I am not sure if it had breakfast this morning.<br>
-            Please try again later.</p>
+        <p>The server is acting up. I am not sure if it had breakfast this morning.</p>
+        <p><strong>Options</strong>:</p>
+        <ul>
+            <li><p>If you were logged in, please confirm your username:</p>
+                    <form action='/error500_recover' method="POST" name="sentMessage" id="contactForm" role="form"></form>
+                        <div class="control-group">
+                            <div class="form-group controls">
+                                {% if message %}
+                                <p style="color: red">{{message}}</p>
+                                {% endif %}
+                                <label for="username" id="confirmUsername">Confirm Username</label>
+                                <input type="text" class="form-control" placeholder="confirm username" name="username" id="username" required data-validation-required-message="Please enter the username you were logged in with." />
+                                <!-- <p class="help-block text-danger"></p> -->
+                            </div>
+                        </div>
+                    <button type="submit" class="btn btn-primary">Home</button>
+                </form>
+            </li>    
+            <li><p>If you were not logged in you can go to by using this button:<br>
+                <button><a href="{{ url_for('index', currentUser='default') }}">HOME</a></button><br>
+                Please note - if you were logged in, using this button will not take you to your session. Please log in again. </p>
+            </li>
+            <li><p>Try again later.</p></li>
+        </ul>
+        
+        
+
       
   </body>
   </html>
