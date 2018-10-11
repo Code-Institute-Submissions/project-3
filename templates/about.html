@@ -3,10 +3,59 @@
     <div class="row">
         <div class="col-md-12 main min-height-main">
             <h3>About</h3>
-            <p>This is a guessing game, which will be part of my protfolio.</p>
-            <p>This will be the about page.</p>
 
-            <p>This change is to test working with branches. I am doing this change on a feature branch. I want to be able to pull it to the dev branch. From there I want to pull it from the local branch and the the master branch. The master branch will then be pushed to heroku without having to mess up with the configuration.</p>
+            <p>This is the milestone project for the “Practical Python” stream, part of the New LMS in the “Full Stack Web Development Course” offered by Code Institute.</p>
+            <p>This is a guessing game, which will be part of my portfolio.</p>
+            <p></p>
+
+            <h3>Credits</h3>
+            <p>I am very grateful to <strong>Marcus Connor</strong> of <a href="http://www.brainlesstales.com" target="_blank"><strong>Brainless Tales</strong></a>
+            for the permission to use his images for this game. <br>
+            One can read more about Marcus' work in the <a href="http://www.brainlesstales.com" target="_blank"><strong>About page of his website</strong></a>. You can also see the 9 years' worth of daily pictures as well as visit his store.
+            </p>
+
+            <h3>Playing the Game - Instructions</h3>
+
+            <p>After logging in or registering you are taken to the user page. If you have navigated elsewhere you need to return to the user page. (Note the user page is not available in the navigation if you are not logged in.)</p>
+            <p>From the User page you can start a new game. Press the "Play a game" button.</p>
+            <img src="" alt="">
+
+            <h3>Features</h3>
+            <ul>
+                <li>Game Logic - allows three attempts with each attempt giving more clues.</li>
+                <li>registration and login</li>
+                <li>When registering, checking if username is not already in use</li>
+                <li>username -  keeps track of all played games, points gained and date</li>
+                <li>keeps track of logged in users incase someone tries to log in from a different device</li>
+                <li>The navigation will automatically hide the link for the current page of for any links that are not available. Ex. If you are not logged in, you cannot access the user page.</li>
+                <li>hall of fame - single game - all games</li>
+                <li>contact form</li>
+                <li>Interactive logo built using p5.js.</li>
+            </ul>
+
+            <h3>Technologies Used</h3>
+            <ul>
+                <li>HTML 5 - general </li>
+                <li>CSS 3 - styling of the </li>
+                <li>Bootstrap - helps in layout</li>
+                <li>javascript - for p5.js</li>
+                <li>p5.js - controls interactivity of the logo image</li>
+                <li>Python - for back end.</li>
+                <li>Flask - Back end framework</li>
+                <li>flask_mail - to enable contact form</li>
+                <li>json - to hold data</li>
+                <li>jinja2 - for templating the various pages</li>
+                <li>fontawesome</li>
+                <li>SVG - This was used to build the logo image. From this png files (with transparent background for the !) where produced.</li>
+            </ul>
+
+            <h3>Known Limitations</h3>
+            <p>Not using a password. Another person can use the same username that has already been registered.</p>
+            <p>When Heroku sleeps, it will erase all new registrations, games played and hall of fame entries and reverts back to the state of when the game was deployed.</p>
+            
+
         </div>
+            
+ 
     </div>
 {% endblock %}
