@@ -26,7 +26,7 @@
                                     <div class="collapse navbar-collapse navHeaderCollapse">
                                         <ul class="nav navbar-nav navbar-left navbar-main">
                                             {% if not(thisUser["current_route"] == "index") %}
-                                                <li class="nav-item active"><a class="nav-link scroll" href="{{ url_for('index', currentUser=thisUser['username']) }}" id="home">Home</a></li>
+                                                <li class="nav-item"><a class="nav-link scroll" href="{{ url_for('index', currentUser=thisUser['username']) }}" id="home">Home</a></li>
                                             {% endif %}
                                             {% if thisUser["is_logged"] and not(thisUser["current_route"] == "user") %}
                                                 <li class="nav-item"><a class="nav-link scroll" href="{{ url_for('user', currentUser=thisUser['username']) }}" id="userNav">USER</a></li>

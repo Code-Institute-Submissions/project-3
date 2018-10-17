@@ -1,4 +1,4 @@
-# Riddle-Me-This Game
+# Riddle-Me-This Game - Work in progress
 
 ## Security
 
@@ -69,3 +69,21 @@ These are modified versions of pictures from the web.
 pip installed flask_mail and updated requirements.txt
 
 Upgrade Flask to v1.0.2, git reported that the previous version 0.12.2 had a known security vulnerability.
+
+
+Getting information about heroku deployment
+
+```bash
+$ heroku apps:info riddlegame-ab
+=== riddlegame-ab
+Auto Cert Mgmt: false
+Dynos:          web: 1
+Git URL:        https://git.heroku.com/riddlegame-ab.git
+Owner:          connect@anthonybonello.co.uk
+Region:         eu
+Repo Size:      10 MB
+Slug Size:      55 MB
+Stack:          heroku-18
+Web URL:        https://riddlegame-ab.herokuapp.com/
+Anthonys-MacBook-Pro:project_3 anthonybonello$
+```
