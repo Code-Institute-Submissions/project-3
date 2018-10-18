@@ -7,30 +7,22 @@
 
         {{ message }}
         <div class="col-md-12 main min-height-main">
-            <h3>Description</h3>
-            <p>This is the milestone project that I am built for the “Practical Python” stream, 
-            part of the New LMS in the “Full Stack Web Development Course” offered by Code Institute.</p>
+            <h3>Introducing this game</h3>
             
-            <p>The purpose of the game is to guess a word or phrase from a given picture. Three attempts 
-            are allowed. With each subsequent attempt further clues will be shown at the expense of reduced
-            points.</p>
+            <p>The purpose of the game is to guess a word or phrase from a given picture.</p> 
+            <p>Three attempts 
+            are allowed. With each subsequent attempt, further clues will be shown at the expense of reduced points.</p>
     
-            <p>More detailed information can be found in the <a href="{{ url_for('about', currentUser=thisUser['username']) }}">
-                <strong>About</strong></a> section of this game.</p>
 
-            <h3>First Instructions</h3>
-            <p>To play, first you need to register if you have not already done so.</p>
-            <p>If you have already registered, use your username to login. Your username is unique and its 
-            sole purpose is to keep track of the games you played and the points you gained. The user name 
-            can be any set of letters and numbers.<br>
-            Once you log in you will be taken to your user page. There you can see a list of games you played
-            and the points gained. You can start a new game from this page.</p>
+            <h3>Instructions</h3>
+            <p>To play, first you need to register, if you have not already done so.</p>
+            <p>Once you register, you will be taken to your user page. On subsequent visits, use your username to login. Each username is unique and its sole purpose is to keep track of the games you played and the points you gained.</p>
+            <p>Please note, this game is not secured so <strong>do not use any personal details</strong>. The username will be displayed for anyone to see in the <a href="{{ url_for('halloffame', currentUser=thisUser['username']) }}"><strong>Hall of Fame</strong></a> page.</p>
+            <p>The username can be any set of letters and numbers.</p>
+            <p>Once you log in you will be taken to your user page. There you can see a list of games you played and the points gained. You can start a new game from this page.</p>
             <p>More detailed information can be found in the <a href="{{ url_for('about', currentUser=thisUser['username']) }}">
-                <strong>About</strong></a> section of this game.</p>
-            <p>A <a href="{{ url_for('halloffame', currentUser=thisUser['username']) }}"> <strong>Hall of Fame</strong></a> 
-                keeps track of the best results obtained for a single game and another for total points gained by users over 
-                all the games they played. These Hall of Fame lists hold the top 10. In case of equal points, newer entries 
-                take precedence over older ones which will drop out of the list if they go beyond the top 10.</p>
+                <strong>About</strong></a> page of this game.</p>
+            <p>A <a href="{{ url_for('halloffame', currentUser=thisUser['username']) }}"> <strong>Hall of Fame</strong></a> keeps track of the best results obtained for a single game and another for total points gained by users over all the games they played. These Hall of Fame lists hold the top 10. In case of equal points, newer entries take precedence over older ones which will drop out of the list if they go beyond the top 10.</p>
         </div>
     </div>
 {% endblock %}
