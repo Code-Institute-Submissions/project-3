@@ -216,13 +216,12 @@ Same colors are used for links in **About Me**.
 * [Back to TOP](#Milestone-Project-3---Riddle-Me-This-Game)  
 * [Back to Skeleton](#skeleton)
 
-Wireframes for mobile, tablet and desktop views have been prepared using  
-![Pencil](img/Pencil-logo-shadow.png)[**Pencil Project**](https://pencil.evolus.vn/)
+A mockup wireframes for this game has been prepared using  
+![Pencil](static/img/Pencil-logo-shadow.png) [**Pencil Project**](https://pencil.evolus.vn/). If you click on the buttons it will mimic the general flow of the game.
 
+You can reach these [here](https://abonello.github.io/project-3_wireframe/)  
+Please note that a copy of the files for this wireframe are in this repository too at [WireFrame/index.html](https://github.com/abonello/project-3/tree/master/WireFrame)  
 
->You can reach these [here](https://abonello.github.io/project-1_wireframe/)  
-Please note that a copy of the files for this wireframe are in this repository too at [wireframe/version2/index_v2.html](https://github.com/abonello/project-1/tree/master/wireframe/version2)  
-This LINK need to be updated
 
 
 
