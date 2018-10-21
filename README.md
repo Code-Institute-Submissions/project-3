@@ -15,6 +15,7 @@
     * [Skeleton](#skeleton)
     * [Surface](#surface)
 * [WIREFRAMES](#wireframes)
+* [LOGIC FLOW DIAGRAM](#game-logic-flow-diagram)
 * [FEATURES](#features)
 * [TECHNOLOGIES USED](#technologies-used)
 * [TESTING](#testing)
@@ -32,9 +33,9 @@ The purpose of the game is to guess a word or phrase from a given picture. Three
 
 
 ### **What I plan to achieve? - An overview**  
-The first decision I felt I have to make is wether to use a text-based or a picture-based riddle. I did a google search and I found some material that I can use as a picture-based riddle game. I also thought that a picture-based would be more attractive to a wide range of users of different ages. I decided to go down this route.
+The first decision I felt I have to make is wether to use a text-based or a picture-based riddle. I did a google search and I found some material that I can use as a picture-based riddle game. I also thought that a picture-based would be more attractive to a wide range of users of different ages. I decided to go down this route. See [credits](#credits) for these pictures.
 
-Then I sketched a few layouts (pencil and paper) to get a general feel of how I would get the game to flow and an idea of layout of various parts. I sketched the logic of the game using a flow diagram.
+Then I sketched a few layouts (pencil and paper) to get a general feel of how I would get the game to flow and an idea of layout of various parts. I sketched the logic of the game using a [flow diagram](#game-logic-flow-diagram).
 
 The game will randomly select 10 riddles from a pool of riddles. The user will be presented with the first riddle. The user has to write the answer for the riddle and submit the answer by pressing a button. An option to pass is also provided. 
 
@@ -234,11 +235,16 @@ A mockup wireframes for this game has been prepared using
 You can reach these [here](https://abonello.github.io/project-3_wireframe/)  
 Please note that a copy of the files for this wireframe are in this repository too at [WireFrame/index.html](https://github.com/abonello/project-3/tree/master/WireFrame)  
 
+## GAME LOGIC FLOW DIAGRAM
+* [Back to TOP](#Milestone-Project-3---Riddle-Me-This-Game)  
+This is the flow diagram of the logic controlling the game.
+![Logic Flow Diagram](WireFrame/pages/game_logic_flow_chart.png)
 
 
 
 ## FEATURES
 * [Back to TOP](#Milestone-Project-3---Riddle-Me-This-Game)
+* [Back to Overview](#What-I-plan-to-achieve?---An-overview)
 
 ### Existing Features
 
