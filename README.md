@@ -237,6 +237,8 @@ Please note that a copy of the files for this wireframe are in this repository t
 
 ## GAME LOGIC FLOW DIAGRAM
 * [Back to TOP](#Milestone-Project-3---Riddle-Me-This-Game)  
+* [Back to Overview](#What-I-plan-to-achieve?---An-overview)  
+
 This is the flow diagram of the logic controlling the game.
 ![Logic Flow Diagram](WireFrame/pages/game_logic_flow_chart.png)
 
@@ -244,7 +246,7 @@ This is the flow diagram of the logic controlling the game.
 
 ## FEATURES
 * [Back to TOP](#Milestone-Project-3---Riddle-Me-This-Game)
-* [Back to Overview](#What-I-plan-to-achieve?---An-overview)
+
 
 ### Existing Features
 
