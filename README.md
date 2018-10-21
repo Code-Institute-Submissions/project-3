@@ -25,10 +25,22 @@
 ## INTRODUCTION
 * [Back to TOP](#Milestone-Project-3---Riddle-Me-This-Game)
 
+### **A Guessing Game**  
+This is the milestone project for the “Practical Python” module, part of the New LMS in the “Full Stack Web Development Course” offered by Code Institute.
+
+The purpose of the game is to guess a word or phrase from a given picture. Three attempts are allowed. With each subsequent attempt, further clues will be shown at the expense of reduced points.
 
 
+### **What I plan to achieve? - An overview**  
+The first decision I felt I have to make is wether to use a text-based or a picture-based riddle. I did a google search and I found some material that I can use as a picture-based riddle game. I also thought that a picture-based would be more attractive to a wide range of users of different ages. I decided to go down this route.
 
->I have had a personal website for over 15 years. Initially it was very simple, single page, hand coded html with very little styling. It was hosted on various free services. Then I improved the styling and content leading to getting my own hosting. Following that, I used joomla for my site for a number of years. Now I built the current single-page site.
+Then I sketched a few layouts (pencil and paper) to get a general feel of how I would get the game to flow and an idea of layout of various parts. I sketched the logic of the game using a flow diagram.
+
+The game will randomly select 10 riddles from a pool of riddles. The user will be presented with the first riddle. The user has to write the answer for the riddle and submit the answer by pressing a button. An option to pass is also provided. 
+
+A submitted answer will be checked against the stored answer and if correct a second riddle is presented. If the answer is wrong or if the user chooses to pass, a second attempt at answering will be offered. This time the user will be told how many words are expected in the answer. Similar submit and pass options are offered. If the answer is wrong or the user passes, a third attempt is offered. This time the user will be shown how many words should be in the answer and how many letters are in each word. After this final attempt the user will be directed to the next riddle, unless it is the final one, in which case the game will end and the user will be directed to the user page.
+
+Points gained will be displayed on the user page and if they are high enough they will be added to the Hall of Fame.
 ____
 
 
