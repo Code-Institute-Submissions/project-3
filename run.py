@@ -296,6 +296,13 @@ def index(currentUser=defaultUser.username):
 
     allusers = json.loads(read_from_file("users.json"))
     message = ""
+
+    try:
+        if session['user']:
+            currentUser = session['user']
+    except:
+        pass
+
     thisUser=loggedUsers[currentUser]
     thisUser.current_route = "index"
     return render_template("index.html", thisUser=thisUser, message=message)
