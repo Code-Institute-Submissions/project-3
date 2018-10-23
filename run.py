@@ -296,6 +296,13 @@ def index(currentUser=defaultUser.username):
 
     allusers = json.loads(read_from_file("users.json"))
     message = ""
+
+    try:
+        if session['user']:
+            currentUser = session['user']
+    except:
+        pass
+
     thisUser=loggedUsers[currentUser]
     thisUser.current_route = "index"
     return render_template("index.html", thisUser=thisUser, message=message)
@@ -329,6 +336,9 @@ def login():
                     loggedUsers[username].current_route = "user"
                     loggedUsers[username].is_logged = True
                     session['logged_in'] = True
+                    session['user'] = username
+                    session['session'] = 1
+                    print(session)
                     return render_template("user.html", thisUser=loggedUsers[username], username="", message="")
             else:
                 return redirect(url_for('register')) 
@@ -340,6 +350,8 @@ def login():
 @app.route('/proceed_login/<username>', methods=['GET', 'POST'])
 def proceed_login(username):
     loggedUsers[username].session+=1
+    session['session'] = loggedUsers[username].session
+    print(session)
     loggedUsers[username].current_route = "user"
     return render_template("user.html", thisUser=loggedUsers[username])
 
@@ -393,6 +405,9 @@ def register():
                     loggedUsers[username].current_route = "user"
                     loggedUsers[username].is_logged = True
                     session['logged_in'] = True
+                    session['user'] = username
+                    session['session'] = 1
+                    print(session)
                     return render_template("user.html", thisUser=loggedUsers[username], username="", message="")
     except Exception as e:
         return "<h1> Error: " + str(e) + "</h1>"
@@ -422,6 +437,9 @@ def logout(currentUser, sessionNo):
                 del thisUser
                 del loggedUsers[currentUser]
                 session.pop('logged_in', None)
+                session.pop('user', None)
+                session.pop('session', None)
+                print("This is session: {}".format(session))
 
                 return redirect(url_for("index"))
             else:
@@ -629,5 +647,56 @@ def game_over(currentUser=defaultUser.username):
 
     return render_template("user.html", thisUser=thisUser)
 
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('error404.html'), 404
+    # return_url = request.referrer or '/'
+    # return return_url
+
+
+@app.errorhandler(500)
+def server_error(e):
+    send = "<h1>Internal Server Error</h1><p>The server is acting up. I am not sure if it had breakfast this morning.<br>Please try again later.</p><p>{}</p>".format(e)
+    # return send, 500
+    # return "test"
+    # return_url = request.referrer or '/'
+    # return return_url
+    return render_template('error500.html'), 500
+
+@app.route('/error500_recover', methods=['POST'])
+def error500_recover():
+    name = ""
+    thisUser = ""
+
+    name = request.form['username']
+    return "Extracted username: {}".format(name)
+
+
+    # try:
+    #     name = request.form['username']
+    #     print("****************************")
+    #     print(name)
+    #     return "Extracted username: {}".format(name)
+    # except Exception as e:
+    #     print(name)
+        # print(thisUser)
+        # return render_template('error500.html', message="Could not get username from form"), 500
+        # return "Failed to extract username."
+
+    # try:
+    #     thisUser=loggedUsers[name] 
+    #     print(thisUser)
+    # except Exception as e:
+    #     print(name)
+    #     print(thisUser)
+    #     return render_template('error500.html', message="This user was not logged in"), 500
+
+    # message = ""
+    # thisUser.current_route = "index"
+
+    # return render_template("index.html", thisUser=thisUser, message=message)
+    # return ("On the way to INDEX")
+
+
 if __name__ == '__main__':
-    app.run(host=os.getenv('IP'), port=int(os.getenv('PORT', 8080)), debug=True)
+    app.run(host=os.getenv('IP'), port=int(os.getenv('PORT', 8080)), debug=False)

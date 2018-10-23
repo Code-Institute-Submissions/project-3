@@ -87,3 +87,4 @@ Stack:          heroku-18
 Web URL:        https://riddlegame-ab.herokuapp.com/
 Anthonys-MacBook-Pro:project_3 anthonybonello$
 ```
+Adding handling for 404 and 500 errors.

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container">
+
+        <h1>Internal Server Error</h1>
+        <p>The server is acting up. I am not sure if it had breakfast this morning.</p>
+        <p><strong>Options</strong>:</p>
+        <ul>
+            <!-- <li><p>If you were logged in, please confirm your username:</p>
+                    <form action='/error500_recover' method="POST" name="sentMessage" id="contactForm" role="form"></form>
+                        <div class="control-group">
+                            <div class="form-group controls"> -->
+                                <!-- {#% if message %#} -->
+                                <!-- <p style="color: red">{#{message}#}</p> -->
+                                <!-- {#% endif %#} -->
+                                <!-- <label for="username" id="confirmUsername">Confirm Username</label>
+                                <input type="text" class="form-control" placeholder="confirm username" name="username" id="username" required data-validation-required-message="Please enter the username you were logged in with." /> -->
+                                <!-- <p class="help-block text-danger"></p>  NOT USED-->
+                            <!-- </div>
+                        </div> -->
+                    <!-- <button type="submit" class="btn btn-primary">Home</button> NOT USED-->
+                    <!-- <button id="redirect" class="btn btn-primary">Home</button>
+                </form>
+            </li>     -->
+            <li>
+                <!-- <p>If you were not logged in you can go to the Home page by using this button:<br> -->
+                <p>You can go to the Home page by using this button:<br>
+                <!-- <a href="{{ url_for('index', currentUser='default') }}"><button class="btn btn-default">HOME</button></a><br> -->
+                <a class="btn btn-warning" href="{{ url_for('index', currentUser='default') }}" role="button">Home</a><br>
+                Please note - if you were logged in, you will have to log in again. The software will recognise that you were previously logged in and will allow you to join the preovious session. <br><strong>Note</strong>: <em>any unfinished games will be discarded</em>.</p>
+            </li>
+            <li><p>Try again later.</p></li>
+        </ul>
+    </div>
+    
+    <script>
+        let targetBtn = document.getElementById("redirect");
+        targetBtn.onclick(function () {
+            console.log("button clicked");
+            // let actButton = document.getElementById("redirect");
+            
+            // let enteredUser = document.getElementById("username");
+
+            // actButton.ajax({
+            //     data: {
+            //         currentUser: enteredUser
+            //     },
+            //     type: 'POST',
+            //     url: '/'
+            // });
+        });
+
+    </script>
+  </body>
+  </html>
+  
+  
+  
