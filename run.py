@@ -296,6 +296,13 @@ def index(currentUser=defaultUser.username):
 
     allusers = json.loads(read_from_file("users.json"))
     message = ""
+
+    try:
+        if session['user']:
+            currentUser = session['user']
+    except:
+        pass
+
     thisUser=loggedUsers[currentUser]
     thisUser.current_route = "index"
     return render_template("index.html", thisUser=thisUser, message=message)
@@ -329,6 +336,9 @@ def login():
                     loggedUsers[username].current_route = "user"
                     loggedUsers[username].is_logged = True
                     session['logged_in'] = True
+                    session['user'] = username
+                    session['session'] = 1
+                    print(session)
                     return render_template("user.html", thisUser=loggedUsers[username], username="", message="")
             else:
                 return redirect(url_for('register')) 
@@ -340,6 +350,8 @@ def login():
 @app.route('/proceed_login/<username>', methods=['GET', 'POST'])
 def proceed_login(username):
     loggedUsers[username].session+=1
+    session['session'] = loggedUsers[username].session
+    print(session)
     loggedUsers[username].current_route = "user"
     return render_template("user.html", thisUser=loggedUsers[username])
 
@@ -393,6 +405,9 @@ def register():
                     loggedUsers[username].current_route = "user"
                     loggedUsers[username].is_logged = True
                     session['logged_in'] = True
+                    session['user'] = username
+                    session['session'] = 1
+                    print(session)
                     return render_template("user.html", thisUser=loggedUsers[username], username="", message="")
     except Exception as e:
         return "<h1> Error: " + str(e) + "</h1>"
@@ -422,6 +437,9 @@ def logout(currentUser, sessionNo):
                 del thisUser
                 del loggedUsers[currentUser]
                 session.pop('logged_in', None)
+                session.pop('user', None)
+                session.pop('session', None)
+                print("This is session: {}".format(session))
 
                 return redirect(url_for("index"))
             else:
