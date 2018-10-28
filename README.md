@@ -48,43 +48,64 @@ ____
 ## UXD
 * [Back to TOP](#Milestone-Project-3---Riddle-Me-This-Game)
 
->This is the latest incarnation of my website. Its main function is to be an extension of my CV and having a place of contact if someone wants to get in touch but does not know my email address.
+The idea is to have a riddle game based on the idea of Pictionary.
 
->The plan is to have a single page website with a parallax background. The design should be responsive.
+Some menus will not be available before a user logs in, namely USER and CURRENT GAME. CURRENT GAME will only be available while a game is beign played. I plan to hide the menu for leading to the current view.  
+
+There are arguments against this. The argument goes that it will disorient the user by having the order changing. My argument is that the menu is going to change anyway since the unavailable menus will not be shown. 
+
+I think this is a small price to pay and the user should get used to it in a brief time. I do not think that it requires any appreciable learning curve. Some of the riddles are much tougher.
 
 ### **Strategy** 
 * [Back to TOP](#Milestone-Project-3---Riddle-Me-This-Game)
 
---------
-```
-**What do I want as the owner of the site?**
-* Internet presence  
-* Means to communicate with me  
-* Portfoilio  
-* Brief info about my activities  
-```
+The users of this site will be challenged with pictures which represent a word or a phrase and they have to guess this and gain as many points as possible to qualify to the Hall of Fame.
+
+There are two halls of fame, one is for individual games, and the second for the overall points gained by the user. This will encourage the users to play more and raise their personal overall points gained.
 
 -----------
->This is my personal website as a musician. It needs to serve as an extension of my CV for music related activities.
+People who might use the website would be looking for a mental challenge. Ages can vary but it does require a wide background knowledge of various topics and experiences.
 
->People who might use the website are:
-```
-* someone wanting to learn music; beginners / continuing / pick up an instrument which they played when they were younger  
-* performers wanting to perform one of my pieces  
-* people wanting to commission a new composition or arrangement 
-* artists wanting to collaborate on an art piece which include music or audio  
-* someone looking for a conductor for an orchestra or a band.
-```
+-------
 
 #### What does it do?
->This website gives visitors information about my various activities related to myself as an active musician.  
-It is targeted at potential clients who would like to use my services as a composer/sound desgner, conductor, performer or teacher.
+Once a user registers and logs in, this game will select a random selection of 10 riddles from the current 30 riddles. The user will have to guess the word or phrase that the picture represents.
+
+This game is competitive throught the employment of hall of fames.
+
+It is targeted at users who like mental challenges.
+
 Visitors have the ability to contact me by using a contact form.
 
 #### How does it work
->The website is planned as a single page application. Each section is well separated from the others through the use of alternating background so that the material is distinct. Extra information about my activities can be accessed through the *Tell me more ...* buttons.  
 
->The navigation will smoothly scroll up and down so that the users will know that they are still on the same page rather than taken to a different page. This helps the users to keep track of where they are.
+
+**Playing the Game - Instructions**
+
+After logging in or registering you are taken to the user page. If you have navigated elsewhere you need to return to the user page. (Note the user page is not available in the navigation if you are not logged in.)
+
+From the User page you can start a new game. Press the **Play a game** button.
+
+An image is shown and your task is to guess the word or phrase that it represents. Type this in the space provided. Then click the **Submit Answer** button. If your guess is correct you will earn 10 points and will be moved to the next riddle.
+
+If you have no clue of the answer, you can click on the **Pass** button.
+
+Clicking the pass button, or if your first attempt was wrong will take you to the second attempt page.
+
+Here you can see your previous answers for this riddle, and an indication of the number of words expected. Notice that the number of points for a successful guess has been reduced to 6. As previously, you can attempt a reply or pass.
+
+Please note: the game has been coded in a way that it will accept the answer typed in a single input field. This has been done to facilitate typing.
+
+If the answer is correct you will earn 6 points and the next riddle is presented. If your guess is wrong or you pass, you will be taken to the page for a third and final attempt.
+
+This time round, apart from the number of words, you will be told how many letters are in each word. This is done at the expense of reduced number of points which, in case of a successful guess are reduced to 2 points.
+
+If your guess is wrong or you pass, you will be taken to the next riddle. If it happens to be the last riddle in a game, then the game will be over and you will be taken to your User page. The points gained will be added to your scores and if you were good enough you might even make it to the Hall of Fame.
+
+Each game has 10 riddles with a maximum of 100 points.
+
+
+If you navigate away from the game, a new menu will appear that will allow you to return and continue the current game.
 
 
 
@@ -92,77 +113,94 @@ Visitors have the ability to contact me by using a contact form.
 * [Back to TOP](#Milestone-Project-3---Riddle-Me-This-Game)
 
 #### Features to implement
-```
-* Activities - some sort of list with some details and possibly extending the information,
-* A short Bio,
-* Examples of my compositions with the possibility for the user to listen to these examples,
-* A way for the user to get in touch without revealing my email address,
-* Links to Github and Linkedin.
-```
+
+* Game
+* Contact
+* Instructions in home page and About page
+* Hall of Fame:
+    * Single game
+    * Per user (all games played by user)
+
 
 #### User stories
-```
-* A potential student (or a parent) wanting to learn an instrument can read about my teaching and then be directed to get in touch through the online form.
 
-* A performer wanting to play one of my pieces comes to the site to get in touch and ask for scores. The performer is given the opportunity to find out more and directed to the contact form.
+A person comes to this game to play:
 
-* A fixer for a music group is looking for a french horn player. The fixer will be directed to the contact form.
+1. **Case first time user, using available username**:  
+The user tries to register. The username is checked. It is available. The user is allowed to proceed with the registration process. On completion the user is logged in, taken to the user page and ready to start playing. See [instructions](#how-does-it-work).
 
-* A person is interested in commissioning a new piece (acoustic / electroacoustic / mixed). This person will have the opportunity to read about me as a musician and offered the possibility to start communicating and ask questions through the contact form.
+2. **Case first time user, trying to use unavailable username**:  
+The user tries to register. The username used is found to be already in use. A message to this effect is shown to the user and asked to select another one. This continues until the user selects an available (not already in use) username. The user is allowed to proceed with the registration process. On completion the user is logged in, taken to the user page and ready to start playing. See [instructions](#how-does-it-work).
 
-* A music group representative needs a conductor, perhaps to step in for their regular conductor. This person will have the opportunity to read about me as a musician and in particular, me as a conductor. There will also be the opportunity to get in touch and ask questions.
+3. **Case returning user**:  
+The user types in the username and clicks on the login button. The user is taken to the user page where there will be displayed a list of games already played and a button allowing for starting a new game. For playing the game see [instructions](#how-does-it-work).
 
-* An artist (ex visual artist) has an idea to build an installation and would like to include sound, perhaps self-generating sound depending on the movement of people within the installation space.
-This artist will have the opportunity to read about my compositions and also to listen to some examples. There will be the opportunity to get in touch through the online contact form.
-```
+
 ### **Structure**
 * [Back to TOP](#Milestone-Project-3---Riddle-Me-This-Game)
-```
-The plan is to have a Single Page Application (SPA) website. It will be divided into three main sections:
-1. Activities
-2. About Me (short bio)
-3. Portfolio
-```
->There will also be a fixed **navigation** at the top, a **header** just below the navigation, a **contact form** and a **footer** with links.
 
->I decided against having obvious headers for the activites and the portfolio sections. If someone reaches them from the navigation they will know before arriving. For someone arriving there through scrolling, the subheadings in the activites and the content of the portfolio is easy to distinguish.   
+The data is held in json files. Databases can be used in later versions of the game.
 
->I feel that adding blaring titles to these sections will be overkill and sort of corny.
+There are 4 json files employed:
+1. users.json - An object of objects; this holds information about each registered user. Example:  
+    "user1": {
+        "date_best_game": "27/07/2018",
+        "games_played": [
+            [
+                "27/07/2018",
+                14
+            ]
+        ],
+        "number_of_games": 1,
+        "points_best_game": 14,
+        "total_user_points": 14,
+        "username": "user1"
+    }
 
->I will also add a quote section between the portfolio section and the contact form. This will form a natural break of an otherwise two sections using the greyish gradient background.
+    games_played stores the date of the game as well as the points gained for that game
 
->**Navigation** will be through the nav buttons at the top, the buttons (Primary and Secondary CTA) as well as through scrolling.
+2. riddles.json - List of objects; this holds data about all the riddles available. 10 will be chosen at random for each game. The code will make sure that the same riddle is not selected multiple times. Example:  
+    {   
+        "id":       1,
+        "source":   "Obi-Wan-Kenobi.jpg",
+        "answer":   "Obi Wan Kenobi"
+    }
 
->The overall feel of the page should be one of soft scrolling, avoiding instant jumps which might imply to the user that they are on a different page.
+3. hof_individual.json - holds data about the best 10 games played. When new games are added, the code will sort the games and drop the 11th one.
 
-----
->The **Activities** part will be divided into 6 activities: 
-```
-1. Composition
-2. Sound Design
-3. Conducting
-4. Performance
-5. Music Tuition
-6. Research 
-```
-
->These activities will stack on top of each other in mobile view, but will be displayed in three rows of two for tablets and two rows of three on desktop.
-
-The **Portfolio** part will contain a few examples based on the music I have available on soundcloud, as well as an example from my youtube channel.
-
->I plan to have these stack one on top of each other in mobile view. In tablet and desktop views, there will be enough space to include an image which is evocative of an idea related to the music. (Images to alternate left - right)
+4. hof_all_games.json - holds data about the best overall performance by users. It holds the total points for that user and the number of games played. The code will drop any entries beyond 10.
 
 
 ### Skeleton
 * [Back to TOP](#Milestone-Project-3---Riddle-Me-This-Game)
 
->The overall plan is to have a Single Page Application with a fixed navigation at the top. This allows the user to reach all main sections of the site.
 
->There will also be buttons to open the *Tell me more ...* sections related to different activities.
+1. Home Page
+2. User Page
+3. Current Game Page
+4. Hall of Fame Page
+5. About Page
+6. Contact Page
 
->CTA buttons will be placed in strategic parts of the site to allow the user to directly reach the contact form.
+Overall each page's structure includes:
+* a header containing:
+    * a logo, 
+    * title,
+    * logged in username (if any),
+    * login/registration section,
+    * navigation.
+* Body section:  
+    * This can be single column (all screen sizes), or
+    * single column (for mobile / tablet) changing to two columns (for desktop).
+* Footer section:
+    * Copyright notice,
+    * social links.
 
->Priority was given to the various activities that I engage in, followed by the bio and then the portfolio. The quote is only there as a visual separation between the portfolio and the contact form.
+
+Not all the pages will be available from the start as some will require the user to be logged in. The unavailable pages will not show up in the menu. Since the menu items were going to change in this way, I decided to hide the menu item that the user is currently visiting.
+
+I had experiences using other websites where I click on a menu item and nothing seem to happen only to discover that I am actually already on that page. The reason for hiding the current page from the menu is to avoid this situation while keeping in line with how the navigation is already functioning.
+
 
 * [wireframe](#wireframes) - follow this link for further reading
 
@@ -170,59 +208,74 @@ The **Portfolio** part will contain a few examples based on the music I have ava
 ### Surface
 * [Back to TOP](#Milestone-Project-3---Riddle-Me-This-Game)
 
->The overall design is unified by the alternating dark triangle background with the greyish gradient background sections. The color scheme is monochromatic with some contrasting collors for CTA (buttons). 
-        
->The use of parallax background in alternating sections creates an interesting break to the grey gradient background as well as to give this SPA a structure (form). The grey gradient background is enhanced with an image which sits in the ::before selector.
 
->All navigation is animated and controlled by javascript to give a smooth scroll effect. This enables the users to feel that they are like moving on a map rather than thrown from one place to another without knowing where they landed. The navigation acts as a sort of breadcrumbs as javascript keeps track of the page position and highlight the appropriate menu item.
+The idea is to have a responsive, mobile first design.
 
->Overall, the content will be dispalyed in one column spanning the whole width of the screen in mobile view.
-On tablets, this will change to a two column view (half each) for the activities. At this point I will also add images next to each portfolio item in alternate positions (left - right). In desktop view, the activites will display in two rows of three equal columns.
+Header at the top, body and footer.
 
->The images used are related to the feel, emotions, and/or philosophy of the adjacent composition.
+The overall color scheme is monochrome based on a grey scale.
 
->In all views, the About Me and the Contact form will be full width.
+Some accent colors where chosen for CTA buttons.
 
->The footer will be stacked in one column in mobile view and will get a two column layout for the tablet and desktop views. (Note that the *back to top* link will remain centered for all views.)
+# I WANT TO IMPLEMENT MORE OF THESE COLORS FOR BUTTONS IN THE GAME AS WELL AS LOGIN, REGISTER, LOGOUT BUTTONS.
+# ALSO CONTACT FORM
+# BUTTONS IN REGISTER FORM 
+# CHECK USERNAME AVAILABLE AND REGISTER
 
->The quote was added to facilitate the flow of the overall structure of the page by breaking two adjacent sections which have the greyish gradient background and also helps in the form, akin to a **Rondo** musical structure.
+
+Error messages are in red. Some are highlighted with yellow background to make them stand out.  
+Success messages are green. TO IMPLEMENT
+
+LOGO 
+The logo is only present in screens of landscape tablets and above.
+
+I wanted to accentuate the game by doing an interactive logo. This was designed in inkscape as an svg image. But I decided to use a png version for implementation. The base color is brownish to match the general color of the riddle pictures.
+
+The animation of the logo uses [p5.js](https://p5js.org/) library. p5.js a JS client-side library for creating graphic and interactive experiences, based on the core principles of Processing.
+
+I preload three images, one for the complete image - the logo at rest, one for the logo background missing the exclamation mark and its border, and a third one for a semi-transparent exclamation mark (no border). Using javascript, I switch the background image and handle the position of the floating exclamation mark to follow the mouse position.
+
+By switching the images I achieve an effect as if there is a meniscus which reaches up around the exclamation mark creating a whitish border when it is at rest. As soon as the exclamation mark is lifted off its resting place and moves around this border is removed as if an item has been lifted out of a liquid surface.
+
+
+The footer will be stacked in one column in mobile view and will get a two column layout for the tablet and desktop views.
+
 
 #### Colors 
 
-```
-* **Heading color**:  
-rgb(255, 233, 184) is taken from music background image.  
+The overall color scheme is a scale of grey.
+  
 
 * **Logo Color / Brand**:  
-rgb(255, 255, 240) with a transition to red with a hue-rotate of -50deg to reach rgb(217, 40, 188) #d928bc, the same colour used by for the hover of the secondary CTA. The reason why this color is initially set to red is to get the color transition to work over the range of colors I wanted.
 
-* **Background color** (For non-parallax sections): ```
+Main color for Logo: #d67b34
 
-```
-```
-* **Text color**:  
-rgb(0, 0, 0) (*changed from #D5D5D5*) for grey gradient backgrounds and color: rgb(255, 233, 184) (same as header) for text on triangular background, including about me, quote and footer. 
-NB: *text color for grey gradient background changed again from rgb(25, 39, 51); to aid readability*.
 
-```
-```
+* **Text color**:  rgb(0, 0, 0) 
+
+
 * **footer &lt;a&gt; color**:  
-rgb(255, 233, 184) and rgb(255, 195, 66) when hovered. Text of links will slightly increase in size on hover too.    
-Same colors are used for links in **About Me**.
+Social Icons have a touch of red that floods the icons on hover.
 
-* **Form error color**:  
-#e2631f  
+* **Error message color**:  
+red
+
+* **Success message color**: 
+Green
+
 
 * **Button colors** (complementary colors):  
-    * **Primary CTA** : rgb(253, 134, 29) #fd861d
-    * **Secondary CTA** :rgb(99, 40, 217) #6328d9 with a hover color of rgb(217, 40, 188)
-#d928bc
-* Set all buttons in soundcloud to value %23ff5500 (orange). This color code is one of the standard soundcloud colors.
-```
+    * **CTA Buttons** : #f92fd6 with a hover of #d4ffae having a yellow shadow. 
+    When active the background changes to #b093f7 with a blue shadow and text color becomes #d4ffae.
+    Notice the text in active state uses the same color as the hover shadow. 
+
+
 
 #### Typography
 
->Fonts used are from [google fonts](https://fonts.google.com/). The main font is **Roboto** with a fall-back to sans-serif. The other font used is **Lobster** with a fall-back to Cursive. The latter was chosen as it contrasts well with roboto and sans-serif. This is used in two places, the logo and the main header of the page.
+Fonts used are from [google fonts](https://fonts.google.com/). The main font is **Averia Serif Libre** with a fall-back to Cursive. The other font used is **Gloria Hallelujah** with a fall-back to Cursive for H1 header. And **Bubblegum** witha a fall-back to Cursive for H2 and H3 headers.
+
+The font used for both the logo and the favicon is **Savoye LET CC**. Even the exclamation mark started with this font but then it was warped.
 
 
 ## WIREFRAMES
@@ -249,6 +302,22 @@ This is the flow diagram of the logic controlling the game.
 
 
 ### Existing Features
+
+If a user tries to login with a non existent username, that user will be directed to the registration page.
+
+
+
+Game Logic - allows three attempts with each attempt giving more clues.
+registration and login
+When registering, checking if username is not already in use
+username - keeps track of all played games, points gained and date
+keeps track of logged in users incase someone tries to log in from a different device
+The navigation will automatically hide the link for the current page of for any links that are not available. Ex. If you are not logged in, you cannot access the user page.
+hall of fame - single game - all games
+contact form
+Interactive logo built using p5.js.
+
+
 
 >Navigation is through a menu which appears as a button for mobiles and tablets, and as a fixed menu at the top of the page in desktop view. 
 Clicking on a menu item will start a smooth scrolling to the top of that section within the page. This is done in order not to confuse the user in thinking that this is a new page.
@@ -278,10 +347,38 @@ Please note: Since I am actually using this project on my site, I did make the c
 
 
 
+There are some layout issues with the menus on very small screens.
+
+If someone tries to login without a username the error message is not red
+
+
+
+### Known Limitations
+Not using a password. Another person can use the same username that has already been registered.
+
+When Heroku sleeps, it will erase all new registrations, games played and hall of fame entries and reverts back to the state of when the game was deployed.
+
+
+
 ## TECHNOLOGIES USED
 * [Back to TOP](#Milestone-Project-3---Riddle-Me-This-Game)
 
 # REVISE THIS SECTION
+
+HTML 5 - general coding of pages content.
+CSS 3 - specific and custom styling of the game.
+Bootstrap 3 - layout of pages and basic styling.
+javascript - for p5.js.
+p5.js - controls interactivity of the logo image.
+Python - for back end.
+Flask - Back end framework.
+flask_mail - to enable contact form.
+json - to hold data.
+jinja2 - for templating the various pages.
+fontawesome - icons for github and linkedin.
+SVG - This was used to build the logo image. From this png files (with transparent background for the !) where produced.
+
+
 
 - [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) - used to build the sctructure and the content of this project.
 - [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3) - used for styling this project.
@@ -289,9 +386,15 @@ Please note: Since I am actually using this project on my site, I did make the c
 - [Bootstrap v3.3.7](https://getbootstrap.com/docs/3.3/) - used for some of the styles (modified), as well as layout of the content.
 - [Font Awesome v4.7.0](https://fontawesome.com/v4.7.0/) - used to display the GitHub and Linkedin Icons.
 - [Google Fonts](https://fonts.google.com/) - Lobster and Roboto.
+
+[p5.js](https://p5js.org/)
+
 - [email.js](http://www.emailjs.com/) - used to enable the contact form to send emails to me.
 - [jasmine v2.4.1](https://github.com/jasmine/jasmine) - behavior-driven development framework, used to unit test the functions related to form validation.
 - [Compress JPEG ](compressjpeg.com) - I use GIMP to manipulate images. Once I export them as jpg, I use Compress Jpeg to minify them. Usually, I can gain between 25% and 50% reduction in file size.
+
+[Inkscape]
+[Gimp]
 
 ## TESTING
 * [Back to TOP](#Milestone-Project-3---Riddle-Me-This-Game)
@@ -306,18 +409,7 @@ Example of testing steps:
 2. script.js link - append hello world div using jQuery. Checked in Chrome. Pass  
 Noticed that links for bootstrap (both css and js are not loading.)
 3. Changed links for bootstrap - now loading. Checked with Chrome.
-4. Gave (main sections) divs a temp class with a border and some height. Pass Checked with Chrome.
-5. When I click the Tell me more button for the composition section, a new div is displayed below the activities section. Pass  
-6. Test that all other buttons work. Pass. All 
-7. The code for scrolling to the newly displayed info is working well. Pass. Checked with Chrome
-8. Extra info is hidden when a new activity is selected Pass
-9. Page scrolls back to the top of the calling activity when extra info is closed. Pass
-10. When extra info is closed its height is reduced while scrolling. Pass - This makes the action smoother. Especially for the lower cards where the scrolling is slower and might not hide the place previously taken by the extra info just closed.
-11. Fixed problem created from unequal sizes of activities cards. Pass
-12. Hide images in portfolio in extra small. Pass
-13. Tested media query for margin in composition portfolio. Pass
-14. Changed jQuery code that shows current year in copyright note with javaScript as it was waiting to load everything including the 
-code from SoundCloud. This was resulting in the page sitting note showing the correct copyright note. Pass
+
 15. The contact form itself has no back end and will not submit anything. 
     To indicate some activity I added jQuery code to display an alert when the contact form is submitted. This was tested. Pass
 16. Added validation code. Tested - Pass
@@ -336,73 +428,6 @@ code from SoundCloud. This was resulting in the page sitting note showing the co
 
 **Test pass on desktop.**
 
------
-
-* A performer wants to play one of my pieces: *could have heard it somewhere else or looking for anything I can provide*  
-    1. The user comes to the page
-    2. Clicks on activites in the menu (or scrolls down manually to the activities section)
-    3. Reaches the Composition part
-    4. Clicks on the *Tell me more ...* button (secondary CTA)
-    5. Reads the content
-    6. Press the *get in touch* button (primary CTA)
-    7. Fills in the form and press the submit button
-
-**Test pass on desktop.**
-
------
-
-* Someone is looking for a french horn performer:
-    1. The user comes to the page
-    2. Clicks on activites in the menu (or scrolls down manually to the activities section)
-    3. Reaches the Performance part
-    4. Press the *get in touch* button (primary CTA)
-    5. Fills in the form and press the submit button
-
-**Test pass on desktop.**
-
------
-
-* A person would like to commission a new composition.  
-
-    There are multiple routes such a user can take.
-    If someone looked for me to commission a piece, that person would know something about my music. Otherwise this person will:
-
-    1. Come to my page
-    2. Click on the Portfolio in the menu
-    3. The user will click on the various buttons to listen to some of my music.
-    4. When the user has listened enough, they might choose to contact me.  
-        They will reach the contact form either through the contact menu item or by scrolling to the bottom of the page.  
-        Listeneing to music takes time and if the user is ready to stay and listen they will have all the time to explore the whole page.
-
-    In any case commissioning a piece of music is not a decision taken there and then but will involve a lengthy communication.
-
-**Test Pass. Contact form tested separately.**
-
------
-
-* Someone is looking for a conductor.  
-    1. Come to the page
-    2. Click on Activities from the menu
-    3. Read various sections such as conducting / composition /sound design  
-        Each extended section has a close button that will take the user back to the calling activity.
-        There is also a primary CTA button in case the user is ready to get in touch.
-    4. The user might also choose to read more about me and possibly extend to the Linkein profile.
-    5. When the user is ready, they can use the contact form to contact me (or if they are in linked in, they might choose to contact me from there).
-
-**All tested and works well**
-
------
-
-* A visual artist wants to collaborate on a multimedia project:
-
-    1. The artist comes to my site
-    2. Reads various sections from my activities including the extended sections. Possibilities include composition / sound design / research.
-    3. If the user feels ready to contact me, a CTA button is available.
-    4. Alternatively the artist might want to read more about me in which case s/he will go to the About Me either by scrolling or by using the navigation buttons. There is the possibility to reach my Linkein.
-    5. The artist might decide to listen to some of my music from the portfolio.
-    6. When the artist wants to get in touch there are various routes available. In the section where the CTA button is available this will take the user straight to the contact form. Otherwise, the user can scroll to the contact form or use the Contact link in the navigation bar.
-
-**All tested and works well**
 
 -----
 
@@ -459,27 +484,7 @@ This bug is now fixed. It took me about 8hrs of work and testing but it was wort
 Tested manually on google chrome and my mobile (Android) and it works well.
 
 ----
-2.
-~~While unit testing, I noticed that I can just filling spaces for the name, subject and message, together with an email and still be able to send the form. I did not like this and consider it a bug.~~
 
-**FIXED**
-
-This is now fixed. I added code that would reject a white space. Adjacent white spaces would be collapsed to a single space and thus reject too.
-
-----
-
-3.
-~~A Bug allowed a user to ignore the error messages and still try to send the form. Example, If I fill in the name and email and then add a subject containing a special character that I am not accepting, I can fill in the message, ignore the error and try to submit the form. On doing this, the page would refresh. Apart from this the user would not get any feedback on what has happened and why.~~
-
-**FIXED**
-
-This bug is now fixed and an alert will be displayed whenever a error is displayed including this particular case. When the user dismisses the alert, s/he will be taken back to the form to do the necessary edits.
-
-----
-
-
-4. 
-The other bug is the background parallax effect. It does not work on all mobile browsers. I researched this on google but none of the fixes I came across seems to work. This is not a high priority bug as the site still looks and functions well without the parallax effect.
 
 
 ### Cleaning and validating code
@@ -516,50 +521,25 @@ and it is deployed on Heroku [**here**](http://riddlegame-ab.herokuapp.com/).
 * [Back to TOP](#Milestone-Project-3---Riddle-Me-This-Game)
 
 ### Code from other sources
->Apart from some code based on examples in Bootstrap, I am using code provided by soundcloud and youtube to access the material on these sites.  
-The code for scrolling is adapted from various tutorials. I have modified it and used it before in various projects.
-It is heavily documented on youtube and elsewhere.  
-[colorzilla](http://colorzilla.com/gradient-editor) to create background gradients.
+I am linking to bootstrap cdn as well as using p5 code which is stored in its own file, static/vendor/p5.min.js
 
 
 ### IMAGES
->**Dark Triangles** for background:  
-Downloaded from [Subtle Patterns](https://www.toptal.com/designers/subtlepatterns/tag/dark/)  
-Image notes: JUNE 7, 2017  
-Playful triangle pattern, this time in black.  
-Use: All patterns on this site can be used free of charge, but please [read this](https://creativecommons.org/licenses/by-sa/3.0/) before using them: CC BY-SA 3.0 - Subtle Patterns © Toptal Designers.
 
-**Wood Image** for background of grey areas:  
->Downloaded from [Pexels](https://www.pexels.com/photo/background-board-construction-dirty-269035/)  
-Use: CC0 License  
-Image is cropped to create a seamlessly horizontally tiling image;  
-copied, inverted and pasted below to created a seamlessly vertically tiling image.
+**Logo**:  
+The image and design of the logo is my work.
 
->**fast-min.jpg**
-[Pexels](https://www.pexels.com/photo/light-trails-on-city-street-327345/)
-Use: CC0 License  
-Image is cropped, rotated, sheared, resized.
+**Favicon**:  
+The image and design of the favicon is my work.
 
->**Ringtone.jpg**  
-found at https://blog.ambient-mixer.com/sound/what-your-ringtone-says-about-your-personality/  
-Image Credit by = http://bit.ly/1HLbWKi  
+**Riddle Images**:  
+These are the work of **Marcus Connor** of [Brainless Tales](http://www.brainlesstales.com/) who gave me permission to use theses images for these games. I am very grateful for this.
 
->**battle.jpg**
-found at [Wikipedia](https://en.wikipedia.org/wiki/Mahdist_War#/media/File:Bataille_d%27Ondurman_2.jpg)  
-Use: Public Domain  
-Image cropped and resized.
+One can read more about Marcus' work in the [About page of his website](http://www.brainlesstales.com/about). You can also see the 9 years' worth of daily pictures as well as visit his [store](http://www.brainlesstales.com/store).
 
->**Slideshow.png**
-found at [Pexels](https://www.pexels.com/photo/curve-industry-photography-vintage-65128/)  
-Use: Pexels License  
-Free for personal and commercial use, No attribution required  
-Image is cropped and resized.
 
 ### FONTS
->**Lobster** and **Roboto** fonts from [google fonts](https://fonts.google.com/).
-
-
-
+**Averia Serif Libre**, **Gloria Hallelujah** and **Bubblegum** fonts from [google fonts](https://fonts.google.com/).
 
 
 
@@ -592,10 +572,7 @@ For better security I would also implement a password that would be salted and h
 would then be stored. Again I am not doing this for this project.
 
 ## Overview
-### What is this website for?
-This project will form part of my submission for the Fullstack Web Developer course that I am doing at Code Institute.
 
-This will be my milestone project for Practical Python module of the new LMS.
 
 ### Version Control and Deployment
 This is the [github repository](https://github.com/abonello/project-3),
@@ -606,40 +583,6 @@ Another project that I built to learn the techniques I need is an addition game.
 
 The main change I did from my earlier riddle game project is to base the current one on OOP. In this way I can have multiple users logged in without interfering with each other. This is what I learnt from the addition game.
 
-
-
-
-
-### What does it do?
-
-
-### How does it work
-
-
-
-## Features
-~~read information about my activites~~  
-~~portfolio of compositions~~  
-~~menu system~~  
-~~contact~~
-
-
-## Technologies
-~~html5, CSS3, bootstrap 3.3.7, javascript, jQuery 3.3.1~~
-
-~~I am using CDNs for bootstrap and jQuery.~~
-
-
-## Ideas - brainstorming:
-
-
- 
-
-## Testing
-
-
-
-## Code from other sources
 
 
 ## Riddle Images
