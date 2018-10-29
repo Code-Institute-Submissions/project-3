@@ -217,14 +217,8 @@ The overall color scheme is monochrome based on a grey scale.
 
 Some accent colors where chosen for CTA buttons.
 
-# I WANT TO IMPLEMENT MORE OF THESE COLORS FOR BUTTONS IN THE GAME AS WELL AS LOGIN, REGISTER, LOGOUT BUTTONS.
-# ALSO CONTACT FORM
-# BUTTONS IN REGISTER FORM 
-# CHECK USERNAME AVAILABLE AND REGISTER
-
-
-Error messages are in red. Some are highlighted with yellow background to make them stand out.  
-Success messages are green. TO IMPLEMENT
+# Error messages are in red. Some are highlighted with yellow background to make them stand out.  
+# Success messages are green. TO IMPLEMENT
 
 LOGO 
 The logo is only present in screens of landscape tablets and above.
@@ -322,15 +316,8 @@ Interactive logo built using p5.js.
 >Navigation is through a menu which appears as a button for mobiles and tablets, and as a fixed menu at the top of the page in desktop view. 
 Clicking on a menu item will start a smooth scrolling to the top of that section within the page. This is done in order not to confuse the user in thinking that this is a new page.
 
->Also the menu keeps track of which section a user is currently in. The menu item for the current section is highlighted with a darker background. This acts as a sort of breadcrumb.
-
->Parallax background gives the page a feel of progressing since the foreground scrolls against something which is fixed. To a lesser extent the gradient background helps create a sense of movement as well while scrolling.
-
->Each section in the activities allow the user to read about that particular activity. The *Tell me more ...* button displays further information.
 
 >The About me section is a short bio. The link to my linkedin allows a reader to find more about me. There is also a CTA button.
-
->The portfolio allows the user to listen to some examples of my music from soundcloud and youtube.
 
 >The contact form - through email.js,  allows the user to get in touch with me, enabling all the tasks which depend on this, asking for scores, performance / conducting opportunities, composition / sound design / arrangement / collaboration propositions, questions about tuition.  
 A modal will appear to confirm to the user that the message has been sent.  
