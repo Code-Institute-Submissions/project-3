@@ -140,6 +140,14 @@
         "total_user_points": 0,
         "username": "user3"
     },
+    "user30": {
+        "date_best_game": "",
+        "games_played": [],
+        "number_of_games": 0,
+        "points_best_game": 0,
+        "total_user_points": 0,
+        "username": "user30"
+    },
     "user300": {
         "date_best_game": "",
         "games_played": [],
@@ -147,6 +155,14 @@
         "points_best_game": 0,
         "total_user_points": 0,
         "username": "user300"
+    },
+    "user4": {
+        "date_best_game": "",
+        "games_played": [],
+        "number_of_games": 0,
+        "points_best_game": 0,
+        "total_user_points": 0,
+        "username": "user4"
     },
     "user5": {
         "date_best_game": "",
