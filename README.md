@@ -313,7 +313,7 @@ registration and login
 Navigation appears as a button for mobiles and tablets, and as a menu in the header in larger views. 
 * hall of fame - single game - all games
 * About page has instructions of how to play the game
-* contact form - enabled through flask-mail, enables users to get in touch.  
+* contact form - enabled through flask_mail, enables users to get in touch.  
 Upon sending, the message will be shown to the user. 
 Validation of the form content is carried out including if the email lacks the top level domain.
 * Interactive logo built using p5.js.
@@ -335,38 +335,22 @@ When Heroku sleeps, it will erase all new registrations, games played and hall o
 ## TECHNOLOGIES USED
 * [Back to TOP](#Milestone-Project-3---Riddle-Me-This-Game)
 
-# REVISE THIS SECTION
-
-HTML 5 - general coding of pages content.
-CSS 3 - specific and custom styling of the game.
-Bootstrap 3 - layout of pages and basic styling.
-javascript - for p5.js.
-p5.js - controls interactivity of the logo image.
-Python - for back end.
-Flask - Back end framework.
-flask_mail - to enable contact form.
-json - to hold data.
-jinja2 - for templating the various pages.
-fontawesome - icons for github and linkedin.
-SVG - This was used to build the logo image. From this png files (with transparent background for the !) where produced.
-
-
-
-- [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) - used to build the sctructure and the content of this project.
-- [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3) - used for styling this project.
+- [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) - used to build the structure and the content of this project.
+- [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3) - used for creating the specific and custom styling of the game.
 - [jQuery v3.3.1](https://jquery.com) - simplifies accessing the DOM.
 - [Bootstrap v3.3.7](https://getbootstrap.com/docs/3.3/) - used for some of the styles (modified), as well as layout of the content.
 - [Font Awesome v4.7.0](https://fontawesome.com/v4.7.0/) - used to display the GitHub and Linkedin Icons.
 - [Google Fonts](https://fonts.google.com/) - Lobster and Roboto.
+- [p5.js](https://p5js.org/) - controls interactivity of the logo image.
+- [Python 3](https://www.python.org/) - for back end.
+- [Flask](http://flask.pocoo.org/) - Back end micro framework.
+- [jinja2](http://jinja.pocoo.org/docs/2.10/) - for templating the various pages.
+- [flask_mail](https://pythonhosted.org/Flask-Mail/) - used to enable the contact form to send emails to me.
+- [unit test](https://docs.python.org/3/library/unittest.html) - used to unit test the python functions.
+- [json](https://www.json.org/) - to hold data.
+- [SVG](https://www.w3schools.com/graphics/svg_intro.asp) - This was used to build the logo image using [Inskscape](https://inkscape.org/). From this png files (with transparent background for the !) where produced.
+- [Compress JPEG ](compressjpeg.com) - I use [GIMP](https://www.gimp.org/) to manipulate images. Once I export them as jpg, I use Compress Jpeg to minify them. Usually, I can gain between 25% and 50% reduction in file size.
 
-[p5.js](https://p5js.org/)
-
-- [email.js](http://www.emailjs.com/) - used to enable the contact form to send emails to me.
-- [jasmine v2.4.1](https://github.com/jasmine/jasmine) - behavior-driven development framework, used to unit test the functions related to form validation.
-- [Compress JPEG ](compressjpeg.com) - I use GIMP to manipulate images. Once I export them as jpg, I use Compress Jpeg to minify them. Usually, I can gain between 25% and 50% reduction in file size.
-
-[Inkscape]
-[Gimp]
 
 ## TESTING
 * [Back to TOP](#Milestone-Project-3---Riddle-Me-This-Game)
