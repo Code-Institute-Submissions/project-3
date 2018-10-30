@@ -25,10 +25,10 @@
 
                 <div 
                 {% if feedback_type == 'error' %}
-                    class="red"
+                    class="red red-bg"
                 {% elif feedback_type == 'success' %}
-                    class="green"
-                {#% else %#}
+                    class="green green-bg"
+                {% else %}
                     class=""
                 {% endif %}>
                     {{ username_feedback }}</div>

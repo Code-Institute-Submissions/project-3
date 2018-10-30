@@ -418,7 +418,7 @@ def register():
         return "<h1> Error: " + str(e) + "</h1>"
 
     username_feedback = "Enter a valid username."
-    feedback_type = "error"
+    feedback_type = "normal"
     return render_template("register.html", button_control=button_control, username_feedback=username_feedback, feedback_type=feedback_type, thisUser=thisUser)
 
 @app.route('/logout/<currentUser>/<sessionNo>', methods=['GET', 'POST'])

@@ -199,6 +199,10 @@ header h2 {
 
 .red {
     color: red;
+    padding: 5px;
+}
+.red-bg {
+    background-color: #fde2eb;
 }
 
 .yellow-bg {
@@ -207,6 +211,10 @@ header h2 {
 
 .green {
     color: rgb(17, 146, 5);
+    padding: 5px;
+}
+.green-bg {
+    background-color: #dbffe4;
 }
 
 .bottom-1 {
