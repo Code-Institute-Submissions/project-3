@@ -469,7 +469,24 @@ There is also another warning about two classes having the same background and b
 The repository of this project is at [**github repository**](https://github.com/abonello/project-3),  
 and it is deployed on Heroku [**here**](http://riddlegame-ab.herokuapp.com/).
 
-# NEED TO ADD NOTE ABOUT HOW TO DEPLOY
+# NEED TO ADD NOTE ABOUT HOW TO DEPLOY - Check with NISHANT
+
+
+
+### Version Control and Deployment
+This is the [github repository](https://github.com/abonello/project-3),
+and this project is deployed on Heroku [here](https://riddlegame-ab.herokuapp.com).
+
+I am basing this project on an earlier exploratory exercise that I did. This previous exercise was meant to be a draft to practice the techniques and skills I need for this project. It can be found [here](https://github.com/abonello/riddle-game-app).
+Another project that I built to learn the techniques I need is an addition game. The code can be found [here](https://github.com/abonello/addition_game).
+
+The main change I did from my earlier riddle game project is to base the current one on OOP. In this way I can have multiple users logged in without interfering with each other. This is what I learnt from the addition game.
+
+
+
+
+
+
 
 
 
@@ -530,21 +547,9 @@ would then be stored. Again I am not doing this for this project.
 ## Overview
 
 
-### Version Control and Deployment
-This is the [github repository](https://github.com/abonello/project-3),
-and this project is deployed on Heroku [here](https://riddlegame-ab.herokuapp.com).
-
-I am basing this project on an earlier exploratory exercise that I did. This previous exercise was meant to be a draft to practice the techniques and skills I need for this project. It can be found [here](https://github.com/abonello/riddle-game-app).
-Another project that I built to learn the techniques I need is an addition game. The code can be found [here](https://github.com/abonello/addition_game).
-
-The main change I did from my earlier riddle game project is to base the current one on OOP. In this way I can have multiple users logged in without interfering with each other. This is what I learnt from the addition game.
 
 
 
-## Riddle Images
-These are modified versions of pictures from the web.
-
-pip installed flask_mail and updated requirements.txt
 
 
 
