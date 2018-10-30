@@ -374,23 +374,28 @@ def register():
             if 'check' in request.form:
                 if username == "":
                     username_feedback = "Please type in a username and check its availability."
+                    feedback_type = "error"
                 elif username in allusers:
                     username_feedback = "Username already exist. Please try another one."
+                    feedback_type = "error"
                 else:
                     button_control["register"] = "register"
                     button_control["register_active"] = ""
                     button_control["check_active"] = "btn-deactivated btn-hide"
                     username_feedback = "Username available. Please click the register button."
-                return render_template("register.html",button_control=button_control, username_feedback=username_feedback, thisUser=thisUser)
+                    feedback_type = "success"
+                return render_template("register.html",button_control=button_control, username_feedback=username_feedback, feedback_type=feedback_type, thisUser=thisUser)
 
             if 'register' in request.form:
                 username = request.form['username']
                 if username == "":
                     username_feedback = "Please type in a username and check its availability."
-                    return render_template("register.html",button_control=button_control, username_feedback=username_feedback, thisUser=thisUser)
+                    feedback_type = "normal"
+                    return render_template("register.html",button_control=button_control, username_feedback=username_feedback, feedback_type=feedback_type, thisUser=thisUser)
                 elif username in allusers:
                     username_feedback = "Username already exist. Please try another one."
-                    return render_template("register.html",button_control=button_control, username_feedback=username_feedback, thisUser=thisUser)
+                    feedback_type = "error"
+                    return render_template("register.html",button_control=button_control, username_feedback=username_feedback, feedback_type=feedback_type, thisUser=thisUser)
                 else:
                     allusers[username] = {"username": username, "games_played": [], "date_best_game": "", "number_of_games": 0, "points_best_game": 0, "total_user_points": 0}
                     with open("data/users.json", "w") as outfile:
@@ -413,7 +418,8 @@ def register():
         return "<h1> Error: " + str(e) + "</h1>"
 
     username_feedback = "Enter a valid username."
-    return render_template("register.html", button_control=button_control, thisUser=thisUser)
+    feedback_type = "error"
+    return render_template("register.html", button_control=button_control, username_feedback=username_feedback, feedback_type=feedback_type, thisUser=thisUser)
 
 @app.route('/logout/<currentUser>/<sessionNo>', methods=['GET', 'POST'])
 @login_required

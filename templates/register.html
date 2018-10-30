@@ -22,7 +22,17 @@
                     <input type="text" class="form-control form-username form-align" name="username" id="username" placeholder="username" value={{ button_control["username"] }}>
                     <button type="submit" class="btn form-align my_btn_color {{ button_control["check_active"] }}" name="check" type="submit" value="login">Check Username Available</button>
                 </div>
-                <div class="red">{{ username_feedback }}</div>
+
+                <div 
+                {% if feedback_type == 'error' %}
+                    class="red"
+                {% elif feedback_type == 'success' %}
+                    class="green"
+                {#% else %#}
+                    class=""
+                {% endif %}>
+                    {{ username_feedback }}</div>
+
                 <button type="submit" class="btn form-align my_btn_color btn-width {{ button_control["register_active"] }}" name="{{  button_control["register"]  }}" type="submit" value="register">Register</button>
             </form>
         </div>
