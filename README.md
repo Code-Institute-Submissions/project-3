@@ -343,7 +343,7 @@ When Heroku sleeps, it will erase all new registrations, games played and hall o
 - [Google Fonts](https://fonts.google.com/) - Lobster and Roboto.
 - [p5.js](https://p5js.org/) - controls interactivity of the logo image.
 - [Python 3](https://www.python.org/) - for back end.
-- [Flask](http://flask.pocoo.org/) - Back end micro framework.
+- [Flask](http://flask.pocoo.org/) - Back end micro framework. Upgrade Flask to v1.0.2, git reported that the previous version 0.12.2 had a known security vulnerability.
 - [jinja2](http://jinja.pocoo.org/docs/2.10/) - for templating the various pages.
 - [flask_mail](https://pythonhosted.org/Flask-Mail/) - used to enable the contact form to send emails to me.
 - [unit test](https://docs.python.org/3/library/unittest.html) - used to unit test the python functions.
@@ -546,7 +546,7 @@ These are modified versions of pictures from the web.
 
 pip installed flask_mail and updated requirements.txt
 
-Upgrade Flask to v1.0.2, git reported that the previous version 0.12.2 had a known security vulnerability.
+
 
 
 Getting information about heroku deployment
