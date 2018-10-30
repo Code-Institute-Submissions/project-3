@@ -217,8 +217,8 @@ The overall color scheme is monochrome based on a grey scale.
 
 Some accent colors where chosen for CTA buttons.
 
-# Error messages are in red. Some are highlighted with yellow background to make them stand out.  
-# Success messages are green. TO IMPLEMENT
+Error messages are in red. Some are highlighted with yellow background to make them stand out.  
+Success messages are green.  
 
 LOGO 
 The logo is only present in screens of landscape tablets and above.
@@ -252,10 +252,13 @@ Main color for Logo: #d67b34
 Social Icons have a touch of red that floods the icons on hover.
 
 * **Error message color**:  
-red
+red  
+some errors are highlighted with background-color: #fde2eb;  
+others are highlighted with background: yellow;
 
 * **Success message color**: 
 Green
+accented with background-color: #dbffe4;
 
 
 * **Button colors** (complementary colors):  
@@ -301,43 +304,25 @@ If a user tries to login with a non existent username, that user will be directe
 
 
 
-Game Logic - allows three attempts with each attempt giving more clues.
+* Game Logic - allows three attempts with each attempt giving more clues.
 registration and login
-When registering, checking if username is not already in use
-username - keeps track of all played games, points gained and date
-keeps track of logged in users incase someone tries to log in from a different device
-The navigation will automatically hide the link for the current page of for any links that are not available. Ex. If you are not logged in, you cannot access the user page.
-hall of fame - single game - all games
-contact form
-Interactive logo built using p5.js.
+* When registering, checking if username is not already in use
+* username - keeps track of all played games, points gained and date
+* keeps track of logged in users incase someone tries to log in from a different device
+* The navigation will automatically hide the link for the current page of for any links that are not available. Ex. If you are not logged in, you cannot access the user page.  
+Navigation appears as a button for mobiles and tablets, and as a menu in the header in larger views. 
+* hall of fame - single game - all games
+* About page has instructions of how to play the game
+* contact form - enabled through flask-mail, enables users to get in touch.  
+Upon sending, the message will be shown to the user. 
+Validation of the form content is carried out including if the email lacks the top level domain.
+* Interactive logo built using p5.js.
 
-
-
->Navigation is through a menu which appears as a button for mobiles and tablets, and as a fixed menu at the top of the page in desktop view. 
-Clicking on a menu item will start a smooth scrolling to the top of that section within the page. This is done in order not to confuse the user in thinking that this is a new page.
-
-
->The About me section is a short bio. The link to my linkedin allows a reader to find more about me. There is also a CTA button.
-
->The contact form - through email.js,  allows the user to get in touch with me, enabling all the tasks which depend on this, asking for scores, performance / conducting opportunities, composition / sound design / arrangement / collaboration propositions, questions about tuition.  
-A modal will appear to confirm to the user that the message has been sent.  
-Please note: Since I am actually using this project on my site, I did make the contact form functional.
 
 
 ### Features Left to Implement
-```
-1. FIXED: ~~Improve the functionality of the CTA button on mobiles. It should direct the user to the top of the contact form. Instead it is directing the user to the submit button. The user has to scroll back up.~~
-2. In the future I might add a complete list of my compositions with details of instrumentation and details about performances.
-3. Add current and future activities.
-4. Fix parallax for mobiles
-```
-
-
 
 There are some layout issues with the menus on very small screens.
-
-If someone tries to login without a username the error message is not red
-
 
 
 ### Known Limitations
