@@ -345,7 +345,8 @@ def login():
     except Exception as e:
         return "<h1> Error: " + str(e) + "</h1>"
 
-    return "What has happened? login route is present."  #Should never reach here
+    # return "What has happened? login route is present."  #Should never reach here
+    return redirect(url_for("server_error")) #Should never reach here unless user tries to break the game.
 
 @app.route('/proceed_login/<username>', methods=['GET', 'POST'])
 def proceed_login(username):
