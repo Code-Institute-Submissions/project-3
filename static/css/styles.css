@@ -209,6 +209,14 @@ header h2 {
     background: yellow;
 }
 
+#menu_btn {
+    background-color: #d58535;
+}
+
+#menu_btn:hover {
+    background-color: #e6c49a;
+}
+
 .green {
     color: rgb(17, 146, 5);
     padding: 5px;
