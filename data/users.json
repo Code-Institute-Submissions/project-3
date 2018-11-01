@@ -99,6 +99,14 @@
         "total_user_points": 96,
         "username": "user101"
     },
+    "user133": {
+        "date_best_game": "",
+        "games_played": [],
+        "number_of_games": 0,
+        "points_best_game": 0,
+        "total_user_points": 0,
+        "username": "user133"
+    },
     "user2": {
         "date_best_game": "03/10/2018",
         "games_played": [
@@ -139,6 +147,14 @@
         "points_best_game": 0,
         "total_user_points": 0,
         "username": "user3"
+    },
+    "user30": {
+        "date_best_game": "",
+        "games_played": [],
+        "number_of_games": 0,
+        "points_best_game": 0,
+        "total_user_points": 0,
+        "username": "user30"
     },
     "user300": {
         "date_best_game": "",

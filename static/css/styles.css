@@ -147,16 +147,33 @@ header h2 {
 
 .play_btn {
     width: 100%;
-    background: #ff0ed6;
+    /* background: #ff0ed6; */
     border-radius: 20px;
 }
 
 .play_btn:hover {
-    box-shadow: 0 0 20px yellow;
-    background: #d4ffae;
+    /* box-shadow: 0 0 20px yellow;
+    background: #d4ffae; */
 }
 
 .play_btn:active, .play_btn:focus {
+    /* box-shadow: 0 0 40px blue;
+    background: #b093f7;
+    color: #d4ffae; */
+}
+
+.my_btn_color {
+    background: #ff0ed6;
+    color: black;
+}
+
+.my_btn_color:hover {
+    box-shadow: 0 0 20px yellow;
+    background: #d4ffae;
+    color: black;
+}
+
+.my_btn_color:active, .my_btn_color:focus {
     box-shadow: 0 0 40px blue;
     background: #b093f7;
     color: #d4ffae;
@@ -182,10 +199,30 @@ header h2 {
 
 .red {
     color: red;
+    padding: 5px;
+}
+.red-bg {
+    background-color: #fde2eb;
 }
 
 .yellow-bg {
     background: yellow;
+}
+
+#menu_btn {
+    background-color: #d58535;
+}
+
+#menu_btn:hover {
+    background-color: #e6c49a;
+}
+
+.green {
+    color: rgb(17, 146, 5);
+    padding: 5px;
+}
+.green-bg {
+    background-color: #dbffe4;
 }
 
 .bottom-1 {
