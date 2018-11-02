@@ -266,7 +266,8 @@ accented with background-color: #dbffe4;
     When active the background changes to #b093f7 with a blue shadow and text color becomes #d4ffae.
     Notice the text in active state uses the same color as the hover shadow. 
 
-
+    * **Menu button**: The colors for this button were chosen from the logo image.  
+    The main background is #d58535; with a hover of #e6c49a;.
 
 #### Typography
 
@@ -305,6 +306,14 @@ If a user tries to login with a non existent username, that user will be directe
 
 
 * Game Logic - allows three attempts with each attempt giving more clues.
+* For the second and third attempt of each riddle, in the case of answers with more than one word, the user can type in the whole answer in any of the input fields. The backend is able to sort things out.  
+
+
+# USER is able to move away from the game and come back.
+
+
+
+&nbsp;  
 registration and login
 * When registering, checking if username is not already in use
 * username - keeps track of all played games, points gained and date
@@ -322,13 +331,15 @@ Validation of the form content is carried out including if the email lacks the t
 
 ### Features Left to Implement
 
-There are some layout issues with the menus on very small screens.
+None unless I want to extend it beyond the scope of this project.
 
 
 ### Known Limitations
-Not using a password. Another person can use the same username that has already been registered.
+*These limitations fall beyond the scope of this project*.  
 
-When Heroku sleeps, it will erase all new registrations, games played and hall of fame entries and reverts back to the state of when the game was deployed.
+* Not using a password. Another person can use the same username that has already been registered.
+
+* When Heroku sleeps, it will erase all new registrations, games played and hall of fame entries and reverts back to the state of when the game was deployed.
 
 
 
@@ -357,19 +368,23 @@ When Heroku sleeps, it will erase all new registrations, games played and hall o
 
 ### Final check on desktop
 
-I tested the various scrollings on desktop using Safari v8.0.8, Chrome v68.0.3440.106 and Firefox v62.0.
+I tested the various scrollings on desktop using Safari v8.0.8, Chrome v70.0.3538.77 and Firefox v63.0.
+
+On safari, the logo refuses to display even though the image is loaded.
 
 ### Manual testing using Chrome.
 Example of testing steps:  
-1. css link - set body background color to red. Pass (before it was white)
-2. script.js link - append hello world div using jQuery. Checked in Chrome. Pass  
-Noticed that links for bootstrap (both css and js are not loading.)
-3. Changed links for bootstrap - now loading. Checked with Chrome.
+1. Test menu in various order both when logged in and when not. 
+2. Test that user page and current game menus display only when a user is logged in.
+3. Test that the menu for the current page does not show in all cases.
+4. Test contact form for validation of entered data as well that it actually sends the email.
+5. Manually test the logo.  
+    * The excalmation mark follows the mouse when hovering over the logo image.
+    * The background image of the logo is switched when hovering and switched back when the mouse moves out. 
+6. User moves to another page while playing and is able to come back to the game by clicking the `CURRENT GAME` menu item in the navigation bar.
 
-15. The contact form itself has no back end and will not submit anything. 
-    To indicate some activity I added jQuery code to display an alert when the contact form is submitted. This was tested. Pass
-16. Added validation code. Tested - Pass
-17. Added code that will hide the collapsed menu when an item is selected. Pass
+**All Tests passed on desktop and mobile** (*does not apply to logo*) **.**
+
 
 ### Manual Testing - User Stories
 
@@ -382,13 +397,64 @@ Noticed that links for bootstrap (both css and js are not loading.)
     6. Press the *get in touch* button (primary CTA)
     7. Fills in the form and press the submit button
 
-**Test pass on desktop.**
+    **Test pass on desktop.**
 
+----
+
+
+* A person is using this game for the first time and has to register:  
+
+    1. Options:  
+        a. The user may click on the login button without entering a user name.  
+        An error message alerting the user that a username is required is displayed in red text.
+
+        b. The user may click on the login button but enters an unknown username.  
+        [Please note if the username happens to exist the user will be logged in. This can be avoided by applying a password which is considered outside the scope of this project.]  
+        I am using the case where the username entered does not exist.  
+        The user is taken to the registration page.
+
+        c. The user may click on the registration button and will be taken to the registration page
+
+    2. On arriving at the registration page, the user is invited to enter a user name and check its availability. The user types in a username and clicks on the `Check Username Available` button.  
+        a. **Case - Username not available**:  
+        The error message *Username already exist. Please try another one.* will be displayed in red. The entered username is still displayed in the input box to facilitate usability. The user can modify the username or enter a completely new one and check again.  
+        b. **Case - Username is available**:  
+        The `Check Username Available` will be hidden and instead, a `Register` button is displayed.  
+        The message *Username available. Please click the register button.* will be displayed in green letting the user know that this username is available and inviting the user to proceed with the registration.  
+        The user will be automatically logged in and taken to the user page. Some information will be given including that this user has not played any games yet and that the points gained up to now is 0.
+    
+        An empty list that will hold future played games is displayed.  
+        There is also a button to start a new game.  
+        (Playing the game is covered in the next test)
+
+    **Test pass on mobile and desktop.**
+
+----
+
+
+
+* A registered user returns to the game:  
+    1. The user types in the username and clicks on the login button.
+    2. The user is taken to the user page where there will be displayed some statistic information about the games played, a list of games already played including dates and points gained.
+    3. The user clicks on the `Play a game` button. The user will be taken to the Game page.  
+    &nbsp;  
+    **Playing a game**  
+    4. The user is shown a picture and the task is to guess the phrase or word represented by this picture, like in pictionary.
+    5. The user types in the guess and clicks on the `Submit Answer` button. Alternatively the user can give up and clicks on the `Pass` button.
+    6. If the user passes or the answer is wrong, the wrong answer (or a dash) is displayed for the first attempt. Clues are given to the user about the number of words expected in the answer and the user can have a second attempt.  
+    The clues are both textual and visual. A textual message mentioning the number of words is displayed, while the entry fields change. There will be one entry field for each word, each labeled with `Word #` where # is the number of the word within the answer. This reduces the points from 10 to 6 for this riddle.  
+    7. The user attempts to answer or passes.
+    8. If the answer is wrong or the user passes, further clues are given. This time the user will be told how many letters there are in each word. An indication about this is given to the user in the text above the buttons as well as next to the input fields. The points are reduced to 2.
+    9. In any of the attempts, if the user's answer is correct, the total number of points gained in this game will be displayed and the next riddle is shown.
+    10. In the case of the last riddle, the user will be taken back to the user page. A message in green text will be displayed showing the total points gained in the game just finished.
+    11. The user can start a new game as in step 3 above.
 
 -----
 
 * Testing the contact form  
-Test reaching the contact form from various places. PASS with the exception that ~~the CTA buttons will take the user to the submit button on mobile devices~~. This has now been fixed.
+The contact form can only be reached from the Contact menu item in the navigation bar. This works in all screen sizes.
+&nbsp;  
+Submitting message and entry validation:  
     1. Submitting empty form: **Error message shown to user prompting to fill in the name**
     2. User fills in only name and trying to submit: **Error message shown prompting user to fill in email**
     3. User fills in first part of email only (Ex. asdf): **Error message showing that the email lacks an @ symbol**
@@ -396,32 +462,30 @@ Test reaching the contact form from various places. PASS with the exception that
     5. User completes the name and email and leaves the rest of the form empty: **Error message prompting the user to fill in a subject**
     6. User fills in the name, email with correct format and subject and tries to submit: **Error message prompting user to write a text message**  
         Following this typing less than 3 letters, an error message prompts the user that the message should be at least three letters long. (This is an arbitrary number.)
-    7. Trying to send a filled in form with a fictitious email that passes the format test (EX: asdf@asdfg.saf): **Error modal saying that Send email failed**.  
-    This is due to "Sender verify failed error" raised by the email server.
-    This offers me some protection from receiving spam from people who try to mimic an email address.
+    7. Trying to send a filled in form with an email lacks a top level domain. An error message will be displayed showing the email address used and a note is displayed encouraging the user to check the email and return to the contact form. 
+    8. In the case of the error raised in step 7, the user can click on the `Go Back` button to return to the contact form.
+    
 
 
 ### Mobile / Tablet testing
 
 Apart from using Chrome developer tools to test the layout and functionality of the page in mobile and tablet layouts, I also tested the site on my mobile phone and that of my friend. Both are android phones.  
 
-The site is responsive and everything seems to work well in chrome developer tools. However, when viewed on a real phone, I noticed that the parallax background is not working as intended. In these cases it gracefully degrades to a normal background that scrolls with the page.
+The site is responsive and everything seems to work well in chrome developer tools and the mobile phones.
 
-I found that this is browser dependent. Google Chrome (Mobile v68.03440.91) does not display the parallax background as intended, but Firefox (Mobile v61.0.2) does. I googled for any possible solutions but none of the suggestions work.
 
-FIXED: ~~I also noticed that the CTA button on mobiles will direct the user to the submit button of the form. The user will have to scroll back up.~~ (This functionality works well on desktop.)
 
 
 ### Unit testing Code for Form Validation
 
-I refactored the code related to the form validation and used **Jasmine** (v2.4.1) to unit test the functions. I noticed that I could not unit test the code straight in the javascript file I was using due to the code being in a $(document).ready function. For this reason I copied the code to a separate file for testing, copying back any changes I make.
+>I refactored the code related to the form validation and used **Jasmine** (v2.4.1) to unit test the functions. I noticed that I could not unit test the code straight in the javascript file I was using due to the code being in a $(document).ready function. For this reason I copied the code to a separate file for testing, copying back any changes I make.
 
-The code beign tested, the spec code and the html which runs the unit tests are in [this folder](/Users/anthonybonello/Documents/FullStackWebDeveloper/CI_MilestoneProjects/project_1/jasmine). I am also including a zip of the version of jasmine I used. If you would like to run the unit tests, you will need to unzip this in addition to the files I made.
+>The code beign tested, the spec code and the html which runs the unit tests are in [this folder](/Users/anthonybonello/Documents/FullStackWebDeveloper/CI_MilestoneProjects/project_1/jasmine). I am also including a zip of the version of jasmine I used. If you would like to run the unit tests, you will need to unzip this in addition to the files I made.
 
-Note: I had to add jQuery (v3.3.1) to the html file.
+>Note: I had to add jQuery (v3.3.1) to the html file.
 
 
-While doing the unit tests I did uncover two bugs. The first one allowed a user to send the form by just filling spaces for the name, subject and message, together with an email.
+>While doing the unit tests I did uncover two bugs. The first one allowed a user to send the form by just filling spaces for the name, subject and message, together with an email.
 The second one allowed a user to ignore the error messages and still try to send the form. More on these two bugs below, in the BUGS section.
 
 

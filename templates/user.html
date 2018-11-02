@@ -13,7 +13,7 @@
             {% with messages = get_flashed_messages() %}
                 {% if messages %} <!-- Process if there are any messages  -->
                     {% for message in messages %}  <!-- Loop through messages and process them -->
-                        <h3 class="red">Points Gained in the game just played: {{ message }}</h3>
+                        <h3 class="green">Points Gained in the game just played: {{ message }}</h3>
                     {% endfor %}
                 {% endif %}
             {% endwith %}
