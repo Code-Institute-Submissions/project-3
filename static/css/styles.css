@@ -88,6 +88,10 @@ header h2 {
     z-index: 10;
 }
 
+.navbar-collapse {
+    margin-top: 50px;
+}
+
 .title {
     text-align: center;
     margin-top: 70px;
@@ -309,13 +313,36 @@ footer {
     color: #333;
 }
 
+@media only screen  and (max-width: 450px) {
+    #username {
+        width: 100px;
+    }
+    #login-btn,
+    #register-btn,
+    #menu_btn {
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+    .container-fluid {
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+    .navbar-collapse {
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+    .align-right {
+        right: 80px;
+    }
+} 
+
 @media only screen and (min-width: 520px){
     h1 {
         font-size: 68px;
     }
 }
 
-@media only screen and (min-width: 770px){
+@media only screen and (min-width: 768px){
     .main {
         margin:20px auto;
     }
@@ -325,6 +352,10 @@ footer {
         left: 0px;
         top: 0px;
         z-index:10;
+    }
+
+    .navbar-collapse {
+        margin-top: 0px;
     }
 
     .align-right {
