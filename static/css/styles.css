@@ -309,6 +309,17 @@ footer {
     color: #333;
 }
 
+@media only screen  and (max-width: 450px) {
+    #username {
+        width: 100px;
+    }
+    #login-btn,
+    #register-btn {
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+} 
+
 @media only screen and (min-width: 520px){
     h1 {
         font-size: 68px;
