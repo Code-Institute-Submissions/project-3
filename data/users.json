@@ -29,6 +29,10 @@
         "date_best_game": "28/09/2018",
         "games_played": [
             [
+                "02/11/2018",
+                26
+            ],
+            [
                 "05/10/2018",
                 76
             ],
@@ -73,9 +77,9 @@
                 15
             ]
         ],
-        "number_of_games": 11,
+        "number_of_games": 12,
         "points_best_game": 80,
-        "total_user_points": 343,
+        "total_user_points": 369,
         "username": "user1"
     },
     "user100": {
