@@ -309,7 +309,9 @@ If a user tries to login with a non existent username, that user will be directe
 * For the second and third attempt of each riddle, in the case of answers with more than one word, the user can type in the whole answer in any of the input fields. The backend is able to sort things out.  
 
 
-# USER is able to move away from the game and come back.
+* USER is able to move away from the game and come back.
+
+* Can have more than one user playing at the same time.
 
 
 
@@ -383,7 +385,7 @@ Example of testing steps:
     * The background image of the logo is switched when hovering and switched back when the mouse moves out. 
 6. User moves to another page while playing and is able to come back to the game by clicking the `CURRENT GAME` menu item in the navigation bar.
 
-**All Tests passed on desktop and mobile** (*does not apply to logo*) **.**
+**All Tests passed on desktop and mobile** (*mobile testing does not apply to logo*) **.**
 
 
 ### Manual Testing - User Stories
@@ -475,33 +477,11 @@ The site is responsive and everything seems to work well in chrome developer too
 
 
 
-
 ### Unit testing Code for Form Validation
 
->I refactored the code related to the form validation and used **Jasmine** (v2.4.1) to unit test the functions. I noticed that I could not unit test the code straight in the javascript file I was using due to the code being in a $(document).ready function. For this reason I copied the code to a separate file for testing, copying back any changes I make.
 
->The code beign tested, the spec code and the html which runs the unit tests are in [this folder](/Users/anthonybonello/Documents/FullStackWebDeveloper/CI_MilestoneProjects/project_1/jasmine). I am also including a zip of the version of jasmine I used. If you would like to run the unit tests, you will need to unzip this in addition to the files I made.
+I did a few unit tests for the index page as well as the functions read_from_file and createUser
 
->Note: I had to add jQuery (v3.3.1) to the html file.
-
-
->While doing the unit tests I did uncover two bugs. The first one allowed a user to send the form by just filling spaces for the name, subject and message, together with an email.
-The second one allowed a user to ignore the error messages and still try to send the form. More on these two bugs below, in the BUGS section.
-
-
-
-
-### BUGS
-
-1. 
-
-~~As mentioned in the testing section above, when the CTA button is clicked in mobile devices the user is taken to the submit button instead of the top of the contact form. I tried to look into this but I cannot find a way to improve on this at the moment. I consider this bug as high priority to fix.~~
-
-**FIXED**
-
-This bug is now fixed. It took me about 8hrs of work and testing but it was worth going through the process. All I had to do is to get the height of the extended info section that will be set to 0px on closing, and take that amount in consideration when scrolling to the top of the contact form. The complexity arises from the fact that I used the CTA buttons in two other places, outside of the extended info. These are not meant to collapse. I solved this by separating the actions in different functions, something that I should have done from the start. NOTE: The reason why I want to reduce the height of the extended section to 0px is a visual one. I want to animate this in order to avoid a sudden jump that would otherwise happen. This is in keeping with the overall feel of the site that all movements are done smoothly.  
-
-Tested manually on google chrome and my mobile (Android) and it works well.
 
 ----
 
