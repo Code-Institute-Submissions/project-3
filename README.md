@@ -1,6 +1,5 @@
 # Milestone Project 3 - Riddle-Me-This Game
 ## Practical Python
- - Work in progress
 
 *Developer: Anthony Bonello*
 
@@ -288,7 +287,7 @@ Please note that a copy of the files for this wireframe are in this repository t
 
 ## GAME LOGIC FLOW DIAGRAM
 * [Back to TOP](#Milestone-Project-3---Riddle-Me-This-Game)  
-* [Back to Overview](#What-I-plan-to-achieve?---An-overview)  
+* [Back to Overview](#introduction)  
 
 This is the flow diagram of the logic controlling the game.
 ![Logic Flow Diagram](WireFrame/pages/game_logic_flow_chart.png)
@@ -361,7 +360,7 @@ None unless I want to extend it beyond the scope of this project.
 - [flask_mail](https://pythonhosted.org/Flask-Mail/) - used to enable the contact form to send emails to me.
 - [unit test](https://docs.python.org/3/library/unittest.html) - used to unit test the python functions.
 - [json](https://www.json.org/) - to hold data.
-- [SVG](https://www.w3schools.com/graphics/svg_intro.asp) - This was used to build the logo image using [Inskscape](https://inkscape.org/). From this png files (with transparent background for the !) where produced.
+- [SVG](https://www.w3schools.com/graphics/svg_intro.asp) - This was used to build the logo image using [Inskscape](https://inkscape.org/). From this png files (with transparent background for the `!`) where produced.
 - [Compress JPEG ](compressjpeg.com) - I use [GIMP](https://www.gimp.org/) to manipulate images. Once I export them as jpg, I use Compress Jpeg to minify them. Usually, I can gain between 25% and 50% reduction in file size.
 
 
@@ -480,7 +479,7 @@ The site is responsive and everything seems to work well in chrome developer too
 ### Unit testing Code for Form Validation
 
 
-I did a few unit tests for the index page as well as the functions read_from_file and createUser
+I did unit tests for the index page as well as the functions read_from_file and createUser
 
 
 ----
@@ -489,22 +488,22 @@ I did a few unit tests for the index page as well as the functions read_from_fil
 
 * **HTML** - https://validator.w3.org/  
 
-Home Page not logged - PASS  
-Home Page Logged - PASS  
-Register page - ~~Duplicate ID username~~ ~~Empty name attribute~~ - PASS  
-Register page continue ERROR -  PASS  
-Register page continue AVAILABLE - PASS  
-User page NEW - PASS  
-User page old user - PASS  
-Game 1st attempt - ~~alt for button~~ - PASS  
-Game 2st attempt - PASS  
-Game 3st attempt - PASS  
-Game finished User page - PASS  
-Hall of Fame - PASS  
-About - PASS  
-Contact - ~~role unneccessary for Form element~~ - PASS  
-Message error - PASS  
-Message sent - PASS  
+    Home Page not logged - PASS  
+    Home Page Logged - PASS  
+    Register page - ~~Duplicate ID username~~ ~~Empty name attribute~~ - PASS  
+    Register page continue ERROR -  PASS  
+    Register page continue AVAILABLE - PASS  
+    User page NEW - PASS  
+    User page old user - PASS  
+    Game 1st attempt - ~~alt for button~~ - PASS  
+    Game 2st attempt - PASS  
+    Game 3st attempt - PASS  
+    Game finished User page - PASS  
+    Hall of Fame - PASS  
+    About - PASS  
+    Contact - ~~role unneccessary for Form element~~ - PASS  
+    Message error - PASS  
+    Message sent - PASS  
 
 * **CSS** - https://jigsaw.w3.org/css-validator/  
 It complains about vendor prefixes for transition. I 
@@ -521,8 +520,6 @@ Code is syntactically valid.
 
 The repository of this project is at [**github repository**](https://github.com/abonello/project-3),  
 and it is deployed on Heroku [**here**](http://riddlegame-ab.herokuapp.com/).
-
-# NEED TO ADD NOTE ABOUT HOW TO DEPLOY - Check with NISHANT
 
 
 
@@ -552,24 +549,13 @@ The image and design of the logo is my work.
 The image and design of the favicon is my work.
 
 **Riddle Images**:  
-These are the work of **Marcus Connor** of [Brainless Tales](http://www.brainlesstales.com/) who gave me permission to use theses images for these games. I am very grateful for this.
+These are the work of **Marcus Connor** of [Brainless Tales](http://www.brainlesstales.com/) who gave me permission to use these images for the games in this project. I am very grateful for this.
 
 One can read more about Marcus' work in the [About page of his website](http://www.brainlesstales.com/about). You can also see the 9 years' worth of daily pictures as well as visit his [store](http://www.brainlesstales.com/store).
 
 
 ### FONTS
 **Averia Serif Libre**, **Gloria Hallelujah** and **Bubblegum** fonts from [google fonts](https://fonts.google.com/).
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -584,36 +570,10 @@ One can read more about Marcus' work in the [About page of his website](http://w
 For this project I do not need high security.
 For better security the secret_key should be completely random to make it very difficult to guess.
 Ideally use a random key generator.
-The key should be placed in a separate configuration file which would then be imported. 
+The key should be placed in a separate configuration file which would then be imported (not pushed to github). Alternatively use environment variables.
 I do not consider security to be an issue for this particular project considering the purpose.
 
 For better security I would also implement a password that would be salted and hashed. Only the hash 
 would then be stored. Again I am not doing this for this project.
 
-## Overview
 
-
-
-
-
-
-
-
-
-Getting information about heroku deployment
-
-```bash
-$ heroku apps:info riddlegame-ab
-=== riddlegame-ab
-Auto Cert Mgmt: false
-Dynos:          web: 1
-Git URL:        https://git.heroku.com/riddlegame-ab.git
-Owner:          connect@anthonybonello.co.uk
-Region:         eu
-Repo Size:      10 MB
-Slug Size:      55 MB
-Stack:          heroku-18
-Web URL:        https://riddlegame-ab.herokuapp.com/
-Anthonys-MacBook-Pro:project_3 anthonybonello$
-```
-Adding handling for 404 and 500 errors.
