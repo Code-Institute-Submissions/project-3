@@ -507,16 +507,13 @@ Message error - PASS
 Message sent - PASS  
 
 * **CSS** - https://jigsaw.w3.org/css-validator/  
->It complains about vendor prefixes in code that comes from colorzilla (re background gradient) or was added by form validator. I am goind to leave these as they are.  
-There is also another warning about two classes having the same background and border colors. I will keep these as they are.
-```
-* **Form Validator** -  https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Form_validation
+It complains about vendor prefixes for transition. I 
+am leaving these in for older versions of browsers.
+
 
 * **JavaScript** - http://esprima.org/demo/validate.html
->Code is syntactically valid.
-```
-* **jshint Linter** - http://jshint.com/
->Note: *Linter complains that there are 2 undefined variables, namely* **$** *and* **emailjs**. *These are defined in imported files,* **jquery-3.3.1.min.js** *and* **email.min.js** *respectively.* 
+Testing `p5-script.js`  
+Code is syntactically valid.
 
 
 ## DEPLOYMENT
@@ -537,13 +534,6 @@ I am basing this project on an earlier exploratory exercise that I did. This pre
 Another project that I built to learn the techniques I need is an addition game. The code can be found [here](https://github.com/abonello/addition_game).
 
 The main change I did from my earlier riddle game project is to base the current one on OOP. In this way I can have multiple users logged in without interfering with each other. This is what I learnt from the addition game.
-
-
-
-
-
-
-
 
 
 ## CREDITS
