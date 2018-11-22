@@ -19,7 +19,7 @@
             <!-- Registration Login Form-->
             <form class="registration" method="POST" action="/register">
                 <div class="form-group">
-                    <input type="text" class="form-control form-username form-align" name="username" id="username" placeholder="username" value={{ button_control["username"] }}>
+                    <input type="text" class="form-control form-username form-align" name="username" id="username_register" placeholder="username" value={{ button_control["username"] }}>
                     <button type="submit" class="btn form-align my_btn_color {{ button_control["check_active"] }}" name="check" type="submit" value="login">Check Username Available</button>
                 </div>
 
@@ -33,7 +33,7 @@
                 {% endif %}>
                     {{ username_feedback }}</div>
 
-                <button type="submit" class="btn form-align my_btn_color btn-width {{ button_control["register_active"] }}" name="{{  button_control["register"]  }}" type="submit" value="register">Register</button>
+                <button type="submit" class="btn form-align my_btn_color btn-width {{ button_control["register_active"] }}" name="{{  button_control["register"] or "undefined"  }}" type="submit" value="register">Register</button>
             </form>
         </div>
     </div>

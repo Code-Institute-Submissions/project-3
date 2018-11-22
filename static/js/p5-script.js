@@ -29,32 +29,31 @@ function setup() {
   currentY = originalY;
 }
 
-function draw() {
+function controlImage(thisImage, offset, X, Y) {
+  currentX = (currentX + X) / 2;
+  currentY = (currentY + Y) / 2;
+  imageMode(CORNER);
+  image(thisImage, 0, 0, 276, 200);
+  imageMode(CENTER);
+  image(imgExclamation, currentX - 5, currentY - offset, 40, 112);
+}
 
+
+function draw() {
+  // Need to get window width for various browsers
   windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
   if (windowWidth > 992) {
     imgMarginLeft = logoImage.offsetLeft;
     sketchHolder.style.left = (imgMarginLeft + 15) + "px";
     background(0, 0);
-
     hoverX = mouseX;
     hoverY = mouseY;
 
     if (hoverX > 0 && hoverX < 276 && hoverY > 0 && hoverY < 200) {
-      currentX = (currentX + hoverX) / 2;
-      currentY = (currentY + hoverY) / 2;
-      imageMode(CORNER);
-      image(backImgWords, 0, 0, 276, 200);
-      imageMode(CENTER);
-      image(imgExclamation, currentX - 5, currentY - 50, 40, 112);
+      controlImage(backImgWords, 50, hoverX, hoverY);
     } else {
-      currentX = (currentX + originalX) / 2;
-      currentY = (currentY + originalY) / 2;
-      imageMode(CORNER);
-      image(backImgFull, 0, 0, 276, 200);
-      imageMode(CENTER);
-      image(imgExclamation, currentX - 5, currentY - 45, 40, 112);
+      controlImage(backImgFull, 45, originalX, originalY);
     }
   }
 }
