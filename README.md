@@ -32,26 +32,38 @@ The purpose of the game is to guess a word or phrase from a given picture. Three
 
 
 ### **What I plan to achieve? - An overview**  
-The first decision I felt I have to make is wether to use a text-based or a picture-based riddle. I did a google search and I found some material that I can use as a picture-based riddle game. I also thought that a picture-based would be more attractive to a wide range of users of different ages. I decided to go down this route. See [credits](#credits) for these pictures.
+The first decision I felt I have to make is whether to use a text-based or a picture-based riddle. I did a google search and I found some material that I can use as a picture-based riddle game. I also thought that a picture-based game would be more attractive to a wide range of users of different ages. I decided to go down this route. See [credits](#credits) for the pictures used.
 
 Then I sketched a few layouts (pencil and paper) to get a general feel of how I would get the game to flow and an idea of layout of various parts. I sketched the logic of the game using a [flow diagram](#game-logic-flow-diagram).
 
 The game will randomly select 10 riddles from a pool of riddles. The user will be presented with the first riddle. The user has to write the answer for the riddle and submit the answer by pressing a button. An option to pass is also provided. 
 
-A submitted answer will be checked against the stored answer and if correct a second riddle is presented. If the answer is wrong or if the user chooses to pass, a second attempt at answering will be offered. This time the user will be told how many words are expected in the answer. Similar submit and pass options are offered. If the answer is wrong or the user passes, a third attempt is offered. This time the user will be shown how many words should be in the answer and how many letters are in each word. After this final attempt the user will be directed to the next riddle, unless it is the final one, in which case the game will end and the user will be directed to the user page.
+A submitted answer will be checked against the stored answer and if correct a second riddle is presented. If the answer is wrong or if the user chooses to pass, a second attempt at answering will be offered. This time the user will be told how many words are expected in the answer. Similar submit and pass options are offered. If the answer is wrong or the user passes, a third attempt is offered. This time, apart from the number of words in the answer, the user will be shown how many letters are in each word. After this final attempt the user will be directed to the next riddle, unless it is the final one, in which case the game will end and the user will be directed to the user page.
 
 Points gained will be displayed on the user page and if they are high enough they will be added to the Hall of Fame.
-____
 
+### Security
+
+**A note about security**  
+For this project I do not need high security.
+For better security the secret_key should be completely random to make it very difficult to guess.
+Ideally use a random key generator.
+The key should be placed in a separate configuration file which would then be imported (not pushed to github). Alternatively use environment variables.
+I do not consider security to be an issue for this particular project considering the purpose.
+
+For better security I would also implement a password that would be salted and hashed. Only the hash 
+would then be stored. Again I am not doing this for this project.
+
+---
 
 ## UXD
 * [Back to TOP](#Milestone-Project-3---Riddle-Me-This-Game)
 
 The idea is to have a riddle game based on the idea of Pictionary.
 
-Some menus will not be available before a user logs in, namely USER and CURRENT GAME. CURRENT GAME will only be available while a game is beign played. I plan to hide the menu for leading to the current view.  
+Some menus will not be available before a user logs in, namely USER and CURRENT GAME. CURRENT GAME will only be available while a game is beign played. I plan to hide the menu for the current page.  
 
-There are arguments against this. The argument goes that it will disorient the user by having the order changing. My argument is that the menu is going to change anyway since the unavailable menus will not be shown. 
+There are arguments against this. The argument goes that it will disorient the user by having the order changing. My argument against this is that the menu is going to change anyway since the unavailable menus will not be shown. Also the actual ordering will not be changed, ie, the Game menu will always be after the User menu when available, etc. 
 
 I think this is a small price to pay and the user should get used to it in a brief time. I do not think that it requires any appreciable learning curve. Some of the riddles are much tougher.
 
@@ -70,7 +82,7 @@ People who might use the website would be looking for a mental challenge. Ages c
 #### What does it do?
 Once a user registers and logs in, this game will select a random selection of 10 riddles from the current 30 riddles. The user will have to guess the word or phrase that the picture represents.
 
-This game is competitive throught the employment of hall of fames.
+This game is competitive through the employment of hall of fames.
 
 It is targeted at users who like mental challenges.
 
@@ -556,24 +568,4 @@ One can read more about Marcus' work in the [About page of his website](http://w
 
 ### FONTS
 **Averia Serif Libre**, **Gloria Hallelujah** and **Bubblegum** fonts from [google fonts](https://fonts.google.com/).
-
-
-
-----------------
-
-==========================
-
-
-## Security
-
-**A note about security**  
-For this project I do not need high security.
-For better security the secret_key should be completely random to make it very difficult to guess.
-Ideally use a random key generator.
-The key should be placed in a separate configuration file which would then be imported (not pushed to github). Alternatively use environment variables.
-I do not consider security to be an issue for this particular project considering the purpose.
-
-For better security I would also implement a password that would be salted and hashed. Only the hash 
-would then be stored. Again I am not doing this for this project.
-
 
