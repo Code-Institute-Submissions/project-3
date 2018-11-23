@@ -527,6 +527,14 @@ Testing `p5-script.js`
 Code is syntactically valid.
 
 
+* **jshint Linter** - http://jshint.com/  
+Note: Linter complains that there are 9 undefined variables.   
+These are defined and initialised using let.  
+It also complains that there are three unused variables which are actually functions. These functions form part of the 
+required structure for p5.js.
+
+
+
 ## DEPLOYMENT
 * [Back to TOP](#Milestone-Project-3---Riddle-Me-This-Game)
 
